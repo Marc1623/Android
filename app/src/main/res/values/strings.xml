@@ -1,4 +1,10 @@
 <resources>
+
+    <string name="nav_title_cantons">"Kanton"</string>
+    <string name="nav_title_search">"Suchen"</string>
+    <string name="nav_title_new">"Neu"</string>
+    <string name="nav_title_profil">"Profil"</string>
+
     <string name="app_name">Online Census</string>
     <string name="title_activity_main">activity_main</string>
     <string name="title_activity_login">Sign in</string>
@@ -10,6 +16,7 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
 
     <string-array name="cantons_array">
         <item>Aargau</item>
@@ -38,5 +45,9 @@
         <item>Zug</item>
         <item>Zürich</item>
     </string-array>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
 </resources>

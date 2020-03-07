@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_cantons"
+        android:icon="@drawable/ic_map_black_24dp"
+        android:title="@string/nav_title_cantons" />
+
+    <item
+        android:id="@+id/nav_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="@string/nav_title_search" />
+
+    <item
+        android:id="@+id/nav_new"
+        android:icon="@drawable/ic_add_circle_black_24dp"
+        android:title="@string/nav_title_new" />
+
+    <item
+        android:id="@+id/nav_profil"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="@string/nav_title_profil" />
+
+</menu>
