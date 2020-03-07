@@ -1,73 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="300dp"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".Registration">
 
     <Spinner
         android:id="@+id/sp_cantons"
-        android:layout_width="270dp"
-        android:layout_height="64dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="79dp" />
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp"/>
 
     <Spinner
         android:id="@+id/sp_county"
-        android:layout_width="270dp"
-        android:layout_height="64dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="123dp"
-        android:layout_marginEnd="79dp" />
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"/>
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="83dp"
-        android:layout_marginTop="227dp"
+        android:id="@+id/txt_email"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
         android:ems="10"
-        android:inputType="textEmailAddress" />
+        android:hint="E-Mail"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="40dp"/>
 
     <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="83dp"
-        android:layout_marginTop="292dp"
+        android:id="@+id/txt_checkMail"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:hint="confirm E-mail"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="20dp"/>
 
     <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="83dp"
-        android:layout_marginBottom="326dp"
+        android:id="@+id/txt_checkPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:hint="confirm Password"
+        android:inputType="textPassword"
+        android:layout_marginTop="40dp"/>
+
+    <EditText
+        android:id="@+id/txt_password"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_marginTop="20dp"/>
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="133dp"
-        android:layout_marginBottom="189dp"
-        android:text="Button" />
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:background="#2196F3"
+        android:text="Register"
+        android:textColor="#F5EAEE"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center_horizontal" />
 
-</RelativeLayout>
+</LinearLayout>
