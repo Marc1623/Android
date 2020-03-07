@@ -1,3 +1,42 @@
 <resources>
-    <string name="app_name">Projet_Laurin_Marc</string>
+    <string name="app_name">Online Census</string>
+    <string name="title_activity_main">activity_main</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <string-array name="cantons_array">
+        <item>Aargau</item>
+        <item>Appenzell Ausserrhoden</item>
+        <item>Appenzell Innerrhoden</item>
+        <item>Basel-Landschaft</item>
+        <item>Basel-Stadt</item>
+        <item>Bern</item>
+        <item>Freiburg</item>
+        <item>Genf</item>
+        <item>Glarus</item>
+        <item>Graubünden</item>
+        <item>Jura</item>
+        <item>Neuenburg</item>
+        <item>Nidwalden</item>
+        <item>Obwalden</item>
+        <item>Schaffhausen</item>
+        <item>Schwyz</item>
+        <item>Solothurn</item>
+        <item>St. Gallen</item>
+        <item>Tessin</item>
+        <item>Thurgau</item>
+        <item>Uri</item>
+        <item>Waadt</item>
+        <item>Wallis</item>
+        <item>Zug</item>
+        <item>Zürich</item>
+    </string-array>
+
 </resources>
