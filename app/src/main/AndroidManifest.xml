@@ -9,6 +9,7 @@
         android:roundIcon="@drawable/ic_account_circle_black_24dp"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CommuneActivity"></activity>
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
