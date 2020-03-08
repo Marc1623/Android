@@ -1,16 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_red_light">
-    <TextView
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="866dp">
+        <TextView
+            android:id="@+id/txt_profil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:text="Such - Kriterien"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:background="@android:color/holo_blue_light"/>
+
+    <EditText
+        android:id="@+id/editVorname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search Fragment"
-        android:layout_centerInParent="true"
-        android:textSize="30sp"
-        />
+        android:layout_below="@+id/txt_profil"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="50dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="Vorname" />
+
+        <EditText
+            android:id="@+id/editNachname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editVorname"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="50dp"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:text="Nachname" />
+
+        <EditText
+            android:id="@+id/editAHV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editNachname"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="50dp"
+            android:ems="10"
+            android:inputType="textVisiblePassword"
+            android:text="AHV-Nummer" />
+
+        <EditText
+            android:id="@+id/editCanton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editAHV"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="50dp"
+            android:ems="10"
+            android:inputType="textVisiblePassword"
+            android:text="Kanton" />
+
+        <EditText
+            android:id="@+id/editGemeinde"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editCanton"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="50dp"
+            android:ems="10"
+            android:inputType="textVisiblePassword"
+            android:text="Gemeinde" />
+
+        <EditText
+            android:id="@+id/editSprache"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editGemeinde"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="50dp"
+            android:ems="10"
+            android:inputType="textVisiblePassword"
+            android:text="Sprache" />
 
 
-</RelativeLayout>
+
+        <Button
+            android:id="@+id/bSearch"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/editSprache"
+            android:text="Suchen"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="40dp"
+            android:background="@android:color/holo_green_light"
+            />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>
