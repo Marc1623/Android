@@ -2,16 +2,202 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/holo_green_light">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Canton Fragment"
-        android:layout_centerInParent="true"
-        android:textSize="30sp"
-        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/buttonZurich"
+                android:drawableLeft="@drawable/ic_zurich"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Zurich" />
+
+            <Button
+                android:id="@+id/buttonBerne"
+                android:drawableTop="@drawable/ic_bern"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Berne" />
+
+            <Button
+                android:id="@+id/buttonLuzerne"
+                android:drawableTop="@drawable/ic_luzern"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Luzerne" />
+
+            <Button
+                android:id="@+id/buttonUri"
+                android:drawableTop="@drawable/ic_uri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Uri" />
+
+            <Button
+                android:id="@+id/buttonSchwyz"
+                android:drawableTop="@drawable/ic_schwyz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Schwyz" />
+
+            <Button
+                android:id="@+id/buttonObwalden"
+                android:drawableTop="@drawable/ic_obwalden"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Obwalden" />
+
+            <Button
+                android:id="@+id/buttonNidwalden"
+                android:drawableTop="@drawable/ic_nidwalden"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nidwalden" />
+
+            <Button
+                android:id="@+id/buttonGlarus"
+                android:drawableTop="@drawable/ic_glarus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Glarus" />
+
+            <Button
+                android:id="@+id/buttonZug"
+                android:drawableTop="@drawable/ic_zug"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Zug" />
+
+            <Button
+                android:id="@+id/buttonFreiburg"
+                android:drawableTop="@drawable/ic_freiburg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Freiburg" />
+
+            <Button
+                android:id="@+id/buttonSolothurn"
+                android:drawableTop="@drawable/ic_solothurn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Solothurn" />
+
+            <Button
+                android:id="@+id/buttonBasel-Stadt"
+                android:drawableTop="@drawable/ic_baselstadt_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Basel-Stadt" />
+
+            <Button
+                android:id="@+id/buttonBasel-Landschaft"
+                android:drawableTop="@drawable/ic_baselland_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Basel-Landschaft" />
+
+            <Button
+                android:id="@+id/buttonSchafhausen"
+                android:drawableTop="@drawable/ic_schaffhausen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Schafhausen" />
+
+            <Button
+                android:id="@+id/buttonAppenzell_Ausserrhoden"
+                android:drawableTop="@drawable/ic_appenzellre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Appenzell_Ausserrhoden" />
+
+            <Button
+                android:id="@+id/buttonAppenzell_Innerrhoden"
+                android:drawableTop="@drawable/ic_appenzellri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Appenzell_Innerrhoden" />
+
+            <Button
+                android:id="@+id/buttonSaint_Gallen"
+                android:drawableTop="@drawable/ic_st_gallen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Saint_Gallen" />
+
+            <Button
+                android:id="@+id/buttonGraubunden"
+                android:drawableTop="@drawable/ic_graubuenden"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Graubunden" />
+
+            <Button
+                android:id="@+id/buttonArgau"
+                android:drawableTop="@drawable/ic_aargau"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Argau" />
+
+            <Button
+                android:id="@+id/buttonThurgau"
+                android:drawableTop="@drawable/ic_thurgau"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thurgau" />
+
+            <Button
+                android:id="@+id/buttonTessin"
+                android:drawableTop="@drawable/ic_tessin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tessin" />
+
+            <Button
+                android:id="@+id/buttonWaadt"
+                android:drawableTop="@drawable/ic_waadt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Waadt" />
+
+            <Button
+                android:id="@+id/buttonWallis"
+                android:drawableTop="@drawable/ic_wallis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Wallis" />
+
+            <Button
+                android:id="@+id/buttonNeuenburg"
+                android:drawableTop="@drawable/ic_neuenburg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Neuenburg" />
+
+            <Button
+                android:id="@+id/buttonGenf"
+                android:drawableTop="@drawable/ic_genf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Genf" />
+
+            <Button
+                android:id="@+id/buttonJura"
+                android:drawableTop="@drawable/ic_jura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jura" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
