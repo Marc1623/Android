@@ -10,23 +10,29 @@
     <string name="nav_title_new">"Neu"</string>
     <string name="nav_title_profile">"Profil"</string>
 
+    <!-- ############# Titles ############# -->
+    <string name="chapter_search">"Suchkriterien"</string>
+    <string name="chapter_add">"Neue Person"</string>
+    <string name="chapter_profile">"User Details"</string>
+    <string name="chapter">"Chapter"</string>
+
     <!-- ############# Personal Details ############# -->
     <!-- Resident -->
-    <string name="person_ahv">AHV-Nummer</string>
-    <string name="person_first">Vorname</string>
-    <string name="person_last">Nachname</string>
-    <string name="person_address">Adresse</string>
-    <string name="person_zip">PLZ</string>
-    <string name="person_city">Ort</string>
-    <string name="person_phone">Telefonnummer</string>
-    <string name="person_birthdate">Geburtstag</string>
+    <string name="ahv">AHV-Nummer</string>
+    <string name="firstname">Vorname</string>
+    <string name="lastname">Nachname</string>
+    <string name="steet">Strasse</string>
+    <string name="zip">PLZ</string>
+    <string name="city">Ort</string>
+    <string name="phone">Telefonnummer</string>
+    <string name="birthdate">Geburtstag</string>
     <!-- User -->
-    <string name="person_county">Gemeinde</string>
-    <string name="person_state">Kanton</string>
-    <string name="person_email">E-Mail</string>
-    <string name="person_check_email">bestätigung E-Mail</string>
-    <string name="person_pwd">Passwort</string>
-    <string name="person_check_pwd">bestätigung Passwort</string>
+    <string name="county">Gemeinde</string>
+    <string name="state">Kanton</string>
+    <string name="email">E-Mail</string>
+    <string name="check_email">bestätigung E-Mail</string>
+    <string name="pwd">Passwort</string>
+    <string name="check_pwd">bestätigung Passwort</string>
 
     <!-- ############# About ############# -->
     <string name="about_version">Version 1.0</string>
@@ -34,16 +40,19 @@
     <string name="about_min_sdk">Min SDK Version: Level 14</string>
 
     <!-- ############# Buttons ############# -->
-    <string name="button_login">Login</string>
-    <string name="button_register">Register</string>
-    <string name="button_add">Add</string>
-    <string name="button_update">Update</string>
-    <string name="button_delete">Delete</string>
-    <string name="button_cancel">Cancel</string>
-    <string name="button_yes">Yes</string>
-    <string name="button_no">No</string>
-    <string name="button_details">Details</string>
-    <string name="button_search">Search</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="add">"Add"</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="details">Details</string>
+    <string name="search">Suchen</string>
+
+    <string name="remember">merken</string>
+    <string name="create">Account erstellen</string>
 
     <!-- ############# Messages & Notifications ############# -->
     <string name="msg_pwd_invalid">Passwort braucht mind. 5 Zeichen</string>

@@ -10,63 +10,64 @@
     tools:context=".RegistrationActivity">
 
     <Spinner
-        android:id="@+id/sp_cantons"
+        android:id="@+id/spinner_cantons"
         android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="60dp"/>
+        android:layout_height="@dimen/height_tall"
+        android:layout_marginTop="@dimen/margin_top"/>
 
     <Spinner
-        android:id="@+id/sp_county"
+        android:id="@+id/spinner_county"
         android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_height="@dimen/height_tall"
+        android:layout_marginTop="@dimen/margin_top"/>
+
 
     <EditText
-        android:id="@+id/txt_email"
+        android:id="@+id/text_email"
         android:layout_width="fill_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/height_tall"
         android:ems="10"
-        android:hint="E-Mail"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="@dimen/margin_top"/>
 
     <EditText
         android:id="@+id/txt_checkMail"
         android:layout_width="fill_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/height_tall"
         android:ems="10"
-        android:hint="confirm E-mail"
+        android:hint="@string/check_email"
         android:inputType="textEmailAddress"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="@dimen/margin_top"/>
 
     <EditText
-        android:id="@+id/txt_checkPassword"
+        android:id="@+id/text_password"
         android:layout_width="fill_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/height_tall"
         android:ems="10"
-        android:hint="confirm Password"
+        android:hint="@string/pwd"
         android:inputType="textPassword"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="@dimen/margin_top"/>
 
     <EditText
-        android:id="@+id/txt_password"
+        android:id="@+id/text_checkPassword"
         android:layout_width="fill_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/height_tall"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/check_pwd"
         android:inputType="textPassword"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="@dimen/margin_top"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_register"
         android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:background="#2196F3"
-        android:text="Register"
-        android:textColor="#F5EAEE"
-        android:textSize="30sp"
+        android:layout_height="@dimen/height_tall"
+        android:background="@color/button_add"
+        android:text="@string/register"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/size_text_button"
         android:textStyle="bold"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="@dimen/margin_top"
         android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

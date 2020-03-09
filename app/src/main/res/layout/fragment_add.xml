@@ -11,134 +11,122 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="866dp">
-
-
-            <EditText
-                android:id="@+id/edt_Birthdate"
-                android:layout_width="300dp"
-                android:layout_height="60dp"
-                android:layout_above="@+id/b_add"
-                android:layout_alignStart="@+id/b_add"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="40dp"
-                android:ems="10"
-                android:hint="Geburtstag"
-                android:inputType="date" />
+            android:layout_height="700dp">
 
             <EditText
-                android:id="@+id/edit_phone"
-                android:layout_width="300dp"
-                android:layout_height="60dp"
-                android:layout_above="@+id/edt_Birthdate"
-                android:layout_alignStart="@+id/edt_Birthdate"
+                android:id="@+id/text_ahv"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_tall"
+                android:layout_above="@+id/text_firstname"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginStart="@dimen/margin_left"
+                android:layout_marginTop="@dimen/margin_top"
+                android:layout_marginEnd="@dimen/margin_right"
+                android:layout_marginBottom="@dimen/margin_bottom"
                 android:ems="10"
-                android:hint="Telefonnummer"
+                android:hint="@string/ahv"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/text_firstname"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_tall"
+                android:layout_above="@+id/text_lastname"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/margin_left"
+                android:layout_marginEnd="@dimen/margin_right"
+                android:layout_marginBottom="@dimen/margin_bottom"
+                android:ems="10"
+                android:hint="@string/firstname"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/text_lastname"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_tall"
+                android:layout_above="@+id/text_street"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/margin_left"
+                android:layout_marginEnd="@dimen/margin_right"
+                android:layout_marginBottom="@dimen/margin_bottom"
+                android:ems="10"
+                android:hint="@string/lastname"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/text_street"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_tall"
+                android:layout_above="@+id/text_city"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/margin_left"
+                android:layout_marginEnd="@dimen/margin_right"
+                android:layout_marginBottom="@dimen/margin_bottom"
+                android:ems="10"
+                android:hint="@string/steet"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/text_zip"
+                android:layout_width="100dp"
+                android:layout_height="@dimen/height_tall"
+                android:layout_above="@+id/text_phone"
+                android:layout_marginStart="@dimen/margin_left"
+                android:layout_marginBottom="@dimen/margin_bottom"
+                android:ems="10"
+                android:hint="@string/zip"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/text_city"
+                android:layout_width="220dp"
+                android:layout_height="@dimen/height_tall"
+                android:layout_above="@+id/text_phone"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/margin_right"
+                android:layout_marginBottom="@dimen/margin_bottom"
+                android:ems="10"
+                android:hint="@string/city"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/text_phone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_tall"
+                android:layout_above="@+id/text_birthday"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/margin_left"
+                android:layout_marginEnd="@dimen/margin_right"
+                android:layout_marginBottom="@dimen/margin_bottom"
+                android:ems="10"
+                android:hint="@string/phone"
                 android:inputType="phone" />
 
             <EditText
-                android:id="@+id/edit_zip"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_above="@+id/edit_phone"
-                android:layout_alignStart="@+id/edt_Birthdate"
-                android:layout_marginStart="0dp"
-                android:layout_marginBottom="40dp"
+                android:id="@+id/text_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_tall"
+                android:layout_above="@+id/button_add"
+                android:layout_marginStart="@dimen/margin_left"
+                android:layout_marginEnd="@dimen/margin_right"
+                android:layout_marginBottom="@dimen/margin_bottom"
                 android:ems="10"
-                android:hint="PLZ"
-                android:inputType="textPostalAddress" />
+                android:hint="@string/birthdate"
+                android:inputType="date" />
 
-            <EditText
-                android:id="@+id/edit_city"
-                android:layout_width="180dp"
-                android:layout_height="60dp"
-                android:layout_above="@+id/edit_phone"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="40dp"
-                android:ems="10"
-                android:hint="Ort"
-                android:inputType="textPostalAddress" />
-
-            <EditText
-                android:id="@+id/edit_street"
-                android:layout_width="300dp"
-                android:layout_height="60dp"
-                android:layout_above="@+id/edit_zip"
-                android:layout_alignStart="@+id/edt_Birthdate"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="40dp"
-                android:ems="10"
-                android:hint="Strasse"
-                android:inputType="textPostalAddress" />
-
-            <EditText
-                android:id="@+id/edit_lastname"
-                android:layout_width="300dp"
-                android:layout_height="60dp"
-                android:layout_above="@+id/edit_street"
-                android:layout_alignStart="@+id/edt_Birthdate"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="40dp"
-                android:ems="10"
-                android:hint="Lastname"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/edit_firstname"
-                android:layout_width="300dp"
-                android:layout_height="60dp"
-                android:layout_above="@+id/edit_lastname"
-                android:layout_alignStart="@+id/edt_Birthdate"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="40dp"
-                android:ems="10"
-                android:hint="Firstname"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/edit_avs"
-                android:layout_width="300dp"
-                android:layout_height="60dp"
-                android:layout_above="@+id/edit_firstname"
-                android:layout_alignStart="@+id/edt_Birthdate"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="40dp"
-                android:ems="10"
-                android:hint="AHV-Nummer"
-                android:inputType="number" />
 
             <Button
-                android:id="@+id/b_add"
-                android:layout_width="300dp"
-                android:layout_height="63dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
+                android:id="@+id/button_add"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_tall"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="40dp"
-                android:background="#2196F3"
-                android:fontFamily="sans-serif"
-                android:text="Add"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="#F5EAEE"
-                android:textSize="30sp"
+                android:layout_marginStart="@dimen/margin_left"
+                android:layout_marginEnd="@dimen/margin_right"
+                android:layout_marginBottom="@dimen/margin_bottom"
+                android:background="@color/button_add"
+                android:text="@string/add"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/size_text_button"
                 android:textStyle="bold" />
 
         </RelativeLayout>

@@ -13,114 +13,104 @@
             android:layout_width="match_parent"
             android:layout_height="750dp">
 
-
             <TextView
-                android:id="@+id/txt_profil"
+                android:id="@+id/label_chapter"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginLeft="40dp"
-                android:text="Personal Details"
+                android:layout_height="@dimen/height_medium"
+                android:layout_marginTop="@dimen/margin_top"
+                android:layout_marginRight="@dimen/margin_right"
+                android:layout_marginLeft="@dimen/margin_left"
+                android:text="@string/chapter_profile"
                 android:textAlignment="center"
-                android:textSize="25sp"
+                android:textSize="@dimen/size_text_chapter"
+                android:textColor="@color/text_black"
                 android:textStyle="bold"
-                android:background="@android:color/holo_blue_light"/>
+                android:background="@color/chapter"/>
 
 
             <EditText
-                android:id="@+id/editEmail"
+                android:id="@+id/text_email"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_profil"
+                android:layout_height="@dimen/height_medium"
+                android:layout_below="@+id/label_chapter"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="50dp"
+                android:layout_marginStart="@dimen/margin_left"
+                android:layout_marginTop="@dimen/margin_top"
+                android:layout_marginEnd="@dimen/margin_right"
                 android:ems="10"
                 android:inputType="textEmailAddress"
-                android:text="E-mail" />
+                android:text="@string/email" />
 
             <EditText
-                android:id="@+id/editpwd"
+                android:id="@+id/text_pwd"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editEmail"
+                android:layout_height="@dimen/height_medium"
+                android:layout_below="@+id/text_email"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="50dp"
+                android:layout_marginStart="@dimen/margin_left"
+                android:layout_marginTop="@dimen/margin_top"
+                android:layout_marginEnd="@dimen/margin_right"
                 android:ems="10"
                 android:inputType="textVisiblePassword"
-                android:text="Password" />
+                android:text="@string/pwd" />
 
             <EditText
-                android:id="@+id/editKanton"
+                android:id="@+id/text_state"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editpwd"
+                android:layout_height="@dimen/height_medium"
+                android:layout_below="@+id/text_pwd"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="50dp"
+                android:layout_marginStart="@dimen/margin_left"
+                android:layout_marginTop="@dimen/margin_top"
+                android:layout_marginEnd="@dimen/margin_right"
                 android:ems="10"
                 android:inputType="textVisiblePassword"
-                android:text="Kanton" />
+                android:text="@string/state" />
 
             <EditText
-                android:id="@+id/editCounty"
+                android:id="@+id/text_county"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editKanton"
+                android:layout_height="@dimen/height_medium"
+                android:layout_below="@+id/text_state"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="50dp"
+                android:layout_marginStart="@dimen/margin_left"
+                android:layout_marginTop="@dimen/margin_top"
+                android:layout_marginEnd="@dimen/margin_right"
                 android:ems="10"
                 android:inputType="textVisiblePassword"
-                android:text="Gemeinde" />
-
-            <EditText
-                android:id="@+id/editLanguage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editCounty"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="50dp"
-                android:ems="10"
-                android:inputType="textVisiblePassword"
-                android:text="Sprache" />
-
-
+                android:text="@string/county" />
 
             <Button
-                android:id="@+id/bUpdate"
+                android:id="@+id/button_update"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_below="@+id/editLanguage"
-                android:text="Update"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginTop="40dp"
-                android:background="@android:color/holo_green_light"/>
-
+                android:layout_height="@dimen/height_tall"
+                android:layout_below="@+id/text_county"
+                android:layout_marginLeft="@dimen/margin_left"
+                android:layout_marginTop="@dimen/margin_top"
+                android:layout_marginRight="@dimen/margin_right"
+                android:background="@color/button_update"
+                android:text="@string/update"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/size_text_button"
+                android:textStyle="bold" />
 
             <Button
+                android:id="@+id/button_delete"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_below="@+id/bUpdate"
-                android:text="Delete"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginTop="40dp"
-                android:background="@android:color/holo_red_light"/>
+                android:layout_height="@dimen/height_tall"
+                android:layout_below="@+id/button_update"
+                android:layout_marginLeft="@dimen/margin_left"
+                android:layout_marginTop="@dimen/margin_top"
+                android:layout_marginRight="@dimen/margin_right"
+                android:background="@color/button_delete"
+                android:text="@string/delete"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/size_text_button"
+                android:textStyle="bold" />
 
 
         </RelativeLayout>

@@ -1,15 +1,20 @@
 package com.example.projet_laurin_marc;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends  AppCompatActivity {
+    // with AppCompatActivity you gard the Actionbar (Top) throughout the application!
 
     BottomNavigationView bottomNavigation;
 
@@ -19,6 +24,7 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
+
         bottomNavigation.setOnNavigationItemSelectedListener(navListener);
 
         // Give the container the fragment that you want to start with when the menu opens!
@@ -50,4 +56,5 @@ public class MainActivity extends FragmentActivity {
                     return true;
                 }
             };
+
 }
