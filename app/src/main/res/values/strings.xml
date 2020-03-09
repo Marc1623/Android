@@ -1,23 +1,58 @@
 <resources>
+    <!-- ############# Actionbar [Top] ############# -->
+    <string name="app_name">Online Census</string>
+    <string name="action_search">"Suchen"</string>
+    <string name="action_settings">"Einstellungen"</string>
 
+    <!-- ############# Menu [Bottom] ############# -->
     <string name="nav_title_cantons">"Kanton"</string>
     <string name="nav_title_search">"Suchen"</string>
     <string name="nav_title_new">"Neu"</string>
-    <string name="nav_title_profil">"Profil"</string>
+    <string name="nav_title_profile">"Profil"</string>
 
-    <string name="app_name">Online Census</string>
-    <string name="title_activity_main">activity_main</string>
-    <string name="title_activity_login">Sign in</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <!-- ############# Personal Details ############# -->
+    <!-- Resident -->
+    <string name="person_ahv">AHV-Nummer</string>
+    <string name="person_first">Vorname</string>
+    <string name="person_last">Nachname</string>
+    <string name="person_address">Adresse</string>
+    <string name="person_zip">PLZ</string>
+    <string name="person_city">Ort</string>
+    <string name="person_phone">Telefonnummer</string>
+    <string name="person_birthdate">Geburtstag</string>
+    <!-- User -->
+    <string name="person_county">Gemeinde</string>
+    <string name="person_state">Kanton</string>
+    <string name="person_email">E-Mail</string>
+    <string name="person_check_email">bestätigung E-Mail</string>
+    <string name="person_pwd">Passwort</string>
+    <string name="person_check_pwd">bestätigung Passwort</string>
 
+    <!-- ############# About ############# -->
+    <string name="about_version">Version 1.0</string>
+    <string name="about_min_android">Min Version: Android 4.0 (Jelly Bean)</string>
+    <string name="about_min_sdk">Min SDK Version: Level 14</string>
 
+    <!-- ############# Buttons ############# -->
+    <string name="button_login">Login</string>
+    <string name="button_register">Register</string>
+    <string name="button_add">Add</string>
+    <string name="button_update">Update</string>
+    <string name="button_delete">Delete</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_yes">Yes</string>
+    <string name="button_no">No</string>
+    <string name="button_details">Details</string>
+    <string name="button_search">Search</string>
+
+    <!-- ############# Messages & Notifications ############# -->
+    <string name="msg_pwd_invalid">Passwort braucht mind. 5 Zeichen</string>
+    <string name="msg_pwd_check">Passwort nicht gleich</string>
+    <string name="msg_email_check">E-mail nicht gleich</string>
+    <string name="msg_email_invalid">Bitte E-mail eingeben</string>
+    <string name="msg_person_id">Person ist bereits im System registriert</string>
+
+    <!-- ############# Arrays ############# -->
     <string-array name="cantons_array">
         <item>Aargau</item>
         <item>Appenzell Ausserrhoden</item>
@@ -45,9 +80,6 @@
         <item>Zug</item>
         <item>Zürich</item>
     </string-array>
-
-
-
 
     <string name="canton_zurich">Zürich</string>
     <string name="gampel">Gampel</string>

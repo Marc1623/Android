@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- ############# PrimaryColors ############# -->
+    <!-- Blood -->
     <color name="colorPrimary">#A30014</color>
-    <color name="colorPrimaryDark">#555555</color>
+    <color name="colorPrimaryDark">#6D000E</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="white">#ffffff</color>
+    <!-- Android -->
+    <color name="colorAndroidPrimary">#008577</color>
+    <color name="colorAndroidPrimaryDark">#00574B</color>
+    <color name="colorAndroidAccent">#D81B60</color>
+
+    <!-- ############# Buttons ############# -->
+    <color name="button_show">#6D000E</color>
+    <color name="button_delete">#6D000E</color>
+    <color name="button_update">#4B7902</color>
+    <color name="button_add">#4B7902</color>
+    <color name="button_search">#4B7902</color>
+
+    <!-- ############# Text ############# -->
+    <color name="text_white">#ffffff</color>
+    <color name="text_black">#000000</color>
+
+    <!-- ############# Chapters ############# -->
+    <color name="chapter">#EC808D</color>
+
 </resources>
