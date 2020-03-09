@@ -20,6 +20,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        // Set title bar
+
 
         button_login = (Button) findViewById(R.id.button_login);
         button_createAccount = (Button) findViewById(R.id.button_createAccount);
@@ -29,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // get email and Password from view
                 EditText Email = (EditText) findViewById(R.id.text_email);
-                EditText postcode = (EditText) findViewById(R.id.text_password);
+                EditText postcode = (EditText) findViewById(R.id.text_pwd);
 
                 // TODO: 09.03.2020 Check login data, when ok move on the menu give msg
 
@@ -51,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                 LoginActivity.this.startActivity(intent);
             }
         });
-
-
     }
+
+
 }

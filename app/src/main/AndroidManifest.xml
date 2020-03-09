@@ -11,10 +11,8 @@
         android:roundIcon="@drawable/ic_account_circle_black_24dp"
         android:supportsRtl="true"
         android:theme="@style/AppThemeBlood">
-        <activity android:name=".CommuneActivity"/>
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".MainActivity" />
 
+        <!-- MAIN -->
         <activity
             android:name=".LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -27,6 +25,19 @@
             </intent-filter>
         </activity>
 
+        <!-- other Activities -->
+        <activity
+            android:name=".RegistrationActivity"
+            android:parentActivityName=".LoginActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginActivity" />
+        </activity>
+
+
+        <activity android:name=".CommuneActivity"/>
+        <activity android:name=".MainActivity" />
 
     </application>
 

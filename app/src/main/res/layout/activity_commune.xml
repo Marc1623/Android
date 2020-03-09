@@ -33,38 +33,37 @@
         tools:layout_editor_absoluteY="114dp">
 
         <GridLayout
-            android:rowCount="40"
-            android:columnCount="4"
             android:layout_width="wrap_content"
             android:layout_height="110dp"
+            android:columnCount="4"
             android:orientation="vertical"
-android:useDefaultMargins="true">
-
-
+            android:rowCount="40"
+            android:useDefaultMargins="true">
 
 
             <Button
                 android:id="@+id/Zwischbergen"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Zwischbergen"
                 android:layout_row="38"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Zwischbergen" />
+
             <Button
                 android:id="@+id/Zermatt"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Zermatt"
                 android:layout_row="38"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Zermatt" />
 
             <Button
                 android:id="@+id/Zeneggen"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Zeneggen"
                 android:layout_row="37"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Zeneggen" />
 
             <Button
                 android:id="@+id/Wiler"
@@ -97,13 +96,14 @@ android:useDefaultMargins="true">
                 android:layout_row="36"
                 android:layout_column="3"
                 android:text="Vissoie" />
+
             <Button
                 android:id="@+id/Visperterminen"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Visperterminen"
                 android:layout_row="36"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Visperterminen" />
 
 
             <Button
@@ -143,40 +143,41 @@ android:useDefaultMargins="true">
                 android:id="@+id/Vex"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Vex"
                 android:layout_row="35"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Vex" />
 
             <Button
                 android:id="@+id/Vetroz"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Vétroz"
                 android:layout_row="35"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Vétroz" />
 
             <Button
                 android:id="@+id/Verossaz"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Vérossaz"
                 android:layout_row="34"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Vérossaz" />
+
             <Button
                 android:id="@+id/Vernayaz"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Vernayaz "
                 android:layout_row="34"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Vernayaz " />
 
             <Button
                 android:id="@+id/Vernamiege"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Vernamiège"
                 android:layout_row="34"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Vernamiège" />
 
             <Button
                 android:id="@+id/Venthone"
@@ -209,53 +210,55 @@ android:useDefaultMargins="true">
                 android:layout_row="33"
                 android:layout_column="1"
                 android:text="Unterems" />
+
             <Button
                 android:id="@+id/Unterbach"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Unterbäch "
                 android:layout_row="33"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Unterbäch " />
 
 
             <Button
                 android:id="@+id/Ulrichen"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Ulrichen "
                 android:layout_row="32"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Ulrichen " />
 
             <Button
                 android:id="@+id/Turtmann"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Turtmann"
                 android:layout_row="32"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Turtmann" />
 
             <Button
                 android:id="@+id/Troistorrents"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Troistorrents"
                 android:layout_row="32"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Troistorrents" />
+
             <Button
                 android:id="@+id/Trient"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Trient "
                 android:layout_row="32"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Trient " />
 
             <Button
                 android:id="@+id/Torbel"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Törbel"
                 android:layout_row="31"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Törbel" />
 
             <Button
                 android:id="@+id/Termen"
@@ -294,40 +297,41 @@ android:useDefaultMargins="true">
                 android:id="@+id/Stalden"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Stalden"
                 android:layout_row="30"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Stalden" />
 
             <Button
                 android:id="@+id/StNiklaus"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="St. Niklaus"
                 android:layout_row="30"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="St. Niklaus" />
 
             <Button
                 android:id="@+id/Sion"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Sion"
                 android:layout_row="30"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Sion" />
+
             <Button
                 android:id="@+id/Simplon"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Simplon"
                 android:layout_row="29"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Simplon" />
 
             <Button
                 android:id="@+id/Sierre"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Sierre"
                 android:layout_row="29"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Sierre" />
 
             <Button
                 android:id="@+id/Sembrancher"
@@ -366,40 +370,41 @@ android:useDefaultMargins="true">
                 android:id="@+id/Salins"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Salins"
                 android:layout_row="28"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Salins" />
 
             <Button
                 android:id="@+id/Salgesch"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Salgesch"
                 android:layout_row="28"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Salgesch" />
 
             <Button
                 android:id="@+id/Saint-Maurice"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Saint-Maurice"
                 android:layout_row="27"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Saint-Maurice" />
+
             <Button
                 android:id="@+id/Saint-Martin"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Saint-Martin"
                 android:layout_row="27"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Saint-Martin" />
 
             <Button
                 android:id="@+id/Saint-Luc"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Saint-Luc "
                 android:layout_row="27"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Saint-Luc " />
 
             <Button
                 android:id="@+id/Saint-Leonard"
@@ -432,53 +437,55 @@ android:useDefaultMargins="true">
                 android:layout_row="26"
                 android:layout_column="1"
                 android:text="Saillon " />
+
             <Button
                 android:id="@+id/SaasGrund"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Saas Grund"
                 android:layout_row="26"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Saas Grund" />
 
 
             <Button
                 android:id="@+id/SaasFee"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Saas Fee"
                 android:layout_row="25"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Saas Fee" />
 
             <Button
                 android:id="@+id/SaasBalen"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Saas Balen"
                 android:layout_row="25"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Saas Balen" />
 
             <Button
                 android:id="@+id/SaasAlmagell"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Saas Almagell"
                 android:layout_row="25"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Saas Almagell" />
+
             <Button
                 android:id="@+id/Riederalp"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Riederalp"
                 android:layout_row="25"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Riederalp" />
 
             <Button
                 android:id="@+id/Ried-Brig"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Ried-Brig"
                 android:layout_row="24"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Ried-Brig" />
 
             <Button
                 android:id="@+id/Riddes"
@@ -511,44 +518,46 @@ android:useDefaultMargins="true">
                 android:layout_row="23"
                 android:layout_column="3"
                 android:text="Randogne" />
+
             <Button
                 android:id="@+id/Randa"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Randa"
                 android:layout_row="23"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Randa" />
 
             <Button
                 android:id="@+id/Port-Valais"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Port-Valais"
                 android:layout_row="23"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Port-Valais" />
 
             <Button
                 android:id="@+id/Orsieres"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Orsières"
                 android:layout_row="23"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Orsières" />
+
             <Button
                 android:id="@+id/Oberwald"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Oberwald"
                 android:layout_row="22"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Oberwald" />
 
             <Button
                 android:id="@+id/Obergesteln"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Obergesteln"
                 android:layout_row="22"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Obergesteln" />
 
             <Button
                 android:id="@+id/Oberems"
@@ -587,17 +596,17 @@ android:useDefaultMargins="true">
                 android:id="@+id/Nax"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Nax"
                 android:layout_row="21"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Nax" />
 
             <Button
                 android:id="@+id/Naters"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Naters"
                 android:layout_row="21"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Naters" />
 
 
             <Button
@@ -607,44 +616,46 @@ android:useDefaultMargins="true">
                 android:layout_row="20"
                 android:layout_column="3"
                 android:text="Münster-Geschinen" />
+
             <Button
                 android:id="@+id/Mund"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Mund"
                 android:layout_row="20"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Mund" />
 
             <Button
                 android:id="@+id/Morel"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Mörel"
                 android:layout_row="20"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Mörel" />
 
             <Button
                 android:id="@+id/Monthey"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Monthey"
                 android:layout_row="20"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Monthey" />
+
             <Button
                 android:id="@+id/Montana"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Montana"
                 android:layout_row="19"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Montana" />
 
             <Button
                 android:id="@+id/Mollens"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Mollens"
                 android:layout_row="19"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Mollens" />
 
             <Button
                 android:id="@+id/Miege"
@@ -683,40 +694,41 @@ android:useDefaultMargins="true">
                 android:id="@+id/Martisberg"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Martisberg"
                 android:layout_row="18"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Martisberg" />
 
             <Button
                 android:id="@+id/Martigny-Combe"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Martigny-Combe"
                 android:layout_row="18"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Martigny-Combe" />
 
             <Button
                 android:id="@+id/Martigny"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Martigny"
                 android:layout_row="17"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Martigny" />
+
             <Button
                 android:id="@+id/Liddes"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Liddes"
                 android:layout_row="17"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Liddes" />
 
             <Button
                 android:id="@+id/Leytron"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Leytron"
                 android:layout_row="17"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Leytron" />
 
             <Button
                 android:id="@+id/Leukerbad"
@@ -749,53 +761,55 @@ android:useDefaultMargins="true">
                 android:layout_row="16"
                 android:layout_column="1"
                 android:text="Lens" />
+
             <Button
                 android:id="@+id/Lax"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Lax "
                 android:layout_row="16"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Lax " />
 
 
             <Button
                 android:id="@+id/Lalden"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Lalden"
                 android:layout_row="15"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Lalden" />
 
             <Button
                 android:id="@+id/Kippel"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Kippel"
                 android:layout_row="15"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Kippel" />
 
             <Button
                 android:id="@+id/Iserables"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Isérables "
                 android:layout_row="15"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Isérables " />
+
             <Button
                 android:id="@+id/Inden"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Inden"
                 android:layout_row="15"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Inden" />
 
             <Button
                 android:id="@+id/Icogne"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Icogne"
                 android:layout_row="14"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Icogne" />
 
             <Button
                 android:id="@+id/Hohtenn"
@@ -828,44 +842,46 @@ android:useDefaultMargins="true">
                 android:layout_row="13"
                 android:layout_column="3"
                 android:text="Grône" />
+
             <Button
                 android:id="@+id/Grimisuat"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Grimisuat"
                 android:layout_row="13"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Grimisuat" />
 
             <Button
                 android:id="@+id/Grimentz"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Grimentz"
                 android:layout_row="13"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Grimentz" />
 
             <Button
                 android:id="@+id/Grengiols"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Grengiols"
                 android:layout_row="13"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Grengiols" />
+
             <Button
                 android:id="@+id/Grafschaft"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Grafschaft"
                 android:layout_row="12"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Grafschaft" />
 
             <Button
                 android:id="@+id/Grachen"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Grächen"
                 android:layout_row="12"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Grächen" />
 
             <Button
                 android:id="@+id/Gampel"
@@ -904,40 +920,41 @@ android:useDefaultMargins="true">
                 android:id="@+id/Fieschertal"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Fieschertal"
                 android:layout_row="11"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Fieschertal" />
 
             <Button
                 android:id="@+id/Fiesch"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Fiesch"
                 android:layout_row="11"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Fiesch" />
 
             <Button
                 android:id="@+id/Ferden"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Ferden"
                 android:layout_row="10"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Ferden" />
+
             <Button
                 android:id="@+id/Evolène"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Evolène"
                 android:layout_row="10"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Evolène" />
 
             <Button
                 android:id="@+id/Evionnaz"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Evionnaz"
                 android:layout_row="10"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Evionnaz" />
 
             <Button
                 android:id="@+id/Erschmatt"
@@ -970,53 +987,55 @@ android:useDefaultMargins="true">
                 android:layout_row="9"
                 android:layout_column="1"
                 android:text="Embd" />
+
             <Button
                 android:id="@+id/Eisten"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Eisten"
                 android:layout_row="9"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Eisten" />
 
 
             <Button
                 android:id="@+id/Eischoll"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Eischoll"
                 android:layout_row="8"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Eischoll" />
 
             <Button
                 android:id="@+id/Eggerberg"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Eggerberg"
                 android:layout_row="8"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Eggerberg" />
 
             <Button
                 android:id="@+id/Dorénaz"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Dorénaz"
                 android:layout_row="8"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Dorénaz" />
+
             <Button
                 android:id="@+id/Conthey"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Conthey"
                 android:layout_row="8"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Conthey" />
 
             <Button
                 android:id="@+id/Collonges"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Collonges"
                 android:layout_row="7"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Collonges" />
 
             <Button
                 android:id="@+id/Collombey-Muraz"
@@ -1049,44 +1068,46 @@ android:useDefaultMargins="true">
                 android:layout_row="6"
                 android:layout_column="3"
                 android:text="Charrat" />
+
             <Button
                 android:id="@+id/Chandolin"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Chandolin"
                 android:layout_row="6"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Chandolin" />
 
             <Button
                 android:id="@+id/Champéry"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Champéry"
                 android:layout_row="6"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Champéry" />
 
             <Button
                 android:id="@+id/Chamoson"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Chamoson"
                 android:layout_row="6"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Chamoson" />
+
             <Button
                 android:id="@+id/Chalais"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Chalais"
                 android:layout_row="5"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Chalais" />
 
             <Button
                 android:id="@+id/Bürchen"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Bürchen"
                 android:layout_row="5"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Bürchen" />
 
             <Button
                 android:id="@+id/Brig-Glis"
@@ -1125,40 +1146,41 @@ android:useDefaultMargins="true">
                 android:id="@+id/Blitzingen"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Blitzingen"
                 android:layout_row="4"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Blitzingen" />
 
             <Button
                 android:id="@+id/Blatten"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Blatten"
                 android:layout_row="4"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Blatten" />
 
             <Button
                 android:id="@+id/Bitsch"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Bitsch"
                 android:layout_row="3"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Bitsch" />
+
             <Button
                 android:id="@+id/Bister"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Bister"
                 android:layout_row="3"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Bister" />
 
             <Button
                 android:id="@+id/Birgisch"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Birgisch"
                 android:layout_row="3"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Birgisch" />
 
             <Button
                 android:id="@+id/Binn"
@@ -1191,36 +1213,38 @@ android:useDefaultMargins="true">
                 android:layout_row="2"
                 android:layout_column="1"
                 android:text="Baltschieder" />
+
             <Button
                 android:id="@+id/Bagnes"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Bagnes"
                 android:layout_row="2"
-                android:layout_column="0"/>
+                android:layout_column="0"
+                android:text="Bagnes" />
 
             <Button
                 android:id="@+id/Ayer"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Ayer"
                 android:layout_row="1"
-                android:layout_column="3"/>
+                android:layout_column="3"
+                android:text="Ayer" />
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Button"
                 android:layout_row="1"
-                android:layout_column="2"/>
+                android:layout_column="2"
+                android:text="Button" />
+
             <Button
                 android:id="@+id/Ayent"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:text="Ayent"
                 android:layout_row="1"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:text="Ayent" />
 
             <Button
                 android:id="@+id/Ausserberg"

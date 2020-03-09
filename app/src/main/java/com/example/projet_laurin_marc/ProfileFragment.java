@@ -18,4 +18,13 @@ public class ProfileFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_profil, container, false);
     }
 
+    public void onResume(){
+        super.onResume();
+
+        // Set title bar
+        ((MainActivity) getActivity())
+                .setActionBarTitle("Mein Profil");
+
+    }
+
 }

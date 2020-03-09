@@ -6,9 +6,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- android:textColorSecondary is the color of the menu overflow icon (three vertical dots) -->
+        <item name="android:textColorSecondary">@color/text_black</item>
     </style>
 
-    <style name="AppThemeDark" parent="Theme.MaterialComponents.DayNight"/>
+    <style name="AppThemeDark" parent="Theme.MaterialComponents.DayNight" />
 
 
 </resources>

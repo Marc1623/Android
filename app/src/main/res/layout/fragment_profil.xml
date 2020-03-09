@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,21 +10,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="750dp">
-
-            <TextView
-                android:id="@+id/label_chapter"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/height_medium"
-                android:layout_marginTop="@dimen/margin_top"
-                android:layout_marginRight="@dimen/margin_right"
-                android:layout_marginLeft="@dimen/margin_left"
-                android:text="@string/chapter_profile"
-                android:textAlignment="center"
-                android:textSize="@dimen/size_text_chapter"
-                android:textColor="@color/text_black"
-                android:textStyle="bold"
-                android:background="@color/chapter"/>
-
 
             <EditText
                 android:id="@+id/text_email"
@@ -40,7 +23,7 @@
                 android:layout_marginEnd="@dimen/margin_right"
                 android:ems="10"
                 android:inputType="textEmailAddress"
-                android:text="@string/email" />
+                android:hint="@string/email" />
 
             <EditText
                 android:id="@+id/text_pwd"
@@ -54,7 +37,7 @@
                 android:layout_marginEnd="@dimen/margin_right"
                 android:ems="10"
                 android:inputType="textVisiblePassword"
-                android:text="@string/pwd" />
+                android:hint="@string/pwd" />
 
             <EditText
                 android:id="@+id/text_state"
@@ -68,7 +51,7 @@
                 android:layout_marginEnd="@dimen/margin_right"
                 android:ems="10"
                 android:inputType="textVisiblePassword"
-                android:text="@string/state" />
+                android:hint="@string/state" />
 
             <EditText
                 android:id="@+id/text_county"
@@ -82,7 +65,7 @@
                 android:layout_marginEnd="@dimen/margin_right"
                 android:ems="10"
                 android:inputType="textVisiblePassword"
-                android:text="@string/county" />
+                android:hint="@string/county" />
 
             <Button
                 android:id="@+id/button_update"
@@ -111,7 +94,6 @@
                 android:textColor="@color/text_white"
                 android:textSize="@dimen/size_text_button"
                 android:textStyle="bold" />
-
 
         </RelativeLayout>
 

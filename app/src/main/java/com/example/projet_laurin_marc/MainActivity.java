@@ -7,13 +7,19 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends  AppCompatActivity {
+import java.util.Locale;
+
+public class MainActivity extends AppCompatActivity {
     // with AppCompatActivity you gard the Actionbar (Top) throughout the application!
 
     BottomNavigationView bottomNavigation;
@@ -22,6 +28,12 @@ public class MainActivity extends  AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // ---------------   settings   -----------
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        changeLanguage(sharedPrefs.getString("pref_lang", "de"));
+        // ---------------   settings   -----------
+
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
 
@@ -32,14 +44,15 @@ public class MainActivity extends  AppCompatActivity {
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-               new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
 
                     switch (item.getItemId()) {
                         case R.id.nav_add:
                             selectedFragment = new AddFragment();
-                           break;
+                            break;
                         case R.id.nav_cantons:
                             selectedFragment = new CantonFragment();
                             break;
@@ -56,5 +69,50 @@ public class MainActivity extends  AppCompatActivity {
                     return true;
                 }
             };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.top_actionbar, menu);
+        return true;
+    }
+
+    // get access from fragments to this method to change titel in actionbar
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
+    }
+
+
+    // ----------------------- Settings  --------------------------------------------
+    @Override
+    public void onResume(){
+        super.onResume();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void changeLanguage(String lang) {
+        Locale myLocale = new Locale(lang);
+        Locale.setDefault(myLocale);
+        android.content.res.Configuration config = new android.content.res.Configuration();
+        config.locale = myLocale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+
+        // is being used to change the language, display of welcome..
+        //TextView welcome = (TextView) findViewById(R.id.main_txt_welcome);
+        //welcome.setText(R.string.main_welcome);
+    }
 
 }

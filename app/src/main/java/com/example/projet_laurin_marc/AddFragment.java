@@ -17,4 +17,12 @@ public class AddFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_add, container, false);
     }
 
+    public void onResume(){
+        super.onResume();
+
+        // Set title bar
+        ((MainActivity) getActivity())
+                .setActionBarTitle("Hinzufügen");
+    }
+
 }

@@ -23,4 +23,14 @@ public class SearchFragment extends Fragment {
 
     }
 
+    public void onResume(){
+        super.onResume();
+
+        // Set title bar
+        ((MainActivity) getActivity())
+                .setActionBarTitle("Suchen");
+
+    }
+
+
 }
