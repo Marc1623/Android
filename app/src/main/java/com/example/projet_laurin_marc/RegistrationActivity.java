@@ -20,9 +20,6 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        // create backbutton in Actionbar
-        //setupActionBar();
-
         // spinner cantons to choose canton
         Spinner sp = (Spinner) findViewById(R.id.spinner_cantons);
         // Create an ArrayAdapter using the string array and a default spinner layout

@@ -46,7 +46,6 @@ public class Address {
         this.id = id;
     }
 
-
     public int getZip() {
         return zip;
     }
