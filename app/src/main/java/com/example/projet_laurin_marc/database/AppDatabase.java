@@ -9,20 +9,26 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.projet_laurin_marc.database.dao.AddressDao;
+import com.example.projet_laurin_marc.database.dao.PersonDao;
 import com.example.projet_laurin_marc.database.dao.UserDao;
 import com.example.projet_laurin_marc.database.entity.User;
 
 @Database(entities = {User.class},version = 1)
-public abstract class UserDatabase extends RoomDatabase {
+public abstract class AppDatabase extends RoomDatabase {
 
-    private static UserDatabase instance;
+    private static AppDatabase instance;
 
     public abstract UserDao userDao();
 
+    public abstract PersonDao personDao();
+
+    public abstract AddressDao addressDao();
+
     //singletone pattern!
-    public static synchronized UserDatabase getInstance(Context context){
+    public static synchronized AppDatabase getInstance(Context context){
         if (instance==null){
-            instance= Room.databaseBuilder(context.getApplicationContext(),UserDatabase.class, "user_database").
+            instance= Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "user_database").
                     fallbackToDestructiveMigration().addCallback(userCallback).build();
         }
         return instance;
@@ -32,14 +38,14 @@ public abstract class UserDatabase extends RoomDatabase {
       @Override
       public void onCreate(@NonNull SupportSQLiteDatabase db){
           super.onCreate(db);
-          new UserDatabase.PopulateDbAsyncTask(instance).execute();
+          new AppDatabase.PopulateDbAsyncTask(instance).execute();
       }
     };
 
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void>{
         private UserDao userDao;
 
-        private PopulateDbAsyncTask(UserDatabase db){
+        private PopulateDbAsyncTask(AppDatabase db){
             userDao = db.userDao();
         }
 

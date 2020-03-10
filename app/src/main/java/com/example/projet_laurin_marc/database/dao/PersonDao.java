@@ -7,22 +7,23 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.projet_laurin_marc.database.entity.Person;
 import com.example.projet_laurin_marc.database.entity.User;
 
 import java.util.List;
 
 @Dao
-public interface UserDao {
+public interface PersonDao {
     @Insert
-    void insert(User user);
+    void insert(Person person);
 
     @Update
-    void update(User... user);
+    void update(Person... person);
 
     @Delete
-    void delete(User user);
+    void delete(Person person);
 
-    @Query("Select * From  user")
-    LiveData<List<User>> getAll();
+    @Query("Select * From  person")
+    LiveData<List<Person>> getAll();
 
 }
