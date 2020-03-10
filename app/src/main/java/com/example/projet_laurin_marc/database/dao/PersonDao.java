@@ -8,7 +8,6 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.projet_laurin_marc.database.entity.Person;
-import com.example.projet_laurin_marc.database.entity.User;
 
 import java.util.List;
 

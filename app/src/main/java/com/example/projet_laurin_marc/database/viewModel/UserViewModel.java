@@ -19,7 +19,7 @@ public class UserViewModel extends AndroidViewModel {
         super(application);
 
         userRepository = new UserRepository(application);
-        users = userRepository.getAllUser();
+        users = userRepository.getAllUsers();
     }
 
     public void insert(User user){

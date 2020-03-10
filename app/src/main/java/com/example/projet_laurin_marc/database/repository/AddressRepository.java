@@ -35,7 +35,7 @@ public class AddressRepository {
         new DeleteAddressAsyncTask(addressDao).execute(address);
     }
 
-    public LiveData<List<Address>> getAllAddress() {
+    public LiveData<List<Address>> getAllAddresses() {
         return addresseslive;
     }
 

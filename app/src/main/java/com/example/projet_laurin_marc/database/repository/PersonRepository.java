@@ -34,7 +34,7 @@ public class PersonRepository {
         new DeletePersonAsyncTask(personDao).execute(person);
     }
 
-    public LiveData<List<Person>> getAllPerson() {
+    public LiveData<List<Person>> getAllPersons() {
         return personslive;
     }
 

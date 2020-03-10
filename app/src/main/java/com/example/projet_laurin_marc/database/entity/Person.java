@@ -29,10 +29,10 @@ public class Person {
     private int phone;
 
     @ColumnInfo(name = "birthday")
-    private Date birthday;
+    private String birthday;
 
     // --------------- Constructor ----------------
-    public Person(int ahv, String firstname, String lastname, int phone, Date birthday ) {
+    public Person(int ahv, String firstname, String lastname, int phone, String birthday ) {
         this.ahv = ahv;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -83,11 +83,11 @@ public class Person {
         this.phone = phone;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 }

@@ -13,9 +13,9 @@ public class Address {
     // set columns of the database
     @PrimaryKey(autoGenerate = true) //should be zip+city+street = unique always!
     private int id;
-    //foreign key to the address from the person
+   /* //foreign key to the address from the person
     @Embedded
-    private Person person;
+    private Person person;*/
 
     @ColumnInfo(name = "zip")
     private int zip;
@@ -27,11 +27,10 @@ public class Address {
     private String street;
 
     // --------------- Constructor ----------------
-    public Address(int zip, String city, String street, Person person) {
+    public Address(int zip, String city, String street) {
         this.zip = zip;
         this.city = city;
         this.street = street;
-        this.person = person;
     }
     public Address(){}
 
@@ -47,13 +46,6 @@ public class Address {
         this.id = id;
     }
 
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
 
     public int getZip() {
         return zip;

@@ -36,7 +36,7 @@ public class UserRepository {
         new DeleteUserAsyncTask(userDao).execute(user);
     }
 
-    public LiveData<List<User>> getAllUser() {
+    public LiveData<List<User>> getAllUsers() {
         return userslive;
     }
 
