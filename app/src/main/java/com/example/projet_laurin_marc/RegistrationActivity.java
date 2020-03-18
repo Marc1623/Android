@@ -1,5 +1,6 @@
 package com.example.projet_laurin_marc;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,9 +12,21 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
+import com.example.projet_laurin_marc.static_database.County;
+import com.example.projet_laurin_marc.static_database.DataBaseHelper;
+
+
+import java.io.File;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class RegistrationActivity extends AppCompatActivity {
 
     private Button button_register;
+    DataBaseHelper dbHelper;
+    List<County> coutylist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +44,33 @@ public class RegistrationActivity extends AppCompatActivity {
 
         // if canton was choosen then get the list of counties in the Spinner
         // TODO: 09.03.2020  list of counties
+        coutylist = new ArrayList<>();
+        coutylist.clear();
 
+        dbHelper = new DataBaseHelper(this);
+        //check if db exists
+        File database = getApplicationContext().getDatabasePath(DataBaseHelper.DATABASE_NAME);
+        if(database.exists() == false){
+            dbHelper.getReadableDatabase();
+            //copy
+            if(dbHelper.copyDataBase()){
+                Toast.makeText(this, "Copy database success", Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(this, "Copy db error",Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+        // get coutylist
+        coutylist = dbHelper.getListCounties();
+
+        // spinner cantons to choose canton
+        Spinner sp2 = (Spinner) findViewById(R.id.spinner_county);
+        // Create an ArrayAdapter using the database and a default spinner layout
+        ArrayAdapter<County> adapter2 = new ArrayAdapter<County>(this, android.R.layout.simple_spinner_item, coutylist);
+        //specify the layout to use when the list of choices appears
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // apply the adapter to the spinner
+        sp2.setAdapter(adapter2);
 
         button_register = (Button) findViewById(R.id.button_register);
 
@@ -65,5 +104,6 @@ public class RegistrationActivity extends AppCompatActivity {
         });
 
     }//end onCreate
+
 
 }
