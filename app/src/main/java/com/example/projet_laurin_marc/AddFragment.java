@@ -49,16 +49,16 @@ public class AddFragment extends Fragment {
     }
 /*
     private void initializeForm() {
-        etAhv = (EditText)view.findViewById(R.id.text_ahv) ;
-       etFirstname = (EditText)view.findViewById(R.id.text_firstname);
-        etLastnam = (EditText)view.findViewById(R.id.text_lastname) ;
-        etStreet = (EditText)view.findViewById(R.id.text_street) ;
-        etZip = (EditText)view.findViewById(R.id.text_zip) ;
-        etCity = (EditText)view.findViewById(R.id.text_city) ;
-        etPhone = (EditText)view.findViewById(R.id.text_phone) ;
-        etBirthday = (EditText)view.findViewById(R.id.text_birthday) ;
+        etAhv = view.findViewById(R.id.text_ahv) ;
+       etFirstname = view.findViewById(R.id.text_firstname);
+        etLastnam = view.findViewById(R.id.text_lastname) ;
+        etStreet = view.findViewById(R.id.text_street) ;
+        etZip = view.findViewById(R.id.text_zip) ;
+        etCity = view.findViewById(R.id.text_city) ;
+        etPhone = view.findViewById(R.id.text_phone) ;
+        etBirthday = view.findViewById(R.id.text_birthday) ;
 
-        button_add = (Button)view.findViewById(R.id.button_add);
+        button_add = view.findViewById(R.id.button_add);
         button_add.setOnClickListener(view -> saveChanges(
                 etAhv.getText().toString(),
                 etLastnam.getText().toString(),
@@ -68,8 +68,8 @@ public class AddFragment extends Fragment {
                 etPhone.getText().toString(),
                 etBirthday.getText().toString()
         ));
-    }*/
-/*
+    }
+
     private void saveChanges(String firstName, String lastName, String email, String pwd, String pwd2) {
         if (!pwd.equals(pwd2) || pwd.length() < 5) {
             etPwd1.setError(getString(R.string.error_invalid_password));
