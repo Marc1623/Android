@@ -16,14 +16,14 @@ import com.example.projet_laurin_marc.database.entity.Address;
 import com.example.projet_laurin_marc.database.entity.Person;
 import com.example.projet_laurin_marc.database.entity.User;
 
-@Database(entities = {User.class, Person.class, Address.class},version = 1)
+@Database(entities = {User.class},version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase instance;
 
     public abstract UserDao userDao();
-    public abstract PersonDao personDao();
-    public abstract AddressDao addressDao();
+    //public abstract PersonDao personDao();
+   // public abstract AddressDao addressDao();
 
 
     //singletone pattern!
@@ -45,20 +45,20 @@ public abstract class AppDatabase extends RoomDatabase {
 
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void>{
         private UserDao userDao;
-        private PersonDao personDao;
-        private AddressDao addressDao;
+        //private PersonDao personDao;
+        //private AddressDao addressDao;
 
         private PopulateDbAsyncTask(AppDatabase db){
             userDao = db.userDao();
-            personDao = db.personDao();
-            addressDao = db.addressDao();
+            //personDao = db.personDao();
+            //addressDao = db.addressDao();
         }
 
         @Override
         protected Void doInBackground(Void... voids){
             userDao.insert(new User());
-            personDao.insert(new Person());
-            addressDao.insert(new Address());
+            //personDao.insert(new Person());
+            //addressDao.insert(new Address());
             return null;
         }
     }

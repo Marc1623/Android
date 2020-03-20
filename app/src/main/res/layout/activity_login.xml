@@ -5,7 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F8F8F0F0"
-    tools:context=".LoginActivity">
+    tools:context=".ui.mgmt.LoginActivity">
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="77dp"
+        android:layout_height="35dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="316dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/imageView3"

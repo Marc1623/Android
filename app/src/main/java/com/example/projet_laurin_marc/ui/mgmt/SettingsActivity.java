@@ -1,4 +1,4 @@
-package com.example.projet_laurin_marc;
+package com.example.projet_laurin_marc.ui.mgmt;
 
 import android.app.Activity;
 import android.os.Bundle;

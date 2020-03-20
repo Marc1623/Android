@@ -19,7 +19,7 @@ public class AddressRepository {
 
     public AddressRepository(Application app){
         AppDatabase database = AppDatabase.getInstance(app);
-        addressDao = database.addressDao();
+        //addressDao = database.addressDao();
         addresseslive = addressDao.getAll();
     }
 

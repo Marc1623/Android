@@ -1,4 +1,4 @@
-package com.example.projet_laurin_marc;
+package com.example.projet_laurin_marc.ui;
 
 
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
+
+import com.example.projet_laurin_marc.R;
 
 
 public class CantonFragment extends Fragment {

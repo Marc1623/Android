@@ -1,7 +1,9 @@
-package com.example.projet_laurin_marc;
+package com.example.projet_laurin_marc.ui.mgmt;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
+
+import com.example.projet_laurin_marc.R;
 
 public class SettingsFragment extends PreferenceFragment {
 

@@ -18,7 +18,7 @@ public class PersonRepository {
 
     public PersonRepository(Application app){
         AppDatabase database = AppDatabase.getInstance(app);
-        personDao = database.personDao();
+        //personDao = database.personDao();
         personslive = personDao.getAll();
     }
 

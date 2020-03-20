@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:layout_gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".RegistrationActivity">
+    tools:context=".ui.mgmt.RegistrationActivity">
 
     <Spinner
         android:id="@+id/spinner_cantons"

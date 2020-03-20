@@ -16,6 +16,22 @@
     <string name="chapter_profile">"User Details"</string>
     <string name="chapter">"Chapter"</string>
 
+
+    <string name="data_reset">reset data</string>
+    <string name="data_initiated">data initiated</string>
+    <string name="action_reset">Reset</string>
+
+
+    <!-- ############# Error ############# -->
+    <string name="error_invalid_email">Invalid login credentials</string>
+    <string name="error_used_email">Email already in use</string>
+    <string name="error_invalid_password">This password is too short (&lt;5 characters)</string>
+    <string name="error_edit_invalid_password">You need to specify a password</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="error_pwd_wrong">wrong password</string>
+
+
     <!-- ############# Personal Details ############# -->
     <!-- Resident -->
     <string name="ahv">AHV-Nummer</string>
