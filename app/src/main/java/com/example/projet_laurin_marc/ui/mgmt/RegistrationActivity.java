@@ -23,6 +23,7 @@ import com.example.projet_laurin_marc.static_database.DataBaseHelper;
 
 import java.io.File;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -193,8 +194,14 @@ public class RegistrationActivity extends AppCompatActivity {
         dbHelper = new DataBaseHelper(this);
 
         //check if db exists
-        File database = getApplicationContext().getDatabasePath(DataBaseHelper.DATABASE_NAME); //problem path is not the same..
+        //File database = getApplicationContext().getDatabasePath(DataBaseHelper.DATABASE_NAME);
 
+        try {
+            dbHelper.createDatabase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+/*
         if (!database.exists()) {
             dbHelper.getReadableDatabase();
             //copy
@@ -204,7 +211,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 Toast.makeText(this, "Copy db error", Toast.LENGTH_SHORT).show();
                 return;
             }
-        }
+        }*/
         // get countylist
         countyList = dbHelper.getListCounties(/*selectedCantonAbb*/);
 

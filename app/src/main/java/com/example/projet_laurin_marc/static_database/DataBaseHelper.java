@@ -22,7 +22,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private final Context myContext;
     public static final String DATABASE_NAME = "CountiesDB";
     public final static String DATABASE_PATH = "/data/data/com.example.projet_laurin_marc/databases/";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
 
     public DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -128,6 +128,24 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         List<County> countyList = new ArrayList<>();
         openDatabase();
         Cursor cursor = myDataBase.rawQuery("SELECT * FROM Counties_De Where Kanton like '%'" /*selectedCantonAbb*/, null);
+        cursor.moveToFirst();
+
+        while (!cursor.isAfterLast()) {
+            county = new County(cursor.getString(0), cursor.getString(1));
+            countyList.add(county);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        closeDataBase();
+        return countyList;
+    }
+
+    public List<County> getCountiesByCanton(String selectedCanton) {
+        County county = null;
+        List<County> countyList = new ArrayList<>();
+        openDatabase();
+        Cursor cursor = myDataBase.rawQuery("SELECT * FROM Counties_De Where Kanton like '" + selectedCanton + "'", null);
         cursor.moveToFirst();
 
         while (!cursor.isAfterLast()) {

@@ -38,6 +38,7 @@
 
         <activity android:name=".ui.CommuneActivity"/>
         <activity android:name=".ui.mgmt.LoginActivity" />
+        <activity android:name=".ui.mgmt.SettingsActivity" />
 
     </application>
 
