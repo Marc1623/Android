@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 login();
-                System.out.println("Click");
             }
         });
 
@@ -82,17 +81,17 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("userId", users.get(i).getId());
                         startActivity(intent);
-
+                        return;
                     }
                     if (!userViewModel.getUsers().getValue().get(i).getEmail().equals(mailString)) {
-                        Toast.makeText(getApplicationContext(), "E-Mail does not exist",
-                                Toast.LENGTH_LONG).show();
-                        etMail.setTextColor(Color.RED);
+                        etMail.setError(getString(R.string.error_invalid_email));
+                        etMail.requestFocus();
+                        etMail.setText("");
                     }
                     if (userViewModel.getUsers().getValue().get(i).getEmail().equals(mailString) && !userViewModel.getUsers().getValue().get(i).getPwd().equals(passString)) {
-                        Toast.makeText(getApplicationContext(), "Wrong password",
-                                Toast.LENGTH_LONG).show();
-                        etPwd.setTextColor(Color.RED);
+                        etPwd.setError(getString(R.string.error_pwd_wrong));
+                        etPwd.requestFocus();
+                        etPwd.setText("");
                     }
                 }
             }

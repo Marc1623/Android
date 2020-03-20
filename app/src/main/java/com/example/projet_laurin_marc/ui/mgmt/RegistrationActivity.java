@@ -3,6 +3,7 @@ package com.example.projet_laurin_marc.ui.mgmt;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -63,12 +64,13 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                saveUser();
-                // give msg (Pop-Up), that login was successful
-                Toast.makeText(RegistrationActivity.this, "Registration complete", Toast.LENGTH_LONG).show();
+                if(saveUser()){
+                    // give msg (Pop-Up), that login was successful
+                    Toast.makeText(RegistrationActivity.this, "Registration complete", Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
-                RegistrationActivity.this.startActivity(intent);
+                    Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+                    RegistrationActivity.this.startActivity(intent);
+                };
             }
         });
     }
@@ -76,15 +78,111 @@ public class RegistrationActivity extends AppCompatActivity {
     private void spCantons() {
         // spinner cantons to choose canton
         spCanton = (Spinner) findViewById(R.id.spinner_cantons);
+
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.cantons_array, android.R.layout.simple_spinner_item);
         //specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // apply the adapter to the spinner
         spCanton.setAdapter(adapter);
+/*
+        spCanton.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedValue = parent.getSelectedItem().toString();
+
+                switch (selectedValue){
+                    case "Aargau":
+                            spCounties("AG");
+                        break;
+                    case "Appenzell Ausserrhoden":
+                        spCounties("AG");
+                        break;
+                    case "Appenzell Innerrhoden":
+                        spCounties("AG");
+                        break;
+                    case "Basel-Landschaft":
+                        spCounties("AG");
+                        break;
+                    case "Basel-Stadt":
+                        spCounties("AG");
+                        break;
+                    case "Bern":
+                        spCounties("AG");
+                        break;
+                    case "Freiburg":
+                        spCounties("AG");
+                        break;
+                    case "Genf":
+                        spCounties("AG");
+                        break;
+                    case "Glarus":
+                        spCounties("AG");
+                        break;
+                    case "Graubünden":
+                        spCounties("AG");
+                        break;
+                    case "Jura":
+                        spCounties("AG");
+                        break;
+                    case "Neuenburg":
+                        spCounties("AG");
+                        break;
+                    case "Nidwalden":
+                        spCounties("AG");
+                        break;
+                    case "Obwalden":
+                        spCounties("AG");
+                        break;
+                    case "Schaffhausen":
+                        spCounties("AG");
+                        break;
+                    case "Schwyz":
+                        spCounties("AG");
+                        break;
+                    case "Solothurn":
+                        spCounties("AG");
+                        break;
+                    case "St. Gallen":
+                        spCounties("AG");
+                        break;
+                    case "Tessin":
+                        spCounties("AG");
+                        break;
+                    case "Thurgau":
+                        spCounties("AG");
+                        break;
+                    case "Uri":
+                        spCounties("AG");
+                        break;
+                    case "Waadt":
+                        spCounties("AG");
+                        break;
+                    case "Wallis":
+                        spCounties("AG");
+                        break;
+                    case "Zug":
+                        spCounties("AG");
+                        break;
+                    case "Zürich":
+                        spCounties("AG");
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });*/
+
     }
 
-    public void spCounties() {
+    public void spCounties(/*String selectedCantonAbb*/) {
         // if canton was choosen then get the list of counties in the Spinner
         // TODO: 19.03.2020 filter counties by cantons..
         countyList = new ArrayList<>();
@@ -108,10 +206,11 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         }
         // get countylist
-        countyList = dbHelper.getListCounties();
+        countyList = dbHelper.getListCounties(/*selectedCantonAbb*/);
 
         // spinner
         spCounty = (Spinner) findViewById(R.id.spinner_county);
+
         // Create an ArrayAdapter using the database and a default spinner layout
         ArrayAdapter<County> adapter2 = new ArrayAdapter<County>(this, android.R.layout.simple_spinner_item, countyList);
         //specify the layout to use when the list of choices appears
@@ -120,29 +219,38 @@ public class RegistrationActivity extends AppCompatActivity {
         spCounty.setAdapter(adapter2);
     }
 
-    public void saveUser(){
+    public boolean saveUser(){
         String mailString = etMail1.getText().toString();
         String mail2String = etMail2.getText().toString();
         String pwdString = etPwd1.getText().toString();
         String pwd1String = etPwd2.getText().toString();
 
+        if (!pwdString.equals(pwd1String) || pwdString.length() < 5) {
+            etPwd1.setError(getString(R.string.error_invalid_password));
+            etPwd1.requestFocus();
+            etPwd1.setText("");
+            etPwd2.setText("");
+            return false;
+        }
+        if (!mailString.equals(mail2String) || !android.util.Patterns.EMAIL_ADDRESS.matcher(mailString).matches()) {
+            etMail1.setError(getString(R.string.error_invalid_email));
+            etMail1.requestFocus();
+            return false;
+        }
+
         if (pwdString.trim().isEmpty() ||mail2String.trim().isEmpty() || pwdString.trim().isEmpty() ||
                 pwd1String.trim().isEmpty()){
             Toast.makeText(getApplicationContext(), "Please enter all informations",
                     Toast.LENGTH_LONG).show();
-            return;
+            etMail1.requestFocus();
+            return false;
         }
-        //String canton = spCanton.getSelectedItem().toString();
-        //String county = spCounty.getSelectedItem().toString();
+        String cantonString = spCanton.getSelectedItem().toString();
+        String countyString = spCounty.getSelectedItem().toString();
 
-        User user = new User(mailString,pwdString, "Test","Test");
-
-        System.out.println("Data "+ mailString+" "+pwdString+" TEst"+ "TEst2");
-
+        User user = new User(mailString,pwdString, cantonString,countyString);
         vm = new ViewModelProvider(this).get(UserViewModel.class);
         vm.insert(user);
-
-        System.out.println("inserted");
-
+        return  true;
     }
 }

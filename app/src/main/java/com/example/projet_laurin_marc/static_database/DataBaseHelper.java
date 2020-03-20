@@ -123,11 +123,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public List<County> getListCounties() {
+    public List<County> getListCounties(/*String selectedCantonAbb*/) {
         County county = null;
         List<County> countyList = new ArrayList<>();
         openDatabase();
-        Cursor cursor = myDataBase.rawQuery("SELECT * FROM Counties_De", null);
+        Cursor cursor = myDataBase.rawQuery("SELECT * FROM Counties_De Where Kanton like '%'" /*selectedCantonAbb*/, null);
         cursor.moveToFirst();
 
         while (!cursor.isAfterLast()) {
