@@ -14,7 +14,7 @@
 
         <!-- MAIN -->
         <activity
-            android:name=".ui.mgmt.LoginActivity"
+            android:name=".ui.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="fullSensor" >
@@ -37,7 +37,7 @@
 
 
         <activity android:name=".ui.CommuneActivity"/>
-        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.mgmt.LoginActivity" />
 
     </application>
 

@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.projet_laurin_marc.database.AppDatabase;
+import com.example.projet_laurin_marc.database.AddressDatabase;
 import com.example.projet_laurin_marc.database.dao.AddressDao;
 import com.example.projet_laurin_marc.database.entity.Address;
 
@@ -18,8 +18,8 @@ public class AddressRepository {
     private LiveData <List<Address>> addresseslive;
 
     public AddressRepository(Application app){
-        AppDatabase database = AppDatabase.getInstance(app);
-        //addressDao = database.addressDao();
+        AddressDatabase database = AddressDatabase.getInstance(app);
+        addressDao = database.addressDao();
         addresseslive = addressDao.getAll();
     }
 

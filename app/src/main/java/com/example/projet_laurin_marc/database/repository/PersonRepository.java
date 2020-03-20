@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.projet_laurin_marc.database.AppDatabase;
+import com.example.projet_laurin_marc.database.PersonDatabase;
 import com.example.projet_laurin_marc.database.dao.PersonDao;
 import com.example.projet_laurin_marc.database.entity.Person;
 
@@ -17,8 +17,8 @@ public class PersonRepository {
     private LiveData <List<Person>> personslive;
 
     public PersonRepository(Application app){
-        AppDatabase database = AppDatabase.getInstance(app);
-        //personDao = database.personDao();
+        PersonDatabase database = PersonDatabase.getInstance(app);
+        personDao = database.personDao();
         personslive = personDao.getAll();
     }
 

@@ -1,6 +1,7 @@
 package com.example.projet_laurin_marc.database.entity;
 
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Embedded;
 import androidx.room.Entity;
@@ -14,10 +15,11 @@ public class Person {
     // --------------- Attributes ----------------
     // set columns of the database
     @PrimaryKey
-    private int ahv;
+    @NonNull
+    private String ahv;
     //foreign key to the address from the person
-    @Embedded
-    private Address address;
+    // @Embedded
+    //private Address address;
 
     @ColumnInfo(name = "firstname")
     private String firstname;
@@ -26,38 +28,57 @@ public class Person {
     private String lastname;
 
     @ColumnInfo(name = "phone")
-    private int phone;
+    private String phone;
 
     @ColumnInfo(name = "birthday")
     private String birthday;
 
+    @ColumnInfo(name = "zip")
+    private String zip;
+
+    @ColumnInfo(name = "city")
+    private String city;
+
+    @ColumnInfo(name = "street")
+    private String street;
+
     // --------------- Constructor ----------------
-    public Person(int ahv, String firstname, String lastname, int phone, String birthday ) {
+    public Person(String ahv, String firstname, String lastname, String phone, String birthday, String zip, String city, String street) {
         this.ahv = ahv;
         this.firstname = firstname;
         this.lastname = lastname;
         this.phone = phone;
         this.birthday = birthday;
+        this.zip = zip;
+        this.city = city;
+        this.street = street;
     }
-    public Person(){}
+
+    public Person() {
+    }
 
     // --------------- Getter & Setter ----------------
     // ahv, firstname, lastname, phone, birthday, address
-    public int getAhv() {
+
+    public String getAhv() {
         return ahv;
     }
 
-    public void setAhv(int ahv) {
+    public void setAhv(String ahv) {
         this.ahv = ahv;
     }
 
-    public Address getAddress() {
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+   /* public Address getAddress() {
         return address;
     }
 
     public void setAddress(Address address) {
         this.address = address;
-    }
+    }*/
 
     public String getFirstname() {
         return firstname;
@@ -75,13 +96,6 @@ public class Person {
         this.lastname = lastname;
     }
 
-    public int getPhone() {
-        return phone;
-    }
-
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
 
     public String getBirthday() {
         return birthday;
@@ -89,5 +103,33 @@ public class Person {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getZip() {
+        return zip;
     }
 }

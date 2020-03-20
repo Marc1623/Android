@@ -1,17 +1,23 @@
 package com.example.projet_laurin_marc.ui;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.projet_laurin_marc.R;
+import com.example.projet_laurin_marc.database.entity.Person;
+import com.example.projet_laurin_marc.database.viewModel.AddressViewModel;
+import com.example.projet_laurin_marc.database.viewModel.PersonViewModel;
 
 public class AddFragment extends Fragment {
 
@@ -27,6 +33,9 @@ public class AddFragment extends Fragment {
 
     private Button button_add;
 
+    private PersonViewModel vmPers;
+    private AddressViewModel vmAdr;
+
     //The system calls this when it's time for the fragment to draw its user interface for the first time
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,7 +43,7 @@ public class AddFragment extends Fragment {
 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_add, container, false);
-        //initializeForm();
+        initializeForm();
 
         return view;
     }
@@ -45,63 +54,69 @@ public class AddFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
-/*
+
     private void initializeForm() {
-        etAhv = view.findViewById(R.id.text_ahv) ;
-       etFirstname = view.findViewById(R.id.text_firstname);
-        etLastnam = view.findViewById(R.id.text_lastname) ;
-        etStreet = view.findViewById(R.id.text_street) ;
-        etZip = view.findViewById(R.id.text_zip) ;
-        etCity = view.findViewById(R.id.text_city) ;
-        etPhone = view.findViewById(R.id.text_phone) ;
-        etBirthday = view.findViewById(R.id.text_birthday) ;
+        etAhv = view.findViewById(R.id.text_ahv);
+        etFirstname = view.findViewById(R.id.text_firstname);
+        etLastnam = view.findViewById(R.id.text_lastname);
+        etStreet = view.findViewById(R.id.text_street);
+        etZip = view.findViewById(R.id.text_zip);
+        etCity = view.findViewById(R.id.text_city);
+        etPhone = view.findViewById(R.id.text_phone);
+        etBirthday = view.findViewById(R.id.text_birthday);
 
         button_add = view.findViewById(R.id.button_add);
-        button_add.setOnClickListener(view -> saveChanges(
-                etAhv.getText().toString(),
-                etLastnam.getText().toString(),
-                etStreet.getText().toString(),
-                etZip.getText().toString(),
-                etCity.getText().toString(),
-                etPhone.getText().toString(),
-                etBirthday.getText().toString()
-        ));
+        button_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (savePerson()) {
+                    //reset EditTextfields..
+                    etAhv.setText("");
+                    etFirstname.setText("");
+                    etLastnam.setText("");
+                    etStreet.setText("");
+                    etZip.setText("");
+                    etCity.setText("");
+                    etPhone.setText("");
+                    etBirthday.setText("");
+
+                    // give msg (Pop-Up), that login was successful
+                    Toast.makeText(getActivity(), "Person added to regitry", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
-    private void saveChanges(String firstName, String lastName, String email, String pwd, String pwd2) {
-        if (!pwd.equals(pwd2) || pwd.length() < 5) {
-            etPwd1.setError(getString(R.string.error_invalid_password));
-            etPwd1.requestFocus();
-            etPwd1.setText("");
-            etPwd2.setText("");
-            return;
+    public boolean savePerson() {
+        String ahvString = etAhv.getText().toString();
+        String firstString = etFirstname.getText().toString();
+        String lastString = etLastnam.getText().toString();
+        String streetString = etStreet.getText().toString();
+        String zipString = etZip.getText().toString();
+        String cityString = etCity.getText().toString();
+        String phoneString = etPhone.getText().toString();
+        String birthString = etBirthday.getText().toString();
+
+        if (    ahvString.trim().isEmpty() || firstString.trim().isEmpty() || lastString.trim().isEmpty() ||
+                streetString.trim().isEmpty() || zipString.trim().isEmpty() || cityString.trim().isEmpty() ||
+                phoneString.trim().isEmpty() || birthString.trim().isEmpty()){
+            Toast.makeText(getActivity().getApplicationContext(), "Please enter all informations",
+                    Toast.LENGTH_LONG).show();
+            // TODO focus on the first element without content
+            etAhv.requestFocus();
+            return false;
         }
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            etEmail.setError(getString(R.string.error_invalid_email));
-            etEmail.requestFocus();
-            return;
-        }
-        ClientEntity newClient = new ClientEntity(email, firstName, lastName, pwd);
 
-        new CreateClient(getApplication(), new OnAsyncEventListener() {
-            @Override
-            public void onSuccess() {
-                Log.d(TAG, "createUserWithEmail: success");
-                setResponse(true);
-            }
+        Person person = new Person(ahvString,firstString,lastString,phoneString, birthString, zipString, cityString, streetString);
+        vmPers = new ViewModelProvider(this).get(PersonViewModel.class);
+        vmPers.insert(person);
+        return  true;
+    }
 
-            @Override
-            public void onFailure(Exception e) {
-                Log.d(TAG, "createUserWithEmail: failure", e);
-                setResponse(false);
-            }
-        }).execute(newClient);
-*/
 
-    public void onResume(){
+    public void onResume() {
         super.onResume();
 
         // Set title bar
