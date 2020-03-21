@@ -86,106 +86,11 @@ public class RegistrationActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // apply the adapter to the spinner
         spCanton.setAdapter(adapter);
-/*
-        spCanton.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedValue = parent.getSelectedItem().toString();
-
-                switch (selectedValue){
-                    case "Aargau":
-                            spCounties("AG");
-                        break;
-                    case "Appenzell Ausserrhoden":
-                        spCounties("AG");
-                        break;
-                    case "Appenzell Innerrhoden":
-                        spCounties("AG");
-                        break;
-                    case "Basel-Landschaft":
-                        spCounties("AG");
-                        break;
-                    case "Basel-Stadt":
-                        spCounties("AG");
-                        break;
-                    case "Bern":
-                        spCounties("AG");
-                        break;
-                    case "Freiburg":
-                        spCounties("AG");
-                        break;
-                    case "Genf":
-                        spCounties("AG");
-                        break;
-                    case "Glarus":
-                        spCounties("AG");
-                        break;
-                    case "Graubünden":
-                        spCounties("AG");
-                        break;
-                    case "Jura":
-                        spCounties("AG");
-                        break;
-                    case "Neuenburg":
-                        spCounties("AG");
-                        break;
-                    case "Nidwalden":
-                        spCounties("AG");
-                        break;
-                    case "Obwalden":
-                        spCounties("AG");
-                        break;
-                    case "Schaffhausen":
-                        spCounties("AG");
-                        break;
-                    case "Schwyz":
-                        spCounties("AG");
-                        break;
-                    case "Solothurn":
-                        spCounties("AG");
-                        break;
-                    case "St. Gallen":
-                        spCounties("AG");
-                        break;
-                    case "Tessin":
-                        spCounties("AG");
-                        break;
-                    case "Thurgau":
-                        spCounties("AG");
-                        break;
-                    case "Uri":
-                        spCounties("AG");
-                        break;
-                    case "Waadt":
-                        spCounties("AG");
-                        break;
-                    case "Wallis":
-                        spCounties("AG");
-                        break;
-                    case "Zug":
-                        spCounties("AG");
-                        break;
-                    case "Zürich":
-                        spCounties("AG");
-                        break;
-                    default:
-                        break;
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });*/
-
     }
 
-    public void spCounties(/*String selectedCantonAbb*/) {
+    public void spCounties() {
         // if canton was choosen then get the list of counties in the Spinner
-        // TODO: 19.03.2020 filter counties by cantons..
+        // TODO: 19.03.2020 filter counties by cantons.. -> see CountyFragment!
         countyList = new ArrayList<>();
         countyList.clear();
         //delete database that it is beeing created new

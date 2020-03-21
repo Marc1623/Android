@@ -58,7 +58,14 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new SearchFragment();
                             break;
                         case R.id.nav_profil:
+
+                            Bundle bundle = new Bundle();
+                            int id = getIntent().getIntExtra("userId", 1111);
+                            bundle.putInt("userId", id);
+                            //set Fragmentclass
                             selectedFragment = new ProfileFragment();
+                            selectedFragment.setArguments(bundle);
+
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

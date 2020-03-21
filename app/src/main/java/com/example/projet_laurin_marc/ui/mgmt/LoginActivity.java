@@ -1,6 +1,7 @@
 package com.example.projet_laurin_marc.ui.mgmt;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -18,6 +19,7 @@ import com.example.projet_laurin_marc.ui.MainActivity;
 import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.database.entity.User;
 import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
+import com.example.projet_laurin_marc.ui.ProfileFragment;
 
 import java.util.List;
 
@@ -59,8 +61,9 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    //Login Method
     public void login() {
+
+
 
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         userViewModel.getUsers().observe(this, new Observer<List<User>>() {
@@ -78,8 +81,9 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Login successful",
                                 Toast.LENGTH_LONG).show();
 
+                        //switch activity
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.putExtra("userId", users.get(i).getId());
+                        intent.putExtra("userId", users.get(i).getId()); //-> set userID and send to MainActivity..
                         startActivity(intent);
                         return;
                     }
