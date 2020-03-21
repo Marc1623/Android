@@ -3,6 +3,7 @@ package com.example.projet_laurin_marc.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.database.entity.User;
 import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
-import com.example.projet_laurin_marc.ui.mgmt.LoginActivity;
 
 import java.util.List;
 

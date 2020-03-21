@@ -15,16 +15,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.projet_laurin_marc.R;
-import com.example.projet_laurin_marc.adapter.CountyListAdapter;
 import com.example.projet_laurin_marc.adapter.PersonListAdapter;
 import com.example.projet_laurin_marc.database.entity.Person;
-import com.example.projet_laurin_marc.database.entity.User;
 import com.example.projet_laurin_marc.database.viewModel.PersonViewModel;
-import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
 import com.example.projet_laurin_marc.static_database.County;
-import com.example.projet_laurin_marc.static_database.DataBaseHelper;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +39,6 @@ public class ResidentFragment extends Fragment {
 
         // get acces to database Users
         vmPers = new ViewModelProvider(this).get(PersonViewModel.class);
-
         // userViewModel.getUsers().
         vmPers.getPersons().observe(getViewLifecycleOwner(), new Observer<List<Person>>() {
 
@@ -61,14 +55,31 @@ public class ResidentFragment extends Fragment {
                     if (vmPers.getPersons().getValue().get(i).getCounty().equals(selection)) {
                         Person p = vmPers.getPersons().getValue().get(i);
                         personsList.add(p); //add each person to list with same county
-                        System.out.println("AHV: " + p.getAhv());
-                        System.out.println("First: " + p.getFirstname());
-                        System.out.println("Last: " + p.getLastname());
                     }
                 }
 
                 PersonListAdapter adapter = new PersonListAdapter(getActivity(), personsList);
                 listView.setAdapter(adapter);
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Person person = (Person) listView.getItemAtPosition(position);
+                String personSelected = person.getAhv();
+
+                // save selected canton in variable
+                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("SELECTED_PERSON_AHV", personSelected).apply();
+
+                //change to list fragment (Resitents-list) -> Persons in County
+                Fragment fragment = new ResidentDetailsFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
 
