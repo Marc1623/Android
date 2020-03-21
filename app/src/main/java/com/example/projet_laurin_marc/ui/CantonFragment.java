@@ -23,7 +23,6 @@ import static android.content.Context.MODE_PRIVATE;
 public class CantonFragment extends Fragment {
 
     View view;
-    SharedPreferences preference; //pass Data from on Fragment to another
     String [] cantonsList;
 
     @Override

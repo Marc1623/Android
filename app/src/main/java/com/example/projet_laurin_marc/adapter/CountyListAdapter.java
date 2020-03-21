@@ -4,24 +4,19 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.static_database.County;
 
 import java.util.List;
 
-public class CustomListAdapter extends BaseAdapter {
+public class CountyListAdapter extends BaseAdapter {
 
     private List<County> listData;
     private LayoutInflater layoutInflater;
-    public CustomListAdapter(Context aContext, List<County> listData) {
+    public CountyListAdapter(Context aContext, List<County> listData) {
         this.listData = listData;
         layoutInflater = LayoutInflater.from(aContext);
     }
@@ -43,7 +38,7 @@ public class CustomListAdapter extends BaseAdapter {
         if (v == null) {
             v = layoutInflater.inflate(R.layout.list_row, null);
             holder = new ViewHolder();
-            holder.uName = (TextView) v.findViewById(R.id.countyName);
+            holder.uName = (TextView) v.findViewById(R.id.name);
             v.setTag(holder);
         } else {
             holder = (ViewHolder) v.getTag();

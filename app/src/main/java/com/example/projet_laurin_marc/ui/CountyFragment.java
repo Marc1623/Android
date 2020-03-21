@@ -1,7 +1,5 @@
 package com.example.projet_laurin_marc.ui;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -9,30 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.projet_laurin_marc.R;
-import com.example.projet_laurin_marc.adapter.CustomListAdapter;
+import com.example.projet_laurin_marc.adapter.CountyListAdapter;
 import com.example.projet_laurin_marc.static_database.County;
 import com.example.projet_laurin_marc.static_database.DataBaseHelper;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class CountyFragment extends Fragment {
     View view;
-    SharedPreferences preference; //pass Data from on Fragment to another
     List<County> countyObjectList;
     private DataBaseHelper dbHelper;
-    private String selectedCanton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,7 +38,7 @@ public class CountyFragment extends Fragment {
     public void getChoice() {
         countyListByCanton(); // get list of counties
         final ListView listView = (ListView) view.findViewById(R.id.list);
-        listView.setAdapter(new CustomListAdapter(getActivity(), countyObjectList));
+        listView.setAdapter(new CountyListAdapter(getActivity(), countyObjectList));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
