@@ -12,12 +12,17 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.database.entity.Person;
+import com.example.projet_laurin_marc.database.entity.User;
 import com.example.projet_laurin_marc.database.viewModel.AddressViewModel;
 import com.example.projet_laurin_marc.database.viewModel.PersonViewModel;
+import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
+
+import java.util.List;
 
 public class AddFragment extends Fragment {
 
@@ -31,6 +36,12 @@ public class AddFragment extends Fragment {
     private EditText etBirthday;
     private View view;
 
+    private int userId;
+    private User user;
+    private String canton;
+    private String county = "Test";
+    private UserViewModel userViewModel;
+
     private Button button_add;
 
     private PersonViewModel vmPers;
@@ -43,8 +54,10 @@ public class AddFragment extends Fragment {
 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_add, container, false);
+        userId = this.getArguments().getInt("userId1");
+        //get county and canton from the user (county employee)
+        getUser();
         initializeForm();
-
         return view;
     }
 
@@ -99,9 +112,9 @@ public class AddFragment extends Fragment {
         String phoneString = etPhone.getText().toString();
         String birthString = etBirthday.getText().toString();
 
-        if (    ahvString.trim().isEmpty() || firstString.trim().isEmpty() || lastString.trim().isEmpty() ||
+        if (ahvString.trim().isEmpty() || firstString.trim().isEmpty() || lastString.trim().isEmpty() ||
                 streetString.trim().isEmpty() || zipString.trim().isEmpty() || cityString.trim().isEmpty() ||
-                phoneString.trim().isEmpty() || birthString.trim().isEmpty()){
+                phoneString.trim().isEmpty() || birthString.trim().isEmpty()) {
             Toast.makeText(getActivity().getApplicationContext(), "Please enter all informations",
                     Toast.LENGTH_LONG).show();
             // TODO focus on the first element without content
@@ -109,12 +122,32 @@ public class AddFragment extends Fragment {
             return false;
         }
 
-        Person person = new Person(ahvString,firstString,lastString,phoneString, birthString, zipString, cityString, streetString);
+        Person person = new Person(ahvString, firstString, lastString, phoneString, birthString, zipString, cityString, streetString, canton, county);
         vmPers = new ViewModelProvider(this).get(PersonViewModel.class);
         vmPers.insert(person);
-        return  true;
+        return true;
     }
 
+    public void getUser() {
+        // get acces to database Users
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        // userViewModel.getUsers().
+        userViewModel.getUsers().observe(getViewLifecycleOwner(), new Observer<List<User>>() {
+
+            @Override //never called..
+            public void onChanged(List<User> users) {
+                int nr = userViewModel.getUsers().getValue().size();
+                //Looping to check inputs
+                for (int i = 0; i < nr; i++) {
+                    if (userViewModel.getUsers().getValue().get(i).getId() == userId) {
+                        user = userViewModel.getUsers().getValue().get(i);
+                        canton = user.getCanton();
+                        county = user.getCounty();
+                    }
+                }
+            }
+        });
+    }
 
     public void onResume() {
         super.onResume();

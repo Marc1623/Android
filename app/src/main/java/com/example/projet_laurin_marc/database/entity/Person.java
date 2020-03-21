@@ -42,8 +42,14 @@ public class Person {
     @ColumnInfo(name = "street")
     private String street;
 
+    @ColumnInfo(name = "canton")
+    private String canton;
+
+    @ColumnInfo(name = "county")
+    private String county;
+
     // --------------- Constructor ----------------
-    public Person(String ahv, String firstname, String lastname, String phone, String birthday, String zip, String city, String street) {
+    public Person(@NonNull String ahv, String firstname, String lastname, String phone, String birthday, String zip, String city, String street, String canton, String county) {
         this.ahv = ahv;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -52,6 +58,8 @@ public class Person {
         this.zip = zip;
         this.city = city;
         this.street = street;
+        this.canton = canton;
+        this.county = county;
     }
 
     public Person() {
@@ -131,5 +139,21 @@ public class Person {
 
     public String getZip() {
         return zip;
+    }
+
+    public String getCanton() {
+        return canton;
+    }
+
+    public void setCanton(String canton) {
+        this.canton = canton;
+    }
+
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
     }
 }

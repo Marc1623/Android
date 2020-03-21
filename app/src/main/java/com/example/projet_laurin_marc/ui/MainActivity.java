@@ -49,7 +49,12 @@ public class MainActivity extends AppCompatActivity {
 
                     switch (item.getItemId()) {
                         case R.id.nav_add:
+                            Bundle bundle1 = new Bundle();
+                            int id1 = getIntent().getIntExtra("userId", 1111);
+                            bundle1.putInt("userId1", id1);
+                            //set Fragmentclass
                             selectedFragment = new AddFragment();
+                            selectedFragment.setArguments(bundle1);
                             break;
                         case R.id.nav_cantons:
                             selectedFragment = new CantonFragment();
