@@ -162,7 +162,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
         User user = new User(mailString,pwdString, cantonString,countyString);
         vm = new ViewModelProvider(this).get(UserViewModel.class);
-        vm.insert(user);
-        return  true;
+        if (user!= null){
+            vm.insert(user);
+            return  true;
+        }
+        return false;
     }
 }

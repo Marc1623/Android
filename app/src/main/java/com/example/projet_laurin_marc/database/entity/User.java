@@ -31,7 +31,12 @@ public class User {
         this.canton = canton;
         this.county = county;
     }
-    public User(){} // default
+    public User(){
+        this.email = "newUser@test.com";
+        this.pwd = "123456";
+        this.canton = "Bern";
+        this.county = "Krattigen";
+    } // default
 
     // --------------- Getter & Setter ----------------
    // id, email, pwd
