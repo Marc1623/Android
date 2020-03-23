@@ -62,9 +62,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login() {
-
-
-
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         userViewModel.getUsers().observe(this, new Observer<List<User>>() {
             @Override
@@ -72,11 +69,14 @@ public class LoginActivity extends AppCompatActivity {
                 String mailString = etMail.getText().toString();
                 String passString = etPwd.getText().toString();
 
-                int nr = userViewModel.getUsers().getValue().size();
+                if(users == null)
+                    return;
+
+                int nr = users.size();
                 //Looping to check inputs
                 for (int i = 0; i < nr; i++) {
-                    if (userViewModel.getUsers().getValue().get(i).getEmail().equals(mailString)
-                            && userViewModel.getUsers().getValue().get(i).getPwd().equals(passString)) {
+                    if (users.get(i).getEmail().equals(mailString)
+                            && users.get(i).getPwd().equals(passString)) {
 
                         Toast.makeText(getApplicationContext(), "Login successful",
                                 Toast.LENGTH_LONG).show();
@@ -87,16 +87,16 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                         return;
                     }
-                    if (!userViewModel.getUsers().getValue().get(i).getEmail().equals(mailString)) {
+                   /* if (!users.get(i).getEmail().equals(mailString) && i == users.size()-1) {
                         etMail.setError(getString(R.string.error_invalid_email));
                         etMail.requestFocus();
                         etMail.setText("");
                     }
-                    if (userViewModel.getUsers().getValue().get(i).getEmail().equals(mailString) && !userViewModel.getUsers().getValue().get(i).getPwd().equals(passString)) {
+                    if (users.get(i).getEmail().equals(mailString) && !users.get(i).getPwd().equals(passString) && i == users.size()-1) {
                         etPwd.setError(getString(R.string.error_pwd_wrong));
                         etPwd.requestFocus();
                         etPwd.setText("");
-                    }
+                    }*/
                 }
             }
         });

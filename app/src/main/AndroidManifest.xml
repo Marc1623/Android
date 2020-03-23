@@ -27,12 +27,12 @@
 
         <!-- other Activities -->
         <activity
-            android:name=".ui.mgmt.RegistrationActivity"
-            android:parentActivityName=".ui.mgmt.LoginActivity">
+        android:name=".ui.mgmt.RegistrationActivity"
+        android:parentActivityName=".ui.mgmt.LoginActivity">
 
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.mgmt.LoginActivity" />
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".ui.mgmt.LoginActivity" />
         </activity>
 
 
