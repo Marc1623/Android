@@ -36,6 +36,7 @@ public class User {
         this.pwd = "123456";
         this.canton = "Bern";
         this.county = "Krattigen";
+
     } // default
 
     // --------------- Getter & Setter ----------------

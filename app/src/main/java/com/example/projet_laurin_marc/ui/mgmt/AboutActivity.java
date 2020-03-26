@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.projet_laurin_marc.R;
 
 
-public class AboutActivity extends Activity {
+public class AboutActivity extends AppCompatActivity {
 
 
 
@@ -17,16 +19,16 @@ public class AboutActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         // Show the Up button in the action bar.
-        setupActionBar();
+        //setupActionBar();
     }
-
+/*
     private void setupActionBar() {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
-   /* @Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
