@@ -12,6 +12,11 @@ import com.example.projet_laurin_marc.R;
 
 public class AboutActivity extends AppCompatActivity {
 
+    /*
+    problem why it did not work:
+        1.) the setupActionBar() threw an Exception
+        2.) if you want to have the default actionbar on the top you nee to have extends AppCompatActivity,
+        you had "Activity"*/
 
 
     @Override
