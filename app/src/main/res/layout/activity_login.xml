@@ -33,7 +33,7 @@
         android:layout_above="@id/text_pwd"
         android:layout_marginLeft="@dimen/margin_left"
         android:layout_marginRight="@dimen/margin_right"
-        android:layout_marginBottom="@dimen/margin_bottom"
+        android:layout_marginBottom="21dp"
         android:hint="@string/email"
         android:inputType="textEmailAddress" />
 

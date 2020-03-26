@@ -51,7 +51,7 @@
     <string name="check_pwd">bestätigung Passwort</string>
 
     <!-- ############# About ############# -->
-    <string name="about">Infos</string>
+    <string name="about">Infos Page</string>
     <string name="about_version">Version 1.0</string>
     <string name="about_min_android">Min Version: Android 4.0 (Jelly Bean)</string>
     <string name="about_min_sdk">Min SDK Version: Level 14</string>

@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.projet_laurin_marc.R;
+import com.example.projet_laurin_marc.ui.mgmt.AboutActivity;
 import com.example.projet_laurin_marc.ui.mgmt.SettingsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -104,13 +105,18 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-            return true;
+        switch(item.getItemId()){
+            case R.id.action_about:
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                MainActivity.this.startActivity(intent);
+                break;
+            case R.id.action_settings :
+                Intent intent1 = new Intent(MainActivity.this, SettingsActivity.class);
+                MainActivity.this.startActivity(intent1);
+                break;
+
         }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     public void changeLanguage(String lang) {

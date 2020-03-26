@@ -39,6 +39,24 @@
         <activity android:name=".ui.CommuneActivity"/>
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.mgmt.SettingsActivity" />
+        <activity
+            android:name="com.example.projet_laurin_marc.ui.mgmt.AboutActivity"
+            android:parentActivityName="com.example.projet_laurin_marc.ui.MainActivity" >
+        </activity>
+
+
+        <!-- other Activities
+        <activity
+            android:name=".ui.mgmt.AboutActivity"
+            android:label="@string/about"
+            android:parentActivityName=".ui.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:configChanges="keyboardHidden|orientation|screenSize"
+                android:screenOrientation="portrait"
+                android:value=".ui.mgmt.AboutActivity" />
+
+        </activity>-->
 
     </application>
 
