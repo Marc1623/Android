@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case R.id.action_settings :
-                
+
                 Intent intent1 = new Intent(MainActivity.this, SettingsActivity.class);
                 MainActivity.this.startActivity(intent1);
                 break;

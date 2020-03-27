@@ -128,13 +128,14 @@ public class AddFragment extends Fragment {
         return true;
     }
 
+
     public void getUser() {
         // get acces to database Users
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         // userViewModel.getUsers().
         userViewModel.getUsers().observe(getViewLifecycleOwner(), new Observer<List<User>>() {
 
-            @Override //never called..
+            @Override
             public void onChanged(List<User> users) {
                 int nr = userViewModel.getUsers().getValue().size();
                 //Looping to check inputs
