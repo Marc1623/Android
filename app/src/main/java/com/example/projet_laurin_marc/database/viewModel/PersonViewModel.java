@@ -7,9 +7,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.projet_laurin_marc.database.entity.Person;
-import com.example.projet_laurin_marc.database.entity.User;
 import com.example.projet_laurin_marc.database.repository.PersonRepository;
-import com.example.projet_laurin_marc.database.repository.UserRepository;
+
 
 import java.util.List;
 

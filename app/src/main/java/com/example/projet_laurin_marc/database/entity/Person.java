@@ -62,7 +62,8 @@ public class Person {
         this.county = county;
     }
 
-    public Person() {
+    public Person(){
+
     }
 
     // --------------- Getter & Setter ----------------

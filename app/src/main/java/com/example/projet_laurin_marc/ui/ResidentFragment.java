@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.projet_laurin_marc.R;
+import com.example.projet_laurin_marc.adapter.PersonAdapter;
 import com.example.projet_laurin_marc.adapter.PersonListAdapter;
 import com.example.projet_laurin_marc.database.entity.Person;
 import com.example.projet_laurin_marc.database.viewModel.PersonViewModel;
@@ -41,23 +42,17 @@ public class ResidentFragment extends Fragment {
         vmPers = new ViewModelProvider(this).get(PersonViewModel.class);
         // userViewModel.getUsers().
         vmPers.getPersons().observe(getViewLifecycleOwner(), new Observer<List<Person>>() {
-
             @Override
-            public void onChanged(List<Person> persons) {
+            public void onChanged(List<Person> people) {
                 personsList = new ArrayList<>();
-                int nr = vmPers.getPersons().getValue().size();
 
-                //get that value of selected county
-                String selection = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("SELECTED_COUNTY", "defaultStringIfNothingFound");
-
-                //Looping trough persons db
-                for (int i = 0; i < nr; i++) {
-                    if (vmPers.getPersons().getValue().get(i).getCounty().equals(selection)) {
-                        Person p = vmPers.getPersons().getValue().get(i);
-                        personsList.add(p); //add each person to list with same county
+                String selection = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("SELECTED_COUNTY", "defaultStringNothingFound");
+                for (int i = 0; i < people.size(); i++){
+                    if(people.get(i).getCounty().equals(selection)){
+                        Person p = people.get(i);
+                        personsList.add(p);
                     }
                 }
-
                 PersonListAdapter adapter = new PersonListAdapter(getActivity(), personsList);
                 listView.setAdapter(adapter);
             }

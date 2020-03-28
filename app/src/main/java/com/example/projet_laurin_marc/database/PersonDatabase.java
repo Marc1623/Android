@@ -14,7 +14,7 @@ import com.example.projet_laurin_marc.database.dao.UserDao;
 import com.example.projet_laurin_marc.database.entity.Person;
 import com.example.projet_laurin_marc.database.entity.User;
 
-@Database(entities = {Person.class},version = 4)
+@Database(entities = {Person.class},version = 5)
 public abstract class PersonDatabase extends RoomDatabase {
 
     private static PersonDatabase instance;
