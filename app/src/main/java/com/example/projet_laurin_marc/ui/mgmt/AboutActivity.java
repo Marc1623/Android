@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.projet_laurin_marc.R;
 
 
-public class AboutActivity extends Activity {
+public class AboutActivity extends AppCompatActivity {
 
     /*
     problem why it did not work:

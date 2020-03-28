@@ -139,7 +139,7 @@ public class ResidentDetailsFragment extends Fragment {
 
         // Set title bar
         ((MainActivity) getActivity())
-                .setActionBarTitle("Mein Profil");
+                .setActionBarTitle(getContext().getString(R.string.chapter_resitentDetails));
 
     }
 }

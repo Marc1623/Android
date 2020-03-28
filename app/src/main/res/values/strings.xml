@@ -14,7 +14,9 @@
     <string name="chapter_search">"Suchkriterien"</string>
     <string name="chapter_add">"Neue Person"</string>
     <string name="chapter_profile">"User Details"</string>
-    <string name="chapter">"Chapter"</string>
+
+    <string name="chapter_resitentDetails" translatable="false">"Details"</string>
+
 
 
     <string name="data_reset">reset data</string>
