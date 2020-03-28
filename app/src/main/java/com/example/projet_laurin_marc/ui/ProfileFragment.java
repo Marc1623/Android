@@ -1,6 +1,7 @@
 package com.example.projet_laurin_marc.ui;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -18,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.database.entity.User;
 import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
+import com.example.projet_laurin_marc.ui.mgmt.LoginActivity;
 
 import java.util.List;
 
@@ -47,6 +49,7 @@ public class ProfileFragment extends Fragment {
         userId = this.getArguments().getInt("userId");
         setData();
         update();
+        delete();
         return view;
     }
 
@@ -83,7 +86,6 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    // TODO: 21.03.2020 Update Button
     public void update(){
         button_update = view.findViewById(R.id.button_update);
         button_update.setOnClickListener(new View.OnClickListener() {
@@ -110,7 +112,31 @@ public class ProfileFragment extends Fragment {
 
     // TODO: 21.03.2020 Delete Button
     public void delete(){
+        button_delete = view.findViewById(R.id.button_delete);
+        button_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //get ref to textfield
+                etMail = view.findViewById(R.id.text_email);
+                etPwd = view.findViewById(R.id.text_pwd);
+                etCanton = view.findViewById(R.id.text_state);
+                etCounty = view.findViewById(R.id.text_county);
 
+                user.setEmail(etMail.getText().toString());
+                user.setPwd(etPwd.getText().toString());
+                user.setCanton(etCanton.getText().toString());
+                user.setCounty(etCounty.getText().toString());
+
+                userViewModel.delete(user);
+                Toast.makeText(getContext(), "Your account has been deleted!",
+                        Toast.LENGTH_LONG).show();
+
+                //switch activity
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+                ((Activity) getActivity()).overridePendingTransition(0, 0); // no Animation in transition
+            }
+        });
     }
 
     public void onResume() {
