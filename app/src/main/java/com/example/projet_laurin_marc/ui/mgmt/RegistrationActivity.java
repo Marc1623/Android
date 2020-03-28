@@ -40,6 +40,8 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText etPwd1;
     private EditText etPwd2;
 
+    String selectedCanton;
+
     private UserViewModel vm;
 
     @Override
@@ -48,7 +50,7 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         spCantons();
-        spCounties();
+
         initializeFrom();
     }//end onCreate
 
@@ -86,6 +88,19 @@ public class RegistrationActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // apply the adapter to the spinner
         spCanton.setAdapter(adapter);
+
+        spCanton.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedCanton = (String) spCanton.getItemAtPosition(position);
+                spCounties();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     public void spCounties() {
@@ -118,7 +133,7 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         }*/
         // get countylist
-        countyList = dbHelper.getListCounties(/*selectedCantonAbb*/);
+        countyList = dbHelper.getCountiesByCanton(selectedCanton);
 
         // spinner
         spCounty = (Spinner) findViewById(R.id.spinner_county);

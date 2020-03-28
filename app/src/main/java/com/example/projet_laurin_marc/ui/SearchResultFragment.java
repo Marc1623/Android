@@ -40,8 +40,8 @@ public class SearchResultFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_list_search,container,false);
-        final ListView listView = view.findViewById(R.id.recycler_view_search);
+        view = inflater.inflate(R.layout.fragment_list_ppl,container,false);
+        final ListView listView = view.findViewById(R.id.recycler_view);
 
         personViewModel = new ViewModelProvider(this).get(PersonViewModel.class);
         personViewModel.getPersons().observe(getViewLifecycleOwner(), new Observer<List<Person>>() {
