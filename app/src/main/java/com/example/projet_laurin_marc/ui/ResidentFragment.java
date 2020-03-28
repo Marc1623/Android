@@ -65,16 +65,30 @@ public class ResidentFragment extends Fragment {
                 Person person = (Person) listView.getItemAtPosition(position);
                 String personSelected = person.getAhv();
 
-                // save selected canton in variable
+                // save residents id in variable -> pass it to next fragment
                 PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("SELECTED_PERSON_AHV", personSelected).apply();
 
-                //change to list fragment (Resitents-list) -> Persons in County
-                Fragment fragment = new ResidentDetailsFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                String userCounty = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("User_County", "UserCounty_Default");;
+                //check if the resident is in the same county as employe -> choose detailview with update and delete option
+                if(person.getCounty().equals(userCounty)){
+                    //change to list fragment (Resitents-list) -> Persons in County
+                    Fragment fragment = new ResidentDetailsFragment();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_container, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+                else{
+                    //change to list fragment (Resitents-list) -> Persons in County
+                    Fragment fragment = new ResidentDetails_NoAccessFragment();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_container, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+
             }
         });
 

@@ -3,7 +3,10 @@ package com.example.projet_laurin_marc.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,18 +15,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.projet_laurin_marc.R;
+import com.example.projet_laurin_marc.database.entity.User;
+import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
 import com.example.projet_laurin_marc.ui.mgmt.AboutActivity;
 import com.example.projet_laurin_marc.ui.mgmt.LoginActivity;
 import com.example.projet_laurin_marc.ui.mgmt.RegistrationActivity;
 import com.example.projet_laurin_marc.ui.mgmt.SettingsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     // with AppCompatActivity you gard the Actionbar (Top) throughout the application!
 
     BottomNavigationView bottomNavigation;
+    UserViewModel userViewModel;
+    int userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         changeLanguage(sharedPrefs.getString("pref_lang", "de"));
         // ---------------   settings   -----------
-
+        //get logged user, county => ResitenDetails; with or without changing options!
+        userID = getIntent().getIntExtra("userId", 1111);
+        getLoggedUserFromDB();
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
 
@@ -53,8 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     switch (item.getItemId()) {
                         case R.id.nav_add:
                             Bundle bundle1 = new Bundle();
-                            int id1 = getIntent().getIntExtra("userId", 1111);
-                            bundle1.putInt("userId1", id1);
+                            bundle1.putInt("userId1", userID);
                             //set Fragmentclass
                             selectedFragment = new AddFragment();
                             selectedFragment.setArguments(bundle1);
@@ -68,8 +77,7 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.nav_profil:
 
                             Bundle bundle = new Bundle();
-                            int id = getIntent().getIntExtra("userId", 1111);
-                            bundle.putInt("userId", id);
+                            bundle.putInt("userId", userID);
                             //set Fragmentclass
                             selectedFragment = new ProfileFragment();
                             selectedFragment.setArguments(bundle);
@@ -135,6 +143,23 @@ public class MainActivity extends AppCompatActivity {
         // is being used to change the language, display of welcome..
         //TextView welcome = (TextView) findViewById(R.id.main_txt_welcome);
         //welcome.setText(R.string.main_welcome);
+    }
+
+    public void getLoggedUserFromDB(){
+        // get acces to database Users
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        // userViewModel.getUsers().
+        userViewModel.getUsers().observe(this, new Observer<List<User>>() {
+            @Override
+            public void onChanged(List<User> users) {
+                for (int i = 0; i < users.size(); i++){
+                    if(users.get(i).getId() == userID){
+                        String userCounty = users.get(i).getCounty();
+                        PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("User_County", userCounty).apply();
+                    }
+                }
+            }
+        });
     }
 
 }
