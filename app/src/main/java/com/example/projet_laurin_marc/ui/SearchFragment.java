@@ -2,7 +2,7 @@ package com.example.projet_laurin_marc.ui;
 
 
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -79,15 +78,19 @@ public class SearchFragment extends Fragment {
                 cantonString = etCanton.getText().toString();
                 countyString = etCounty.getText().toString();
 
+                getPersonByFirst();
+
+                /*
                 //Send all inputs to the Search Result Fragment
-                // Do the job of Search in SearchResultFragmen
+                // Do the job of Search in SearchResultFragment
                 // save selected canton in variable
                 PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("SELECTED_AHV", ahvString).apply();
                 PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("SELECTED_FIRST", firstString).apply();
                 PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("SELECTED_LAST", lastString).apply();
                 PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("SELECTED_CANTON", cantonString).apply();
                 PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("SELECTED_COUNTY", countyString).apply();
-
+                */
+                /*
                 //call new fragnemt to show result, access resultlist with getter from this Fragment
                 //change to list fragment (Resitents-list) -> Persons in County
                 Fragment fragment = new SearchResultFragment();
@@ -95,7 +98,29 @@ public class SearchFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.addToBackStack(null); // to be able to create a backbutton!!
-                fragmentTransaction.commit();
+                fragmentTransaction.commit();*/
+            }
+        });
+    }
+
+    public void getPersonByFirst() {
+        // get acces to database Persons
+        personViewModel = new ViewModelProvider(this).get(PersonViewModel.class);
+        // get all persons
+        personViewModel.getPersons().observe(getViewLifecycleOwner(), new Observer<List<Person>>() {
+        //System.out.("Bevor on Changed");
+
+            // problem, onChanged method is not being triggered??
+            @Override
+            public void onChanged(List<Person> persons) {
+                pplFirst = new ArrayList<>();
+                //Looping to check inputs
+                for (int i = 0; i < personViewModel.getPersons().getValue().size(); i++) {
+                    if (personViewModel.getPersons().getValue().get(i).getFirstname().equals(firstString) && firstString != null) {
+                        //multiple ppl possible
+                        pplFirst.add(persons.get(i));
+                    }
+                }
             }
         });
     }

@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context=".ui.mgmt.RegistrationActivity">
 
+
     <Spinner
         android:id="@+id/spinner_cantons"
         android:layout_width="fill_parent"
@@ -20,14 +21,19 @@
         android:layout_height="@dimen/height_tall"
         android:layout_marginTop="@dimen/margin_top" />
 
-    <EditText
-        android:id="@+id/text_email"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/height_tall"
-        android:layout_marginTop="@dimen/margin_top"
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_email"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/height_tall"
+            android:layout_marginTop="@dimen/margin_top"
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
         android:id="@+id/text_checkemail"
@@ -67,5 +73,6 @@
         android:textColor="@color/text_white"
         android:textSize="@dimen/size_text_button"
         android:textStyle="bold" />
+
 
 </LinearLayout>
