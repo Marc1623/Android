@@ -2,12 +2,17 @@ package com.example.projet_laurin_marc.ui;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -16,6 +21,7 @@ import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.adapter.CountyListAdapter;
 import com.example.projet_laurin_marc.static_database.County;
 import com.example.projet_laurin_marc.static_database.DataBaseHelper;
+import com.google.android.material.tabs.TabLayout;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,6 +31,27 @@ public class CountyFragment extends Fragment {
     View view;
     List<County> countyObjectList;
     private DataBaseHelper dbHelper;
+
+    // ================================================================
+    // implement back button within fragments.. ? -> ask Stefan
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // required for the back button
+        setHasOptionsMenu(true);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                getActivity().onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    // ================================================================
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
