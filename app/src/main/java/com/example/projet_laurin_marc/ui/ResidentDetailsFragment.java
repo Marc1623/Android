@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -49,7 +51,8 @@ public class ResidentDetailsFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_details, container, false);
         setData();
-        //update();
+        update();
+        delete();
         return view;
     }
 
@@ -99,26 +102,18 @@ public class ResidentDetailsFragment extends Fragment {
     }
 
     public void update() {
-        button_update = view.findViewById(R.id.button_update);
+        button_update = view.findViewById(R.id.button_update_person);
         button_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //get ref to textfield
-                etAHV = view.findViewById(R.id.text_ahv);
-                etFirstname = view.findViewById(R.id.text_firstname);
-                etLastname = view.findViewById(R.id.text_lastname);
-                etStreet = view.findViewById(R.id.text_street);
-                etZIP = view.findViewById(R.id.text_zip);
-                etCity = view.findViewById(R.id.text_city);
-                etPhone = view.findViewById(R.id.text_phone);
-                etBirthday = view.findViewById(R.id.text_birthday);
-
+                //set information into the textfields
                 person.setAhv(etAHV.getText().toString());
                 person.setFirstname(etFirstname.getText().toString());
                 person.setLastname(etLastname.getText().toString());
                 person.setStreet(etStreet.getText().toString());
                 person.setZip(etZIP.getText().toString());
+                person.setCity(etCity.getText().toString());
                 person.setPhone(etPhone.getText().toString());
                 person.setBirthday(etBirthday.getText().toString());
 
@@ -129,8 +124,24 @@ public class ResidentDetailsFragment extends Fragment {
         });
     }
 
-    // TODO: 21.03.2020 Delete Button
     public void delete() {
+        button_delete = view.findViewById(R.id.button_delete_person);
+        button_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                personViewModel.delete(person);
+                Toast.makeText(getContext(), "person has been deleted",
+                        Toast.LENGTH_LONG).show();
+                //go to the Canton Fragment
+                Fragment fragment = new CantonFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
 
     }
 

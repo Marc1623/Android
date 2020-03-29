@@ -116,17 +116,6 @@ public class ProfileFragment extends Fragment {
         button_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //get ref to textfield
-                etMail = view.findViewById(R.id.text_email);
-                etPwd = view.findViewById(R.id.text_pwd);
-                etCanton = view.findViewById(R.id.text_state);
-                etCounty = view.findViewById(R.id.text_county);
-
-                user.setEmail(etMail.getText().toString());
-                user.setPwd(etPwd.getText().toString());
-                user.setCanton(etCanton.getText().toString());
-                user.setCounty(etCounty.getText().toString());
-
                 userViewModel.delete(user);
                 Toast.makeText(getContext(), "Your account has been deleted!",
                         Toast.LENGTH_LONG).show();
