@@ -3,8 +3,10 @@ package com.example.projet_laurin_marc.ui.mgmt;
 import android.app.Activity;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 
-public class SettingsActivity extends Activity {
+
+public class SettingsActivity extends AppCompatActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

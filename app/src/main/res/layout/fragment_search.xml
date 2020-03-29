@@ -5,81 +5,96 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
 
-        <RelativeLayout
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="750dp">
+            android:layout_height="wrap_content">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_ahv"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_tall"
                 android:layout_below="@+id/label_chapter"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/margin_left"
                 android:layout_marginTop="@dimen/margin_top"
                 android:layout_marginEnd="@dimen/margin_right"
+                android:layout_marginBottom="@dimen/margin_bottom"
                 android:ems="10"
                 android:inputType="textVisiblePassword"
                 android:hint="@string/ahv" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_firstname"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_tall"
-                android:layout_below="@+id/text_ahv"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/margin_left"
                 android:layout_marginTop="@dimen/margin_top"
                 android:layout_marginEnd="@dimen/margin_right"
+                android:layout_marginBottom="@dimen/margin_bottom"
                 android:ems="10"
                 android:inputType="textEmailAddress"
                 android:hint="@string/firstname" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_lastname"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_tall"
-                android:layout_below="@+id/text_firstname"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/margin_left"
                 android:layout_marginTop="@dimen/margin_top"
                 android:layout_marginEnd="@dimen/margin_right"
+                android:layout_marginBottom="@dimen/margin_bottom"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:hint="@string/lastname" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_state"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_tall"
-                android:layout_below="@+id/text_lastname"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/margin_left"
                 android:layout_marginTop="@dimen/margin_top"
                 android:layout_marginEnd="@dimen/margin_right"
+                android:layout_marginBottom="@dimen/margin_bottom"
                 android:ems="10"
                 android:inputType="textVisiblePassword"
                 android:hint="@string/state" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_county"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_tall"
-                android:layout_below="@+id/text_state"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/margin_left"
                 android:layout_marginTop="@dimen/margin_top"
                 android:layout_marginEnd="@dimen/margin_right"
+                android:layout_marginBottom="@dimen/margin_bottom"
                 android:ems="10"
                 android:inputType="textVisiblePassword"
                 android:hint="@string/county" />
+        </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/button_search"
@@ -95,7 +110,6 @@
                 android:textSize="@dimen/size_text_button"
                 android:textStyle="bold" />
 
-        </RelativeLayout>
 
     </LinearLayout>
 

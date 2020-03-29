@@ -101,6 +101,6 @@ public class ResidentFragment extends Fragment {
 
         // Set title bar
         ((MainActivity) getActivity())
-                .setActionBarTitle("Residents");
+                .setActionBarTitle(getContext().getString(R.string.residents));
     }
 }

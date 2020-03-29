@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#F8F8F0F0"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".ui.mgmt.LoginActivity">
 
     <ProgressBar
@@ -12,59 +14,66 @@
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="77dp"
         android:layout_height="35dp"
-        android:layout_alignParentEnd="true"
         android:layout_marginEnd="316dp"
         android:layout_marginBottom="8dp"
         android:visibility="gone" />
+
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="182dp"
         android:layout_height="192dp"
-        android:layout_above="@id/text_email"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"
         app:srcCompat="@drawable/ic_account_circle_black_24dp" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/text_email"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_tall"
-        android:layout_above="@id/text_pwd"
-        android:layout_marginLeft="@dimen/margin_left"
-        android:layout_marginRight="@dimen/margin_right"
-        android:layout_marginBottom="21dp"
+        android:layout_marginStart="@dimen/margin_left"
+        android:layout_marginEnd="@dimen/margin_right"
+        android:layout_marginBottom="@dimen/margin_bottom"
         android:hint="@string/email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/text_pwd"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_tall"
-        android:layout_above="@id/button_createAccount"
-        android:layout_marginLeft="@dimen/margin_left"
-        android:layout_marginRight="@dimen/margin_right"
+        android:layout_marginStart="@dimen/margin_left"
+        android:layout_marginEnd="@dimen/margin_right"
         android:layout_marginBottom="@dimen/margin_bottom"
         android:hint="@string/pwd"
         android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
         android:id="@+id/check_rememberMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/button_login"
         android:layout_marginStart="@dimen/margin_left"
-        android:layout_marginBottom="@dimen/distance_text_button"
+        android:layout_marginEnd="@dimen/margin_right"
+        android:layout_marginBottom="@dimen/margin_bottom"
         android:text="@string/remember" />
 
     <Button
         android:id="@+id/button_createAccount"
         android:layout_width="150dp"
         android:layout_height="@dimen/height_small"
-        android:layout_above="@id/button_login"
-        android:layout_alignEnd="@+id/button_login"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="@dimen/distance_text_button"
+        android:layout_marginStart="@dimen/margin_left"
+        android:layout_marginEnd="@dimen/margin_right"
+        android:layout_marginBottom="@dimen/margin_bottom"
         android:background="@android:color/transparent"
         android:text="@string/create"
         android:textColor="@color/text_blue"
@@ -85,4 +94,4 @@
         android:textSize="@dimen/size_text_button"
         android:textStyle="bold" />
 
-</RelativeLayout>
+</LinearLayout>

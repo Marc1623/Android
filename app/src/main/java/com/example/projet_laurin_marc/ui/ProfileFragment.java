@@ -104,7 +104,7 @@ public class ProfileFragment extends Fragment {
                 user.setCounty(etCounty.getText().toString());
 
                 userViewModel.update(user);
-                Toast.makeText(getContext(), "User has been updated",
+                Toast.makeText(getContext(), R.string.msg_user_updated,
                         Toast.LENGTH_LONG).show();
             }
         });
@@ -128,7 +128,7 @@ public class ProfileFragment extends Fragment {
                 user.setCounty(etCounty.getText().toString());
 
                 userViewModel.delete(user);
-                Toast.makeText(getContext(), "Your account has been deleted!",
+                Toast.makeText(getContext(), R.string.msg_account_deleted,
                         Toast.LENGTH_LONG).show();
 
                 //switch activity
@@ -144,7 +144,7 @@ public class ProfileFragment extends Fragment {
 
         // Set title bar
         ((MainActivity) getActivity())
-                .setActionBarTitle("Mein Profil");
+                .setActionBarTitle(getContext().getString(R.string.nav_title_profile));
 
     }
 

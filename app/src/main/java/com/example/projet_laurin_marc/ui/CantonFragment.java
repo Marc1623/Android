@@ -73,7 +73,7 @@ public class CantonFragment extends Fragment {
 
         // Set title bar
         ((MainActivity) getActivity())
-                .setActionBarTitle("Kanton");
+                .setActionBarTitle(getContext().getString(R.string.nav_title_cantons));
 
     }
 }

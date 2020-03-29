@@ -83,6 +83,6 @@ public class CountyFragment extends Fragment {
 
         // Set title bar
         ((MainActivity) getActivity())
-                .setActionBarTitle("Gemeinden");
+                .setActionBarTitle(getContext().getString(R.string.county));
     }
 }

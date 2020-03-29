@@ -87,7 +87,7 @@ public class SearchFragment extends Fragment {
         super.onResume();
         // Set title bar
         ((MainActivity) getActivity())
-                .setActionBarTitle("Suchen");
+                .setActionBarTitle(getContext().getString(R.string.nav_title_search));
 
     }
 }

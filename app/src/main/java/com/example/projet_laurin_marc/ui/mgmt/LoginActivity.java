@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (users.get(i).getEmail().equals(mailString)
                             && users.get(i).getPwd().equals(passString)) {
 
-                        Toast.makeText(getApplicationContext(), "Login successful",
+                        Toast.makeText(getApplicationContext(), (R.string.login_successful),
                                 Toast.LENGTH_LONG).show();
 
                         //switch activity
