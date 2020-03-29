@@ -69,7 +69,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 if(saveUser()){
                     // give msg (Pop-Up), that login was successful
-                    Toast.makeText(RegistrationActivity.this, "Registration complete", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegistrationActivity.this, R.string.registration_complete, Toast.LENGTH_LONG).show();
 
                     Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                     RegistrationActivity.this.startActivity(intent);
@@ -167,7 +167,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         if (pwdString.trim().isEmpty() ||mail2String.trim().isEmpty() || pwdString.trim().isEmpty() ||
                 pwd1String.trim().isEmpty()){
-            Toast.makeText(getApplicationContext(), "Please enter all informations",
+            Toast.makeText(getApplicationContext(), R.string.error_enter_all_information,
                     Toast.LENGTH_LONG).show();
             etMail1.requestFocus();
             return false;

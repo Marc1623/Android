@@ -5,18 +5,19 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
 
-        <RelativeLayout
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="700dp">
+            android:layout_height="wrap_content">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_ahv"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_tall"
-                android:layout_above="@+id/text_firstname"
-                android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/margin_left"
                 android:layout_marginTop="@dimen/margin_top"
                 android:layout_marginEnd="@dimen/margin_right"
@@ -24,109 +25,141 @@
                 android:ems="10"
                 android:hint="@string/ahv"
                 android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_firstname"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_tall"
-                android:layout_above="@+id/text_lastname"
-                android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/margin_left"
                 android:layout_marginEnd="@dimen/margin_right"
                 android:layout_marginBottom="@dimen/margin_bottom"
                 android:ems="10"
                 android:hint="@string/firstname"
                 android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_lastname"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_tall"
-                android:layout_above="@+id/text_street"
-                android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/margin_left"
                 android:layout_marginEnd="@dimen/margin_right"
                 android:layout_marginBottom="@dimen/margin_bottom"
                 android:ems="10"
                 android:hint="@string/lastname"
                 android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_street"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_tall"
-                android:layout_above="@+id/text_city"
-                android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/margin_left"
                 android:layout_marginEnd="@dimen/margin_right"
                 android:layout_marginBottom="@dimen/margin_bottom"
                 android:ems="10"
                 android:hint="@string/steet"
                 android:inputType="textPostalAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_zip"
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/height_tall"
-                android:layout_above="@+id/text_phone"
                 android:layout_marginStart="@dimen/margin_left"
+                android:layout_marginEnd="@dimen/margin_right"
                 android:layout_marginBottom="@dimen/margin_bottom"
                 android:ems="10"
                 android:hint="@string/zip"
                 android:inputType="textPostalAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_city"
-                android:layout_width="220dp"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/height_tall"
-                android:layout_above="@+id/text_phone"
-                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/margin_left"
                 android:layout_marginEnd="@dimen/margin_right"
                 android:layout_marginBottom="@dimen/margin_bottom"
                 android:ems="10"
                 android:hint="@string/city"
                 android:inputType="textPostalAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_phone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_tall"
-                android:layout_above="@+id/text_birthday"
-                android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/margin_left"
                 android:layout_marginEnd="@dimen/margin_right"
                 android:layout_marginBottom="@dimen/margin_bottom"
                 android:ems="10"
                 android:hint="@string/phone"
                 android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_birthday"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_tall"
-                android:layout_above="@+id/button_add"
                 android:layout_marginStart="@dimen/margin_left"
                 android:layout_marginEnd="@dimen/margin_right"
                 android:layout_marginBottom="@dimen/margin_bottom"
                 android:ems="10"
                 android:hint="@string/birthdate"
                 android:inputType="date" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/button_add"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/height_tall"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="@dimen/margin_left"
-                android:layout_marginEnd="@dimen/margin_right"
-                android:layout_marginBottom="@dimen/margin_bottom"
-                android:background="@color/button_add"
-                android:text="@string/add"
-                android:textColor="@color/text_white"
-                android:textSize="@dimen/size_text_button"
-                android:textStyle="bold" />
+        <Button
+            android:id="@+id/button_add"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_tall"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margin_left"
+            android:layout_marginEnd="@dimen/margin_right"
+            android:layout_marginBottom="@dimen/margin_bottom"
+            android:background="@color/button_add"
+            android:text="@string/add"
+            android:textColor="@color/text_white"
+            android:textSize="@dimen/size_text_button"
+            android:textStyle="bold" />
 
-        </RelativeLayout>
 
     </LinearLayout>
 

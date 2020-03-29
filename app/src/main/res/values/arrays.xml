@@ -6,7 +6,7 @@
 
     </string-array>
     <string-array name="pref_lang_values">
-        <item>de</item>
+        <item>de-rCH</item>
         <item>fr-rCH</item>
     </string-array>
 </resources>

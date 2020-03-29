@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         // ---------------   settings   -----------
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        changeLanguage(sharedPrefs.getString("pref_lang", "de"));
+        changeLanguage(sharedPrefs.getString("pref_lang", "de-rCH"));
         // ---------------   settings   -----------
         //get logged user, county => ResitenDetails; with or without changing options!
         userID = getIntent().getIntExtra("userId", 1111);
@@ -140,9 +140,11 @@ public class MainActivity extends AppCompatActivity {
         config.locale = myLocale;
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
 
+
         // is being used to change the language, display of welcome..
         //TextView welcome = (TextView) findViewById(R.id.main_txt_welcome);
         //welcome.setText(R.string.main_welcome);
+
     }
 
     public void getLoggedUserFromDB(){

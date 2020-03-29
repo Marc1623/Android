@@ -118,7 +118,7 @@ public class ResidentDetailsFragment extends Fragment {
                 person.setBirthday(etBirthday.getText().toString());
 
                 personViewModel.update(person);
-                Toast.makeText(getContext(), "changes have been saved",
+                Toast.makeText(getContext(), R.string.msg_changes_saved,
                         Toast.LENGTH_LONG).show();
             }
         });

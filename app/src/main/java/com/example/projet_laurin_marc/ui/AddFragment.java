@@ -96,7 +96,7 @@ public class AddFragment extends Fragment {
                     etBirthday.setText("");
 
                     // give msg (Pop-Up), that login was successful
-                    Toast.makeText(getActivity(), "Person added to regitry", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), R.string.msg_person_added_regitry, Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -115,7 +115,7 @@ public class AddFragment extends Fragment {
         if (ahvString.trim().isEmpty() || firstString.trim().isEmpty() || lastString.trim().isEmpty() ||
                 streetString.trim().isEmpty() || zipString.trim().isEmpty() || cityString.trim().isEmpty() ||
                 phoneString.trim().isEmpty() || birthString.trim().isEmpty()) {
-            Toast.makeText(getActivity().getApplicationContext(), "Please enter all informations",
+            Toast.makeText(getActivity().getApplicationContext(), R.string.error_enter_all_information,
                     Toast.LENGTH_LONG).show();
             // TODO focus on the first element without content
             etAhv.requestFocus();
@@ -155,7 +155,7 @@ public class AddFragment extends Fragment {
 
         // Set title bar
         ((MainActivity) getActivity())
-                .setActionBarTitle("Hinzufügen");
+                .setActionBarTitle(getContext().getString(R.string.nav_title_new));
     }
 
 }

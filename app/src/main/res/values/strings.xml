@@ -18,20 +18,23 @@
     <string name="chapter_resitentDetails" translatable="false">"Details"</string>
 
 
-
+    <string name="residents">Residents</string>
     <string name="data_reset">reset data</string>
     <string name="data_initiated">data initiated</string>
     <string name="action_reset">Reset</string>
+    <string name="login_successful">Login successful</string>
+    <string name="registration_complete">Registration complete</string>
 
 
     <!-- ############# Error ############# -->
     <string name="error_invalid_email">Invalid login credentials</string>
     <string name="error_used_email">Email already in use</string>
-    <string name="error_invalid_password">This password is too short (&lt;5 characters)</string>
+    <string name="error_invalid_password">This password is too short (min 5 characters)</string>
     <string name="error_edit_invalid_password">You need to specify a password</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="error_pwd_wrong">wrong password</string>
+    <string name="error_enter_all_information">Please enter all informations</string>
 
 
     <!-- ############# Personal Details ############# -->
@@ -84,6 +87,11 @@
     <string name="msg_email_check">E-mail nicht gleich</string>
     <string name="msg_email_invalid">Bitte E-mail eingeben</string>
     <string name="msg_person_id">Person ist bereits im System registriert</string>
+    <string name="msg_person_added_regitry">Person added to regitry</string>
+    <string name="msg_user_updated">User has been updated</string>
+    <string name="msg_account_deleted">Your account has been deleted</string>
+    <string name="msg_changes_saved">Changes have been saved</string>
+
 
     <!-- ############# Arrays ############# -->
     <string-array name="cantons_array">
@@ -114,8 +122,39 @@
         <item>Zürich</item>
     </string-array>
 
+
+    <!-- Canton names -->
     <string name="canton_zurich">Zürich</string>
+    <string name="zurich">Zürich</string>
+    <string name="zug">Zug</string>
+    <string name="wallis">Wallis</string>
+    <string name="waadt">Waadt</string>
+    <string name="uri">Uri</string>
+    <string name="thurgau">Thurgau</string>
+    <string name="tessin">Tessin</string>
+    <string name="st_gallen">St. Gallen</string>
+    <string name="solothurn">Solothurn</string>
+    <string name="schwyz">Schwyz</string>
+    <string name="schaffhausen">Schaffhausen</string>
+    <string name="obwalden">Obwalden</string>
+    <string name="nidwalden">Nidwalden</string>
+    <string name="neuenburg">Neuenburg</string>
+    <string name="jura">Jura</string>
+    <string name="grisons">Graubünden</string>
+    <string name="glarus">Glarus</string>
+    <string name="genf">Genf</string>
+    <string name="freiburg">Freiburg</string>
+    <string name="bern">Bern</string>
+    <string name="basel_Stadt">Basel-Stadt</string>
+    <string name="basel_landschaft">Basel-Landschaft</string>
+    <string name="appenzell_Innerrhoden">Appenzell Innerrhoden</string>
+    <string name="appenzell_ausserrhoden">Appenzell Ausserrhoden</string>
+    <string name="aargau">Aargau</string>
+    <string name="lucerne">Luzerne</string>
+
+    <!-- County names -->
     <string name="gampel" translatable="false">Gampel</string>
+
 
 </resources>
 

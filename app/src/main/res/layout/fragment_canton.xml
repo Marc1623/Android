@@ -17,182 +17,182 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_zurich"
-                android:text="Zurich" />
+                android:text="@string/zurich" />
 
             <Button
                 android:id="@+id/buttonBerne"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_bern"
-                android:text="Berne" />
+                android:text="@string/bern" />
 
             <Button
                 android:id="@+id/buttonLuzerne"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_luzern"
-                android:text="Luzerne" />
+                android:text="@string/lucerne" />
 
             <Button
                 android:id="@+id/buttonUri"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_uri"
-                android:text="Uri" />
+                android:text="@string/uri" />
 
             <Button
                 android:id="@+id/buttonSchwyz"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_schwyz"
-                android:text="Schwyz" />
+                android:text="@string/schwyz" />
 
             <Button
                 android:id="@+id/buttonObwalden"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_obwalden"
-                android:text="Obwalden" />
+                android:text="@string/obwalden" />
 
             <Button
                 android:id="@+id/buttonNidwalden"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_nidwalden"
-                android:text="Nidwalden" />
+                android:text="@string/nidwalden" />
 
             <Button
                 android:id="@+id/buttonGlarus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_glarus"
-                android:text="Glarus" />
+                android:text="@string/glarus" />
 
             <Button
                 android:id="@+id/buttonZug"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_zug"
-                android:text="Zug" />
+                android:text="@string/zug" />
 
             <Button
                 android:id="@+id/buttonFreiburg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_freiburg"
-                android:text="Freiburg" />
+                android:text="@string/freiburg" />
 
             <Button
                 android:id="@+id/buttonSolothurn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_solothurn"
-                android:text="Solothurn" />
+                android:text="@string/solothurn" />
 
             <Button
                 android:id="@+id/buttonBasel-Stadt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_baselstadt_1"
-                android:text="Basel-Stadt" />
+                android:text="@string/basel_Stadt" />
 
             <Button
                 android:id="@+id/buttonBasel-Landschaft"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_baselland_1"
-                android:text="Basel-Landschaft" />
+                android:text="@string/basel_landschaft" />
 
             <Button
                 android:id="@+id/buttonSchafhausen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_schaffhausen"
-                android:text="Schafhausen" />
+                android:text="@string/schaffhausen" />
 
             <Button
                 android:id="@+id/buttonAppenzell_Ausserrhoden"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_appenzellre"
-                android:text="Appenzell_Ausserrhoden" />
+                android:text="@string/appenzell_ausserrhoden" />
 
             <Button
                 android:id="@+id/buttonAppenzell_Innerrhoden"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_appenzellri"
-                android:text="Appenzell_Innerrhoden" />
+                android:text="@string/appenzell_Innerrhoden" />
 
             <Button
                 android:id="@+id/buttonSaint_Gallen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_st_gallen"
-                android:text="Saint_Gallen" />
+                android:text="@string/st_gallen" />
 
             <Button
                 android:id="@+id/buttonGraubunden"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_graubuenden"
-                android:text="Graubunden" />
+                android:text="@string/grisons" />
 
             <Button
                 android:id="@+id/buttonArgau"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_aargau"
-                android:text="Argau" />
+                android:text="@string/aargau" />
 
             <Button
                 android:id="@+id/buttonThurgau"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_thurgau"
-                android:text="Thurgau" />
+                android:text="@string/thurgau" />
 
             <Button
                 android:id="@+id/buttonTessin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_tessin"
-                android:text="Tessin" />
+                android:text="@string/tessin" />
 
             <Button
                 android:id="@+id/buttonWaadt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_waadt"
-                android:text="Waadt" />
+                android:text="@string/waadt" />
 
             <Button
                 android:id="@+id/buttonWallis"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_wallis"
-                android:text="Wallis" />
+                android:text="@string/wallis" />
 
             <Button
                 android:id="@+id/buttonNeuenburg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_neuenburg"
-                android:text="Neuenburg" />
+                android:text="@string/neuenburg" />
 
             <Button
                 android:id="@+id/buttonGenf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_genf"
-                android:text="Genf" />
+                android:text="@string/genf" />
 
             <Button
                 android:id="@+id/buttonJura"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_jura"
-                android:text="Jura" />
+                android:text="@string/jura" />
 
         </LinearLayout>
 
