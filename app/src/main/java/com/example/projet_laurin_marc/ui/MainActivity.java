@@ -38,13 +38,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         // ---------------   settings   -----------
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         String lang = sharedPrefs.getString("pref_lang", "de-rCH");
         changeLanguage(lang);
         // ---------------   settings   -----------
+        setContentView(R.layout.activity_main);
+
         //get logged user, county => ResitenDetails; with or without changing options!
         userID = getIntent().getIntExtra("userId", 1111);
         getLoggedUserFromDB();
