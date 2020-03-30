@@ -39,11 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // ---------------   settings   -----------
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String lang = sharedPrefs.getString("pref_lang", "de-rCH");
-        changeLanguage(lang);
-        // ---------------   settings   -----------
+
         setContentView(R.layout.activity_main);
 
         //get logged user, county => ResitenDetails; with or without changing options!
@@ -144,14 +140,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void changeLanguage(String lang) {
-        Locale myLocale = new Locale(lang);
-        Locale.setDefault(myLocale);
-        Resources resources = getBaseContext().getResources();
-        Configuration config = resources.getConfiguration();
-        config.locale = myLocale;
-        resources.updateConfiguration(config, resources.getDisplayMetrics());
-    }
+
 
     public void getLoggedUserFromDB(){
         // get acces to database Users

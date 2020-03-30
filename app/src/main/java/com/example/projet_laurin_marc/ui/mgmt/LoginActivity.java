@@ -7,8 +7,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Display;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
@@ -26,6 +29,7 @@ import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
 import com.example.projet_laurin_marc.ui.ProfileFragment;
 
 import java.util.List;
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -43,6 +47,12 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // ---------------   settings   -----------
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String lang = sharedPrefs.getString("pref_lang", "de-rCH");
+        changeLanguage(lang);
+        // ---------------   settings   -----------
         setContentView(R.layout.activity_login);
 
         login = findViewById(R.id.button_login);
@@ -56,10 +66,16 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
         String checkbox = preferences.getString("remember", "defaul");
         if(checkbox.equals("true")){
+            remember.setChecked(true);
             mailString = preferences.getString("email", "default_mail");
             passString = preferences.getString("password", "default_password");
             etMail.setText(mailString);
             etPwd.setText(passString);
+
+        }
+        else{
+            etMail.setText("");
+            etPwd.setText("");
         }
 
         //Login
@@ -163,6 +179,15 @@ public class LoginActivity extends AppCompatActivity {
 
                     break;
         }
+    }
+
+    public void changeLanguage(String lang) {
+        Locale myLocale = new Locale(lang);
+        Locale.setDefault(myLocale);
+        Resources resources = getBaseContext().getResources();
+        Configuration config = resources.getConfiguration();
+        config.locale = myLocale;
+        resources.updateConfiguration(config, resources.getDisplayMetrics());
     }
 
     @Override
