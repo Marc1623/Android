@@ -7,7 +7,7 @@
     <!-- ############# Margin ############# -->
     <dimen name="margin_left">20dp</dimen>
     <dimen name="margin_right">20dp</dimen>
-    <dimen name="margin_top">20dp</dimen>
+    <dimen name="margin_top">50dp</dimen>
     <dimen name="margin_bottom">20dp</dimen>
 
     <dimen name="distance_text_button">40dp</dimen>

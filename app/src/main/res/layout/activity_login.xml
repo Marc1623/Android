@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,67 +17,88 @@
         android:layout_marginBottom="8dp"
         android:visibility="gone" />
 
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="182dp"
-        android:layout_height="192dp"
-        android:layout_marginBottom="80dp"
-        app:srcCompat="@drawable/ic_account_circle_black_24dp" />
-
-    <com.google.android.material.textfield.TextInputLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="200dp"
+        android:layout_marginTop="@dimen/margin_top">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/text_email"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_tall"
-        android:layout_marginStart="@dimen/margin_left"
-        android:layout_marginEnd="@dimen/margin_right"
-        android:layout_marginBottom="@dimen/margin_bottom"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"/>
-    </com.google.android.material.textfield.TextInputLayout>
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_marginEnd="0dp"
 
+            app:srcCompat="@drawable/ic_account_circle_black_24dp" />
+
+    </RelativeLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/text_pwd"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_tall"
-        android:layout_marginStart="@dimen/margin_left"
-        android:layout_marginEnd="@dimen/margin_right"
-        android:layout_marginBottom="@dimen/margin_bottom"
-        android:hint="@string/pwd"
-        android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <CheckBox
-        android:id="@+id/check_rememberMe"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_left"
-        android:layout_marginEnd="@dimen/margin_right"
-        android:layout_marginBottom="@dimen/margin_bottom"
-        android:text="@string/remember" />
+        android:layout_marginTop="@dimen/margin_top">
 
-    <Button
-        android:id="@+id/button_createAccount"
-        android:layout_width="150dp"
-        android:layout_height="@dimen/height_small"
-        android:layout_marginStart="@dimen/margin_left"
-        android:layout_marginEnd="@dimen/margin_right"
-        android:layout_marginBottom="@dimen/margin_bottom"
-        android:background="@android:color/transparent"
-        android:text="@string/create"
-        android:textColor="@color/text_blue"
-        android:textSize="@dimen/size_text_small"
-        android:textStyle="italic" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_email"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_tall"
+            android:layout_marginStart="@dimen/margin_left"
+            android:layout_marginEnd="@dimen/margin_right"
+            android:layout_marginBottom="@dimen/margin_bottom"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_tall"
+            android:layout_marginStart="@dimen/margin_left"
+            android:layout_marginEnd="@dimen/margin_right"
+            android:layout_marginBottom="@dimen/margin_bottom"
+            android:hint="@string/pwd"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="@dimen/margin_left">
+
+        <CheckBox
+            android:id="@+id/check_rememberMe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_left"
+            android:layout_marginEnd="@dimen/margin_right"
+            android:layout_marginBottom="@dimen/margin_bottom"
+            android:text="@string/remember" />
+
+        <Button
+            android:id="@+id/button_createAccount"
+            android:layout_width="150dp"
+            android:layout_height="@dimen/height_small"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/margin_left"
+            android:layout_marginEnd="@dimen/margin_right"
+            android:layout_marginBottom="@dimen/margin_bottom"
+            android:background="@android:color/transparent"
+            android:text="@string/create"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/size_text_small"
+            android:textStyle="italic" />
+    </RelativeLayout>
+
 
     <Button
         android:id="@+id/button_login"
