@@ -144,7 +144,7 @@ public class ProfileFragment extends Fragment {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setMessage(getContext().getString(R.string.alert_delete)).setPositiveButton(getContext().getString(R.string.yes), dialogClickListener)
                         .setNegativeButton(getContext().getString(R.string.no), dialogClickListener).show();
-                
+
             }
         });
     }

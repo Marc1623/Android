@@ -150,16 +150,6 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                         return;
                     }
-                   /* if (!users.get(i).getEmail().equals(mailString) && i == users.size()-1) {
-                        etMail.setError(getString(R.string.error_invalid_email));
-                        etMail.requestFocus();
-                        etMail.setText("");
-                    }
-                    if (users.get(i).getEmail().equals(mailString) && !users.get(i).getPwd().equals(passString) && i == users.size()-1) {
-                        etPwd.setError(getString(R.string.error_pwd_wrong));
-                        etPwd.requestFocus();
-                        etPwd.setText("");
-                    }*/
                 }
             }
         });
