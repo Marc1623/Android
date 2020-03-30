@@ -14,10 +14,17 @@
         android:title="@string/about"
         app:showAsAction="ifRoom|withText" />
 
+
     <!-- Settings, should always be in the overflow -->
-    <item   android:id="@+id/action_settings"
+    <item   android:id="@+id/action_settings1"
         android:icon="@drawable/ic_settings_black_24dp"
         android:title="@string/action_settings"
+        app:showAsAction="never" />
+
+    <!-- Settings, should always be in the overflow -->
+    <item   android:id="@+id/action_logout"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="@string/action_logout"
         app:showAsAction="never" />
 
 </menu>

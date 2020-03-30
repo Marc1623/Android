@@ -86,4 +86,5 @@
     <string name="grisons">Grisons</string>
     <string name="glarus">Glaris</string>
     <string name="lucerne">Lucerne</string>
+    <string name="action_logout">Déconnexion</string>
 </resources>

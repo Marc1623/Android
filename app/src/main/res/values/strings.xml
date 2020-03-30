@@ -3,6 +3,7 @@
     <string name="app_name">Online Census</string>
     <string name="action_search">"Suchen"</string>
     <string name="action_settings">"Einstellungen"</string>
+    <string name="action_logout">Log out</string>
 
     <!-- ############# Menu [Bottom] ############# -->
     <string name="nav_title_cantons">"Kanton"</string>

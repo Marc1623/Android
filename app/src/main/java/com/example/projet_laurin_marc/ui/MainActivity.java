@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         // ---------------   settings   -----------
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        changeLanguage(sharedPrefs.getString("pref_lang", "de-rCH"));
+        String lang = sharedPrefs.getString("pref_lang", "de-rCH");
+        changeLanguage(lang);
         // ---------------   settings   -----------
         //get logged user, county => ResitenDetails; with or without changing options!
         userID = getIntent().getIntExtra("userId", 1111);
@@ -123,10 +124,17 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(i);
 
                 break;
-            case R.id.action_settings :
+            case R.id.action_settings1 :
 
                 Intent intent1 = new Intent(MainActivity.this, SettingsActivity.class);
                 MainActivity.this.startActivity(intent1);
+                break;
+            case R.id.action_logout :
+
+                finish();
+                Intent intent2 = new Intent(MainActivity.this, LoginActivity.class);
+                MainActivity.this.startActivity(intent2);
+                this.finish();
                 break;
 
         }
@@ -139,7 +147,8 @@ public class MainActivity extends AppCompatActivity {
         android.content.res.Configuration config = new android.content.res.Configuration();
         config.locale = myLocale;
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-// restart MainActivity
+
+        // restart MainActivity
 
         // is being used to change the language, display of welcome..
         //TextView welcome = (TextView) findViewById(R.id.main_txt_welcome);

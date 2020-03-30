@@ -86,4 +86,5 @@
     <string name="grisons">Graubünden</string>
     <string name="glarus">Glarus</string>
     <string name="lucerne">Luzerne</string>
+    <string name="action_logout">Abmelden</string>
 </resources>
