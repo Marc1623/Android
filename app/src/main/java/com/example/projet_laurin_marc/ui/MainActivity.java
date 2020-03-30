@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProvider;
 import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -142,11 +144,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeLanguage(String lang) {
-        Locale myLocale = new Locale(lang);
+        Locale myLocale = new Locale("fr");
         Locale.setDefault(myLocale);
-        android.content.res.Configuration config = new android.content.res.Configuration();
+        Resources resources = getBaseContext().getResources();
+        Configuration config = resources.getConfiguration();
         config.locale = myLocale;
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        resources.updateConfiguration(config, resources.getDisplayMetrics());
 
         // restart MainActivity
 
