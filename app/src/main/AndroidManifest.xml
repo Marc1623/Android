@@ -35,16 +35,10 @@
             android:value=".ui.mgmt.LoginActivity" />
         </activity>
 
-
-        <activity android:name=".ui.CommuneActivity"/>
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.mgmt.SettingsActivity" />
+        <activity   android:name=".ui.mgmt.AboutActivity">
 
-        <activity   android:name=".ui.mgmt.AboutActivity"
-                    android:parentActivityName=".ui.MainActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".ui.mgmt.LoginActivity" />
     </activity>
 
 

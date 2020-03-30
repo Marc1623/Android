@@ -41,7 +41,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_top">
+        android:layout_marginTop="@dimen/margin_topLoin">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_email"
@@ -73,7 +73,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginTop="@dimen/margin_left">
+        android:layout_marginTop="@dimen/margin_top">
 
         <CheckBox
             android:id="@+id/check_rememberMe"
