@@ -144,19 +144,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeLanguage(String lang) {
-        Locale myLocale = new Locale("fr");
+        Locale myLocale = new Locale(lang);
         Locale.setDefault(myLocale);
         Resources resources = getBaseContext().getResources();
         Configuration config = resources.getConfiguration();
         config.locale = myLocale;
         resources.updateConfiguration(config, resources.getDisplayMetrics());
-
-        // restart MainActivity
-
-        // is being used to change the language, display of welcome..
-        //TextView welcome = (TextView) findViewById(R.id.main_txt_welcome);
-        //welcome.setText(R.string.main_welcome);
-
     }
 
     public void getLoggedUserFromDB(){

@@ -123,40 +123,6 @@
         <item>Zürich</item>
     </string-array>
 
-
-    <!-- Canton names -->
-    <string name="canton_zurich">Zürich</string>
-    <string name="zurich">Zürich</string>
-    <string name="zug">Zug</string>
-    <string name="wallis">Wallis</string>
-    <string name="waadt">Waadt</string>
-    <string name="uri">Uri</string>
-    <string name="thurgau">Thurgau</string>
-    <string name="tessin">Tessin</string>
-    <string name="st_gallen">St. Gallen</string>
-    <string name="solothurn">Solothurn</string>
-    <string name="schwyz">Schwyz</string>
-    <string name="schaffhausen">Schaffhausen</string>
-    <string name="obwalden">Obwalden</string>
-    <string name="nidwalden">Nidwalden</string>
-    <string name="neuenburg">Neuenburg</string>
-    <string name="jura">Jura</string>
-    <string name="grisons">Graubünden</string>
-    <string name="glarus">Glarus</string>
-    <string name="genf">Genf</string>
-    <string name="freiburg">Freiburg</string>
-    <string name="bern">Bern</string>
-    <string name="basel_Stadt">Basel-Stadt</string>
-    <string name="basel_landschaft">Basel-Landschaft</string>
-    <string name="appenzell_Innerrhoden">Appenzell Innerrhoden</string>
-    <string name="appenzell_ausserrhoden">Appenzell Ausserrhoden</string>
-    <string name="aargau">Aargau</string>
-    <string name="lucerne">Luzerne</string>
-
-    <!-- County names -->
-    <string name="gampel" translatable="false">Gampel</string>
-
-
 </resources>
 
 
