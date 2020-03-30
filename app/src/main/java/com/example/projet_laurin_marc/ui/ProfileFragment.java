@@ -2,6 +2,8 @@ package com.example.projet_laurin_marc.ui;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -110,20 +112,39 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    // TODO: 21.03.2020 Delete Button
     public void delete(){
         button_delete = view.findViewById(R.id.button_delete);
         button_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userViewModel.delete(user);
-                Toast.makeText(getContext(), R.string.msg_account_deleted,
-                        Toast.LENGTH_LONG).show();
 
-                //switch activity
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
-                ((Activity) getActivity()).overridePendingTransition(0, 0); // no Animation in transition
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case DialogInterface.BUTTON_POSITIVE:
+                                //Yes button clicked
+                                userViewModel.delete(user);
+                                Toast.makeText(getContext(), R.string.msg_account_deleted,
+                                        Toast.LENGTH_LONG).show();
+
+                                //switch activity
+                                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                                startActivity(intent);
+                                ((Activity) getActivity()).overridePendingTransition(0, 0); // no Animation in transition
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                break;
+                        }
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage(getContext().getString(R.string.alert_delete)).setPositiveButton(getContext().getString(R.string.yes), dialogClickListener)
+                        .setNegativeButton(getContext().getString(R.string.no), dialogClickListener).show();
+                
             }
         });
     }

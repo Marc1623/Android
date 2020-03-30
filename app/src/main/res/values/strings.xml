@@ -19,6 +19,7 @@
     <string name="chapter_resitentDetails" translatable="false">"Details"</string>
 
 
+
     <string name="residents">Residents</string>
     <string name="data_reset">reset data</string>
     <string name="data_initiated">data initiated</string>
@@ -37,6 +38,9 @@
     <string name="error_pwd_wrong">Falsches Passwort</string>
     <string name="error_enter_all_information">Bitte alle infos eintragen</string>
 
+    <!-- ############# Alerts ############# -->
+    <string name="alert_delete">Account wirklich löschen?</string>
+    <string name="alert_delete_pers">Person wirklich löschen?</string>
 
     <!-- ############# Personal Details ############# -->
     <!-- Resident -->

@@ -75,4 +75,6 @@
     <string name="nidwalden">Nidwald</string>
     <string name="neuenburg">" Neuchâtel"</string>
     <string name="jura">Jura</string>
+    <string name="alert_delete">vraiment supprimer le compt?</string>
+    <string name="alert_delete_pers">vraiment supprimer la person?</string>
 </resources>

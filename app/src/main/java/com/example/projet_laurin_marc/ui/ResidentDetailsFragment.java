@@ -1,5 +1,9 @@
 package com.example.projet_laurin_marc.ui;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -20,6 +24,7 @@ import com.example.projet_laurin_marc.database.entity.Person;
 import com.example.projet_laurin_marc.database.entity.User;
 import com.example.projet_laurin_marc.database.viewModel.PersonViewModel;
 import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
+import com.example.projet_laurin_marc.ui.mgmt.LoginActivity;
 
 import java.util.List;
 
@@ -130,16 +135,35 @@ public class ResidentDetailsFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                personViewModel.delete(person);
-                Toast.makeText(getContext(), "person has been deleted",
-                        Toast.LENGTH_LONG).show();
-                //go to the Canton Fragment
-                Fragment fragment = new CantonFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case DialogInterface.BUTTON_POSITIVE:
+                                //Yes button clicked
+                                personViewModel.delete(person);
+                                Toast.makeText(getContext(), getContext().getString(R.string.delete),
+                                        Toast.LENGTH_LONG).show();
+                                //go to the Canton Fragment
+                                Fragment fragment = new CantonFragment();
+                                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                                fragmentTransaction.addToBackStack(null);
+                                fragmentTransaction.commit();
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                break;
+                        }
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage(getContext().getString(R.string.alert_delete_pers)).setPositiveButton(getContext().getString(R.string.yes), dialogClickListener)
+                        .setNegativeButton(getContext().getString(R.string.no), dialogClickListener).show();
+
             }
         });
 
