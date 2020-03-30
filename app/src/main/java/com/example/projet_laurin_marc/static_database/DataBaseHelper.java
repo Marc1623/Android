@@ -145,7 +145,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         County county = null;
         List<County> countyList = new ArrayList<>();
         openDatabase();
-        Cursor cursor = myDataBase.rawQuery("SELECT * FROM Counties_De Where Kanton like '" + selectedCanton + "'", null);
+        Cursor cursor = myDataBase.rawQuery("SELECT * FROM Counties_De Where Kanton like '" + selectedCanton + "'   Order By Gemeinde " , null);
         cursor.moveToFirst();
 
         while (!cursor.isAfterLast()) {
