@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         android.content.res.Configuration config = new android.content.res.Configuration();
         config.locale = myLocale;
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-
+// restart MainActivity
 
         // is being used to change the language, display of welcome..
         //TextView welcome = (TextView) findViewById(R.id.main_txt_welcome);
