@@ -15,11 +15,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.projet_laurin_marc.R;
-import com.example.projet_laurin_marc.adapter.PersonAdapter;
 import com.example.projet_laurin_marc.adapter.PersonListAdapter;
 import com.example.projet_laurin_marc.database.entity.Person;
 import com.example.projet_laurin_marc.database.viewModel.PersonViewModel;
-import com.example.projet_laurin_marc.static_database.County;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +33,12 @@ public class ResidentFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_list_ppl, container, false);
+        getResidents();
+        return view;
+    }
 
+    public void getResidents(){
         final ListView listView = (ListView) view.findViewById(R.id.recycler_view);
-
         // get acces to database Users
         vmPers = new ViewModelProvider(this).get(PersonViewModel.class);
         // userViewModel.getUsers().
@@ -91,16 +92,11 @@ public class ResidentFragment extends Fragment {
 
             }
         });
-
-        return view;
     }
-
 
     public void onResume(){
         super.onResume();
-
         // Set title bar
-        ((MainActivity) getActivity())
-                .setActionBarTitle(getContext().getString(R.string.residents));
+        ((MainActivity) getActivity()).setActionBarTitle(getContext().getString(R.string.residents));
     }
 }

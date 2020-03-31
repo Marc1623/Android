@@ -5,9 +5,7 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -19,12 +17,13 @@ import com.example.projet_laurin_marc.database.viewModel.PersonViewModel;
 
 import java.util.List;
 
+// this class is called when the user (county employee) looks up other residents,
+// that are not within the county he or she works for -> only display possible
 public class ResidentDetails_NoAccessFragment extends Fragment {
 
     private View view;
     private Person person;
     private String ahv;
-
 
     private EditText etAHV;
     private EditText etFirstname;
@@ -37,23 +36,16 @@ public class ResidentDetails_NoAccessFragment extends Fragment {
 
     private PersonViewModel personViewModel;
 
-    private Button button_update;
-    private Button button_delete;
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_details_no_access, container, false);
         setData();
-        //update();
         return view;
     }
 
     public void setData() {
-
-
         // get acces to database PErson
         personViewModel = new ViewModelProvider(this).get(PersonViewModel.class);
         personViewModel.getPersons().observe(getViewLifecycleOwner(), new Observer<List<Person>>() {
@@ -64,12 +56,10 @@ public class ResidentDetails_NoAccessFragment extends Fragment {
                 //get that value of selected person (AHV)
                 ahv = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("SELECTED_PERSON_AHV", "defaultStringIfNothingFound");
 
-
-                int nr = personViewModel.getPersons().getValue().size();
                 //Looping to check inputs
-                for (int i = 0; i < nr; i++) {
-                    if (personViewModel.getPersons().getValue().get(i).getAhv().equals(ahv)) {
-                        person = personViewModel.getPersons().getValue().get(i);
+                for (int i = 0; i < people.size(); i++) {
+                    if (people.get(i).getAhv().equals(ahv)) {
+                        person = people.get(i);
 
                         //get ref to textfield
                         etAHV = view.findViewById(R.id.text_ahv);
@@ -98,10 +88,7 @@ public class ResidentDetails_NoAccessFragment extends Fragment {
 
     public void onResume() {
         super.onResume();
-
         // Set title bar
-        ((MainActivity) getActivity())
-                .setActionBarTitle(getContext().getString(R.string.chapter_resitentDetails));
-
+        ((MainActivity) getActivity()).setActionBarTitle(getContext().getString(R.string.chapter_resitentDetails));
     }
 }

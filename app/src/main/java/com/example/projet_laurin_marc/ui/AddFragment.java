@@ -1,7 +1,5 @@
 package com.example.projet_laurin_marc.ui;
 
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -103,6 +101,7 @@ public class AddFragment extends Fragment {
     }
 
     public boolean savePerson() {
+        // get strings out of the textfields, and save in local varialbes
         String ahvString = etAhv.getText().toString();
         String firstString = etFirstname.getText().toString();
         String lastString = etLastnam.getText().toString();
@@ -112,23 +111,27 @@ public class AddFragment extends Fragment {
         String phoneString = etPhone.getText().toString();
         String birthString = etBirthday.getText().toString();
 
+        // check if all entry fields are filled
         if (ahvString.trim().isEmpty() || firstString.trim().isEmpty() || lastString.trim().isEmpty() ||
                 streetString.trim().isEmpty() || zipString.trim().isEmpty() || cityString.trim().isEmpty() ||
                 phoneString.trim().isEmpty() || birthString.trim().isEmpty()) {
             Toast.makeText(getActivity().getApplicationContext(), R.string.error_enter_all_information,
                     Toast.LENGTH_LONG).show();
-            // TODO focus on the first element without content
             etAhv.requestFocus();
             return false;
         }
 
+        // TODO: 31.03.2020 Checks 
+        //checks on emailFromat etc..
+        
+        // if entryFields are not empty save person in DB, 
         Person person = new Person(ahvString, firstString, lastString, phoneString, birthString, zipString, cityString, streetString, canton, county);
         vmPers = new ViewModelProvider(this).get(PersonViewModel.class);
         vmPers.insert(person);
         return true;
     }
 
-
+    //get the user
     public void getUser() {
         // get acces to database Users
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
@@ -152,10 +155,8 @@ public class AddFragment extends Fragment {
 
     public void onResume() {
         super.onResume();
-
         // Set title bar
-        ((MainActivity) getActivity())
-                .setActionBarTitle(getContext().getString(R.string.nav_title_new));
+        ((MainActivity) getActivity()).setActionBarTitle(getContext().getString(R.string.nav_title_new));
     }
 
 }

@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +54,7 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
+    //set data from logged user
     public void setData() {
         // get acces to database Users
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
@@ -88,6 +88,7 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+    // action when you make changes and press update button
     public void update(){
         button_update = view.findViewById(R.id.button_update);
         button_update.setOnClickListener(new View.OnClickListener() {
@@ -112,6 +113,7 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+    //action when you press delete button
     public void delete(){
         button_delete = view.findViewById(R.id.button_delete);
         button_delete.setOnClickListener(new View.OnClickListener() {
@@ -124,23 +126,25 @@ public class ProfileFragment extends Fragment {
                         switch (which){
                             case DialogInterface.BUTTON_POSITIVE:
                                 //Yes button clicked
-                                userViewModel.delete(user);
+                                userViewModel.delete(user);// delete user from db
+
                                 Toast.makeText(getContext(), R.string.msg_account_deleted,
                                         Toast.LENGTH_LONG).show();
 
-                                //switch activity
+                                //switch to login activity
                                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                                 startActivity(intent);
                                 ((Activity) getActivity()).overridePendingTransition(0, 0); // no Animation in transition
                                 break;
 
                             case DialogInterface.BUTTON_NEGATIVE:
-                                //No button clicked
+                                //No button clicked, do nothing
                                 break;
                         }
                     }
                 };
 
+                // to be sure user is not being deleted accidentally, ask confirmation of user
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setMessage(getContext().getString(R.string.alert_delete)).setPositiveButton(getContext().getString(R.string.yes), dialogClickListener)
                         .setNegativeButton(getContext().getString(R.string.no), dialogClickListener).show();

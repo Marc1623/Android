@@ -1,7 +1,5 @@
 package com.example.projet_laurin_marc.ui;
 
-
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -14,16 +12,12 @@ import android.widget.ListView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.example.projet_laurin_marc.R;
-
-import static android.content.Context.MODE_PRIVATE;
-
 
 public class CantonFragment extends Fragment {
 
-    View view;
-    String [] cantonsList;
+    private View view;
+    private String [] cantonsList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,13 +29,14 @@ public class CantonFragment extends Fragment {
     }
 
     public void getChoice(){
+        // save string.xml arraylist in global var
         cantonsList = getResources().getStringArray(R.array.cantons_array);
         ListView listView = (ListView) view.findViewById(R.id.list);
-
+        // create an adapter to list and set the list of stings
         ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
                 getActivity(), android.R.layout.simple_list_item_1, cantonsList
         );
-
+        //set adapdert to listView
         listView.setAdapter(listViewAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -55,25 +50,20 @@ public class CantonFragment extends Fragment {
                 // save selected canton in variable
                 PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("SELECTED_CANTON", canton).apply();
 
-
                 //change to county fragment (countylist)
                 Fragment fragment = new CountyFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.addToBackStack(null); // backstack for backbutton
                 fragmentTransaction.commit();
             }
         });
     }
 
-
     public void onResume(){
         super.onResume();
-
         // Set title bar
-        ((MainActivity) getActivity())
-                .setActionBarTitle(getContext().getString(R.string.nav_title_cantons));
-
+        ((MainActivity) getActivity()).setActionBarTitle(getContext().getString(R.string.nav_title_cantons));
     }
 }

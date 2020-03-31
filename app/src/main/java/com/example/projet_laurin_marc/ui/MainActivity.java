@@ -6,11 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.app.Application;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -21,33 +17,29 @@ import com.example.projet_laurin_marc.database.entity.User;
 import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
 import com.example.projet_laurin_marc.ui.mgmt.AboutActivity;
 import com.example.projet_laurin_marc.ui.mgmt.LoginActivity;
-import com.example.projet_laurin_marc.ui.mgmt.RegistrationActivity;
 import com.example.projet_laurin_marc.ui.mgmt.SettingsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     // with AppCompatActivity you gard the Actionbar (Top) throughout the application!
 
-    BottomNavigationView bottomNavigation;
-    UserViewModel userViewModel;
-    int userID;
+    private BottomNavigationView bottomNavigation;
+    private UserViewModel userViewModel;
+    private int userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main);
 
         //get logged user, county => ResitenDetails; with or without changing options!
         userID = getIntent().getIntExtra("userId", 1111);
         getLoggedUserFromDB();
 
+        //set bottom nav
         bottomNavigation = findViewById(R.id.bottom_navigation);
-
         bottomNavigation.setOnNavigationItemSelectedListener(navListener);
 
         // Give the container the fragment that you want to start with when the menu opens!
@@ -60,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
 
+                    // for navigation, check what icon at bottom has been pressed -> redirect
                     switch (item.getItemId()) {
                         case R.id.nav_add:
                             Bundle bundle1 = new Bundle();
@@ -91,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -106,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
     // ----------------------- Settings  --------------------------------------------
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
     }
 
@@ -115,42 +109,38 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.action_about:
-
                 Intent i = new Intent(MainActivity.this, AboutActivity.class);
                 MainActivity.this.startActivity(i);
-
                 break;
-            case R.id.action_settings1 :
 
+            case R.id.action_settings1:
                 Intent intent1 = new Intent(MainActivity.this, SettingsActivity.class);
                 MainActivity.this.startActivity(intent1);
                 break;
-            case R.id.action_logout :
 
+            case R.id.action_logout:
                 finish();
                 Intent intent2 = new Intent(MainActivity.this, LoginActivity.class);
                 MainActivity.this.startActivity(intent2);
                 this.finish();
                 break;
-
         }
         return true;
     }
 
 
-
-    public void getLoggedUserFromDB(){
+    public void getLoggedUserFromDB() {
         // get acces to database Users
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         // userViewModel.getUsers().
         userViewModel.getUsers().observe(this, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
-                for (int i = 0; i < users.size(); i++){
-                    if(users.get(i).getId() == userID){
+                for (int i = 0; i < users.size(); i++) {
+                    if (users.get(i).getId() == userID) {
                         String userCounty = users.get(i).getCounty();
                         PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("User_County", userCounty).apply();
                     }

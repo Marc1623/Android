@@ -13,15 +13,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-
 import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.database.entity.User;
 import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
 import com.example.projet_laurin_marc.static_database.County;
 import com.example.projet_laurin_marc.static_database.DataBaseHelper;
-
-
-import java.io.File;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,7 +36,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText etPwd1;
     private EditText etPwd2;
 
-    String selectedCanton;
+    private String selectedCanton;
 
     private UserViewModel vm;
 
@@ -50,7 +46,6 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         spCantons();
-
         initializeFrom();
     }//end onCreate
 
@@ -67,17 +62,19 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(saveUser()){
+                if (saveUser()) {
                     // give msg (Pop-Up), that login was successful
                     Toast.makeText(RegistrationActivity.this, R.string.registration_complete, Toast.LENGTH_LONG).show();
-
+                    // redirect to login
                     Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                     RegistrationActivity.this.startActivity(intent);
-                };
+                }
+                ;
             }
         });
     }
 
+    // data from String array in strings.xml
     private void spCantons() {
         // spinner cantons to choose canton
         spCanton = (Spinner) findViewById(R.id.spinner_cantons);
@@ -89,10 +86,11 @@ public class RegistrationActivity extends AppCompatActivity {
         // apply the adapter to the spinner
         spCanton.setAdapter(adapter);
 
+        // check which canton is selected and give corresponding countylist
         spCanton.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedCanton = (String) spCanton.getItemAtPosition(position);
+                selectedCanton = (String) spCanton.getItemAtPosition(position); // save selection in variable
                 spCounties();
             }
 
@@ -103,41 +101,26 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
+    // data from static database
     public void spCounties() {
-        // if canton was choosen then get the list of counties in the Spinner
-        // TODO: 19.03.2020 filter counties by cantons.. -> see CountyFragment!
+        // create instance of list
         countyList = new ArrayList<>();
         countyList.clear();
-        //delete database that it is beeing created new
-        //this.deleteDatabase(DataBaseHelper.DATABASE_NAME);
 
+        // create connection to static db
         dbHelper = new DataBaseHelper(this);
 
-        //check if db exists
-        //File database = getApplicationContext().getDatabasePath(DataBaseHelper.DATABASE_NAME);
-
+        //create the db, load into cellphone
         try {
             dbHelper.createDatabase();
         } catch (IOException e) {
             e.printStackTrace();
         }
-/*
-        if (!database.exists()) {
-            dbHelper.getReadableDatabase();
-            //copy
-            if (dbHelper.copyDataBase()) {
-                Toast.makeText(this, "Copy database success", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Copy db error", Toast.LENGTH_SHORT).show();
-                return;
-            }
-        }*/
-        // get countylist
-        countyList = dbHelper.getCountiesByCanton(selectedCanton);
 
+        // get countylist
+        countyList = dbHelper.getCountiesByCanton(selectedCanton); // selected canton from spinner Canton to make selection of counties
         // spinner
         spCounty = (Spinner) findViewById(R.id.spinner_county);
-
         // Create an ArrayAdapter using the database and a default spinner layout
         ArrayAdapter<County> adapter2 = new ArrayAdapter<County>(this, android.R.layout.simple_spinner_item, countyList);
         //specify the layout to use when the list of choices appears
@@ -146,41 +129,60 @@ public class RegistrationActivity extends AppCompatActivity {
         spCounty.setAdapter(adapter2);
     }
 
-    public boolean saveUser(){
+    public boolean saveUser() {
+        boolean value = true;
+        // get user inputs
         String mailString = etMail1.getText().toString();
         String mail2String = etMail2.getText().toString();
         String pwdString = etPwd1.getText().toString();
         String pwd1String = etPwd2.getText().toString();
 
+        // check if input fields are empty, if yes return
+        if (pwdString.trim().isEmpty() && mail2String.trim().isEmpty() && pwdString.trim().isEmpty() &&
+                pwd1String.trim().isEmpty()) {
+            etMail1.setError(getString(R.string.error_fehler));
+            etMail2.setError(getString(R.string.error_fehler));
+            etPwd1.setError(getString(R.string.error_fehler));
+            etPwd2.setError(getString(R.string.error_fehler));
+            etMail1.requestFocus();
+
+            Toast.makeText(getApplicationContext(), R.string.error_enter_all_information,
+                    Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        // check if mail inputs are correct
+        if (!mailString.equals(mail2String) || !android.util.Patterns.EMAIL_ADDRESS.matcher(mailString).matches()) {
+            etMail1.setError(getString(R.string.error_invalid_email));
+            etMail1.requestFocus();
+            value = false;
+        }
+
+        // check pwd length and if they're identical
         if (!pwdString.equals(pwd1String) || pwdString.length() < 5) {
             etPwd1.setError(getString(R.string.error_invalid_password));
             etPwd1.requestFocus();
             etPwd1.setText("");
             etPwd2.setText("");
-            return false;
-        }
-        if (!mailString.equals(mail2String) || !android.util.Patterns.EMAIL_ADDRESS.matcher(mailString).matches()) {
-            etMail1.setError(getString(R.string.error_invalid_email));
-            etMail1.requestFocus();
-            return false;
+            value = false;
         }
 
-        if (pwdString.trim().isEmpty() ||mail2String.trim().isEmpty() || pwdString.trim().isEmpty() ||
-                pwd1String.trim().isEmpty()){
-            Toast.makeText(getApplicationContext(), R.string.error_enter_all_information,
-                    Toast.LENGTH_LONG).show();
-            etMail1.requestFocus();
-            return false;
-        }
+        // get values from spinners no check needed as there is always a selection
         String cantonString = spCanton.getSelectedItem().toString();
         String countyString = spCounty.getSelectedItem().toString();
 
-        User user = new User(mailString,pwdString, cantonString,countyString);
-        vm = new ViewModelProvider(this).get(UserViewModel.class);
-        if (user!= null){
-            vm.insert(user);
-            return  true;
+        // if all fields are correct save user in db
+        if (value) {
+            User user = new User(mailString, pwdString, cantonString, countyString);
+            vm = new ViewModelProvider(this).get(UserViewModel.class);
+            // double check if user is not null
+            if (user != null) {
+                vm.insert(user); // insert in db
+                value = true;
+            } else {
+                value = false;
+            }
         }
-        return false;
+        return value;
     }
 }

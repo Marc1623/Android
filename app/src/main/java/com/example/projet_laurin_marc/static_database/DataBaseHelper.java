@@ -62,7 +62,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return checkDB;
     }
 
-    //Copies your database from your local assets-folder to the just created empty database in the system folder
+    //Copies database from local assets-folder to the just created empty database in the system folder
     public boolean copyDataBase() {
         try {
 
@@ -121,24 +121,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             Log.v("Database Upgrade", "Database version higher than old.");
             db_delete();
         }
-    }
-
-    public List<County> getListCounties(/*String selectedCantonAbb*/) {
-        County county = null;
-        List<County> countyList = new ArrayList<>();
-        openDatabase();
-        Cursor cursor = myDataBase.rawQuery("SELECT * FROM Counties_De Where Kanton like '%'" /*selectedCantonAbb*/, null);
-        cursor.moveToFirst();
-
-        while (!cursor.isAfterLast()) {
-            county = new County(cursor.getString(0), cursor.getString(1));
-            countyList.add(county);
-            cursor.moveToNext();
-        }
-
-        cursor.close();
-        closeDataBase();
-        return countyList;
     }
 
     public List<County> getCountiesByCanton(String selectedCanton) {

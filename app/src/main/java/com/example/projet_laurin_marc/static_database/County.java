@@ -6,6 +6,7 @@ public class County {
     private String canton;
     private String county;
 
+    //County Entity
     public County(String canton, String county) {
         this.id = 0;
         this.canton = canton;

@@ -26,7 +26,7 @@
     <string name="action_reset">Reset</string>
     <string name="login_successful">Login erfolgreich</string>
     <string name="registration_complete">Registration vollständig</string>
-
+    <string name="registration_first">zuerst registrieren</string>
 
     <!-- ############# Error ############# -->
     <string name="error_invalid_email">fehlerhafte parameter</string>
@@ -37,6 +37,7 @@
     <string name="error_field_required">Feld erforderlich</string>
     <string name="error_pwd_wrong">Falsches Passwort</string>
     <string name="error_enter_all_information">Bitte alle infos eintragen</string>
+    <string name="error_fehler">fehlerhaft</string>
 
     <!-- ############# Alerts ############# -->
     <string name="alert_delete">Account wirklich löschen?</string>

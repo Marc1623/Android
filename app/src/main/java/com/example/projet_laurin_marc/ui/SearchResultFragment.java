@@ -25,22 +25,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchResultFragment extends Fragment {
-    View view;
-    PersonViewModel personViewModel;
+    private View view;
+    private PersonViewModel personViewModel;
 
-    String ahvString;
-    String firstString;
-    String lastString;
-    String cantonString;
-    String countyString;
+    private String ahvString;
+    private String firstString;
+    private String lastString;
+    private String cantonString;
+    private String countyString;
 
-    List<Person> pplFirst;
-
+    private List<Person> pplFirst;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_list_ppl,container,false);
+        search();
+        return view;
+    }
+
+    private void search(){
         final ListView listView = view.findViewById(R.id.recycler_view);
 
         personViewModel = new ViewModelProvider(this).get(PersonViewModel.class);
@@ -56,11 +60,11 @@ public class SearchResultFragment extends Fragment {
                 countyString = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("SELECTED_COUNTY", "COUNTY_Default");
 
                 //Looping to check inputs
-                for (int i = 0; i < personViewModel.getPersons().getValue().size(); i++) {
+                for (int i = 0; i < people.size(); i++) {
                     if(people.get(i).getAhv().equals(ahvString) && ahvString != null){
                         pplFirst.add(people.get(i));
                     }
-                    if (personViewModel.getPersons().getValue().get(i).getFirstname().equals(firstString) && firstString != null) {
+                    if (people.get(i).getFirstname().equals(firstString) && firstString != null) {
                         //multiple ppl possible
                         System.out.println(people.get(i).getLastname());
                         Person p = personViewModel.getPersons().getValue().get(i);
@@ -120,7 +124,6 @@ public class SearchResultFragment extends Fragment {
                 }
             }
         });
-        return view;
     }
 
 }

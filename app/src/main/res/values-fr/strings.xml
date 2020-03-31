@@ -77,4 +77,6 @@
     <string name="jura">Jura</string>
     <string name="alert_delete">vraiment supprimer le compt?</string>
     <string name="alert_delete_pers">vraiment supprimer la person?</string>
+    <string name="registration_first">il faut se registrer</string>
+    <string name="error_fehler">faut</string>
 </resources>

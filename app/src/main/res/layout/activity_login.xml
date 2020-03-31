@@ -8,15 +8,6 @@
     android:orientation="vertical"
     tools:context=".ui.mgmt.LoginActivity">
 
-    <ProgressBar
-        android:id="@+id/progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="77dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="316dp"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"

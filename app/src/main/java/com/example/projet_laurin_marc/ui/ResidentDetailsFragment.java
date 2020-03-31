@@ -1,9 +1,7 @@
 package com.example.projet_laurin_marc.ui;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -21,10 +19,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.database.entity.Person;
-import com.example.projet_laurin_marc.database.entity.User;
 import com.example.projet_laurin_marc.database.viewModel.PersonViewModel;
-import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
-import com.example.projet_laurin_marc.ui.mgmt.LoginActivity;
 
 import java.util.List;
 
@@ -33,7 +28,6 @@ public class ResidentDetailsFragment extends Fragment {
     private View view;
     private Person person;
     private String ahv;
-
 
     private EditText etAHV;
     private EditText etFirstname;
@@ -62,24 +56,19 @@ public class ResidentDetailsFragment extends Fragment {
     }
 
     public void setData() {
-
-
         // get acces to database PErson
         personViewModel = new ViewModelProvider(this).get(PersonViewModel.class);
         personViewModel.getPersons().observe(getViewLifecycleOwner(), new Observer<List<Person>>() {
 
             @Override
             public void onChanged(List<Person> people) {
-
                 //get that value of selected person (AHV)
                 ahv = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("SELECTED_PERSON_AHV", "defaultStringIfNothingFound");
 
-
-                int nr = personViewModel.getPersons().getValue().size();
                 //Looping to check inputs
-                for (int i = 0; i < nr; i++) {
-                    if (personViewModel.getPersons().getValue().get(i).getAhv().equals(ahv)) {
-                        person = personViewModel.getPersons().getValue().get(i);
+                for (int i = 0; i < people.size(); i++) {
+                    if (people.get(i).getAhv().equals(ahv)) {
+                        person = people.get(i);
 
                         //get ref to textfield
                         etAHV = view.findViewById(R.id.text_ahv);
@@ -160,6 +149,7 @@ public class ResidentDetailsFragment extends Fragment {
                     }
                 };
 
+                //check before, deleting the person, authorisation for deletion
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setMessage(getContext().getString(R.string.alert_delete_pers)).setPositiveButton(getContext().getString(R.string.yes), dialogClickListener)
                         .setNegativeButton(getContext().getString(R.string.no), dialogClickListener).show();
@@ -171,10 +161,7 @@ public class ResidentDetailsFragment extends Fragment {
 
     public void onResume() {
         super.onResume();
-
         // Set title bar
-        ((MainActivity) getActivity())
-                .setActionBarTitle(getContext().getString(R.string.chapter_resitentDetails));
-
+        ((MainActivity) getActivity()).setActionBarTitle(getContext().getString(R.string.chapter_resitentDetails));
     }
 }

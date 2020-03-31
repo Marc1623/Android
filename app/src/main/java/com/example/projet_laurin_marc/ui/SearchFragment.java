@@ -1,6 +1,5 @@
 package com.example.projet_laurin_marc.ui;
 
-
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -13,10 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-
 import com.example.projet_laurin_marc.R;
-
-
 
 public class SearchFragment extends Fragment {
 
@@ -26,11 +22,11 @@ public class SearchFragment extends Fragment {
     private EditText etCanton;
     private EditText etCounty;
 
-    String ahvString;
-    String firstString;
-    String lastString;
-    String cantonString;
-    String countyString;
+    private String ahvString;
+    private String firstString;
+    private String lastString;
+    private String cantonString;
+    private String countyString;
 
     private View view;
     private Button button_search;
@@ -45,6 +41,7 @@ public class SearchFragment extends Fragment {
     }
 
     private void initializeForm() {
+        // get link, from the textfield
         etAhv = view.findViewById(R.id.text_ahv);
         etFirstname = view.findViewById(R.id.text_firstname);
         etLastname = view.findViewById(R.id.text_lastname);
@@ -82,12 +79,9 @@ public class SearchFragment extends Fragment {
         });
     }
 
-
     public void onResume() {
         super.onResume();
         // Set title bar
-        ((MainActivity) getActivity())
-                .setActionBarTitle(getContext().getString(R.string.nav_title_search));
-
+        ((MainActivity) getActivity()).setActionBarTitle(getContext().getString(R.string.nav_title_search));
     }
 }
