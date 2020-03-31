@@ -5,10 +5,17 @@
     <color name="colorPrimary">#A30014</color>
     <color name="colorPrimaryDark">#6D000E</color>
     <color name="colorAccent">#D81B60</color>
+
     <!-- Android -->
+    <color name="colorAndroidPrimary">#A30014</color>
+    <color name="colorAndroidPrimaryDark">#6D000E</color>
+    <color name="colorAndroidAccent">#D81B60</color>
+
+    <!-- Android  default colors
     <color name="colorAndroidPrimary">#008577</color>
     <color name="colorAndroidPrimaryDark">#00574B</color>
     <color name="colorAndroidAccent">#D81B60</color>
+    -->
 
     <!-- ############# Buttons ############# -->
     <color name="button_show">#6D000E</color>

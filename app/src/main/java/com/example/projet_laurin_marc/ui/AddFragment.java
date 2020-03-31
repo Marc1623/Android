@@ -1,10 +1,13 @@
 package com.example.projet_laurin_marc.ui;
 
+import android.app.DatePickerDialog;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -16,11 +19,14 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.database.entity.Person;
 import com.example.projet_laurin_marc.database.entity.User;
-import com.example.projet_laurin_marc.database.viewModel.AddressViewModel;
+
 import com.example.projet_laurin_marc.database.viewModel.PersonViewModel;
 import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
 
+import java.util.Calendar;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AddFragment extends Fragment {
 
@@ -43,7 +49,7 @@ public class AddFragment extends Fragment {
     private Button button_add;
 
     private PersonViewModel vmPers;
-    private AddressViewModel vmAdr;
+    private DatePickerDialog.OnDateSetListener mDateListener;
 
     //The system calls this when it's time for the fragment to draw its user interface for the first time
     @Override
@@ -75,7 +81,9 @@ public class AddFragment extends Fragment {
         etZip = view.findViewById(R.id.text_zip);
         etCity = view.findViewById(R.id.text_city);
         etPhone = view.findViewById(R.id.text_phone);
+
         etBirthday = view.findViewById(R.id.text_birthday);
+        datepicker();
 
         button_add = view.findViewById(R.id.button_add);
         button_add.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +109,7 @@ public class AddFragment extends Fragment {
     }
 
     public boolean savePerson() {
+        Boolean valid = true;
         // get strings out of the textfields, and save in local varialbes
         String ahvString = etAhv.getText().toString();
         String firstString = etFirstname.getText().toString();
@@ -118,17 +127,90 @@ public class AddFragment extends Fragment {
             Toast.makeText(getActivity().getApplicationContext(), R.string.error_enter_all_information,
                     Toast.LENGTH_LONG).show();
             etAhv.requestFocus();
-            return false;
+            valid = false;
         }
 
-        // TODO: 31.03.2020 Checks 
-        //checks on emailFromat etc..
-        
-        // if entryFields are not empty save person in DB, 
-        Person person = new Person(ahvString, firstString, lastString, phoneString, birthString, zipString, cityString, streetString, canton, county);
-        vmPers = new ViewModelProvider(this).get(PersonViewModel.class);
-        vmPers.insert(person);
-        return true;
+        //checks on phone Format and Zip etc..
+        if (!phoneNumberValidation(phoneString)) {
+            etPhone.setError(getString(R.string.error_fehler));
+            valid = false;
+        }
+        if(!zipValidation(zipString)){
+            etZip.setError(getString(R.string.error_fehler));
+            valid = false;
+        }
+        if(valid){
+            // if entryFields are not empty save person in DB,
+            Person person = new Person(ahvString, firstString, lastString, phoneString, birthString, zipString, cityString, streetString, canton, county);
+            vmPers = new ViewModelProvider(this).get(PersonViewModel.class);
+            vmPers.insert(person);
+        }
+        return valid;
+    }
+
+    public void datepicker() {
+        etBirthday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        getContext(),
+                        android.R.style.Theme_Material_Light_Dialog_MinWidth,
+                        mDateListener,
+                        year, month, day);
+                dialog.show();
+            }
+        });
+
+        mDateListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                String date = dayOfMonth + "." + month + "." + year;
+                etBirthday.setText(date);
+
+            }
+        };
+
+    }
+
+    public Boolean phoneNumberValidation(String number) {
+        Boolean valid = false;
+        String pattern = "^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$";
+        Matcher m = null;
+
+        Pattern r = Pattern.compile(pattern);
+
+        if (!number.isEmpty()) {
+            m = r.matcher(number.trim());
+        }
+        if (m.find()) {
+            valid = true;
+        } else {
+            valid = false;
+        }
+        return valid;
+    }
+
+    public Boolean zipValidation(String zip){
+        Boolean valid = false;
+        String pattern = "^[1-9][0-9][0-9][0-9]$";
+        Matcher m = null;
+
+        Pattern r = Pattern.compile(pattern);
+
+        if (!zip.isEmpty()) {
+            m = r.matcher(zip.trim());
+        }
+        if (m.find()) {
+            valid = true;
+        } else {
+            valid = false;
+        }
+        return valid;
     }
 
     //get the user

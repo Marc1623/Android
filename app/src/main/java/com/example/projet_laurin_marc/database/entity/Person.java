@@ -17,7 +17,7 @@ public class Person {
     @PrimaryKey
     @NonNull
     private String ahv;
-    //foreign key to the address from the person.. had no time to solve problem..
+    //foreign key to the address from the person.. had no time to solve problem..; solution like this lots of duplicates..
     // @Embedded
     //private Address address;
 
