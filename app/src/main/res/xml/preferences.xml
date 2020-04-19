@@ -2,13 +2,13 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ListPreference
-        android:defaultValue="de"
-        android:entries="@array/pref_lang_entries"
-        android:entryValues="@array/pref_lang_values"
-        android:key="pref_lang"
-        android:summary="@string/pref_summary"
-        android:title="@string/pref_select_language" />
+<ListPreference
+    android:defaultValue="de"
+    android:entries="@array/pref_lang_entries"
+    android:entryValues="@array/pref_lang_values"
+    android:key="pref_lang"
+    android:summary="@string/pref_summary"
+    android:title="@string/pref_select_language" />
 
 
 </PreferenceScreen>
