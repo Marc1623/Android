@@ -3,6 +3,7 @@ package com.example.projet_laurin_marc.ui;
 import android.app.DatePickerDialog;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.database.entity.Person;
 import com.example.projet_laurin_marc.database.entity.User;
 
+import com.example.projet_laurin_marc.database.util.OnAsyncEventListener;
 import com.example.projet_laurin_marc.database.viewModel.PersonViewModel;
 import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
 
@@ -50,6 +52,9 @@ public class AddFragment extends Fragment {
 
     private PersonViewModel vmPers;
     private DatePickerDialog.OnDateSetListener mDateListener;
+
+    private static final String TAG = "AddFragment";
+    private Boolean valid = true;
 
     //The system calls this when it's time for the fragment to draw its user interface for the first time
     @Override
@@ -109,7 +114,7 @@ public class AddFragment extends Fragment {
     }
 
     public boolean savePerson() {
-        Boolean valid = true;
+
         // get strings out of the textfields, and save in local varialbes
         String ahvString = etAhv.getText().toString();
         String firstString = etFirstname.getText().toString();
@@ -141,9 +146,23 @@ public class AddFragment extends Fragment {
         }
         if(valid){
             // if entryFields are not empty save person in DB,
-            Person person = new Person(ahvString, firstString, lastString, phoneString, birthString, zipString, cityString, streetString, canton, county);
+            Person person = new Person(ahvString, firstString, lastString, phoneString, birthString, streetString, county);
+
             vmPers = new ViewModelProvider(this).get(PersonViewModel.class);
-            vmPers.insert(person);
+            vmPers.createPerson(person, new OnAsyncEventListener(){
+
+                @Override
+                public void onSuccess() {
+                    Log.d(TAG, "createUserWithEmail: success");
+                    valid = true;
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+                    Log.d(TAG, "createUserWithEmail: failure", e);
+                    valid = false;
+                }
+            });
         }
         return valid;
     }
@@ -218,16 +237,15 @@ public class AddFragment extends Fragment {
         // get acces to database Users
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         // userViewModel.getUsers().
-        userViewModel.getUsers().observe(getViewLifecycleOwner(), new Observer<List<User>>() {
+        userViewModel.getAllUsers().observe(getViewLifecycleOwner(), new Observer<List<User>>() {
 
             @Override
             public void onChanged(List<User> users) {
-                int nr = userViewModel.getUsers().getValue().size();
+                int nr = userViewModel.getAllUsers().getValue().size();
                 //Looping to check inputs
-                for (int i = 0; i < nr; i++) {
-                    if (userViewModel.getUsers().getValue().get(i).getId() == userId) {
-                        user = userViewModel.getUsers().getValue().get(i);
-                        canton = user.getCanton();
+                for (int i = 0; i < nr; i++)    {
+                    if (userViewModel.getAllUsers().getValue().get(i).getEmail().equals(userId)) {
+                        user = userViewModel.getAllUsers().getValue().get(i);
                         county = user.getCounty();
                     }
                 }

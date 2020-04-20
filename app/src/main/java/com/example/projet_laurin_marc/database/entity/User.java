@@ -1,61 +1,58 @@
 package com.example.projet_laurin_marc.database.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "user", indices = {@Index(value = {"email"}, unique = true)})
+@Entity(tableName = "user",
+        foreignKeys =
+        @ForeignKey(
+                entity = County.class,
+                parentColumns = "name",
+                childColumns = "county",
+                onDelete = ForeignKey.NO_ACTION
+        ),
+        indices = {
+                @Index(
+                        value = {"county"}
+                )})
 public class User {
     // --------------- Attributes ----------------
     // set columns of the database
-    @PrimaryKey (autoGenerate = true)
-    private int id;
-
-    @ColumnInfo(name = "email")
+    @PrimaryKey
+    @NonNull
     private String email;
-
-    @ColumnInfo(name = "pwd")
     private String pwd;
-
-    @ColumnInfo(name = "canton")
-    private String canton;
-
-    @ColumnInfo(name = "county")
     private String county;
 
+
     // --------------- Constructors ----------------
-    public User(String email, String pwd, String canton, String county) {
+    public User(String email, String pwd, String county) {
         this.email = email;
         this.pwd = pwd;
-        this.canton = canton;
         this.county = county;
     }
     public User(){
-        this.email = "newUser@test.com";
-        this.pwd = "123456";
-        this.canton = "Bern";
-        this.county = "Krattigen";
-
-    } // default
+           } // default
 
     // --------------- Getter & Setter ----------------
-   // id, email, pwd
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
+
+    @NonNull
     public String getEmail() {
         return email;
     }
-    public void setEmail(String email) {
+
+    public void setEmail(@NonNull String email) {
         this.email = email;
     }
+
     public String getPwd() {
         return pwd;
     }
+
     public void setPwd(String pwd) {
         this.pwd = pwd;
     }
@@ -68,11 +65,18 @@ public class User {
         this.county = county;
     }
 
-    public String getCanton() {
-        return canton;
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if (!(obj instanceof User)) return false;
+        User o = (User) obj;
+        return o.getEmail().equals(this.getEmail());
     }
 
-    public void setCanton(String canton) {
-        this.canton = canton;
+    @Override
+    public String toString() {
+        return email;
     }
+
 }

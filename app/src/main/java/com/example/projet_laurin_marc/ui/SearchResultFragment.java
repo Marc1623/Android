@@ -48,7 +48,7 @@ public class SearchResultFragment extends Fragment {
         final ListView listView = view.findViewById(R.id.recycler_view);
 
         personViewModel = new ViewModelProvider(this).get(PersonViewModel.class);
-        personViewModel.getPersons().observe(getViewLifecycleOwner(), new Observer<List<Person>>() {
+        personViewModel.getAllPersons().observe(getViewLifecycleOwner(), new Observer<List<Person>>() {
             @Override
             public void onChanged(List<Person> people) {
                 pplFirst = new ArrayList<>();
@@ -64,27 +64,27 @@ public class SearchResultFragment extends Fragment {
                     if(people.get(i).getAhv().equals(ahvString) && ahvString != null){
                         pplFirst.add(people.get(i));
                     }
-                    if (people.get(i).getFirstname().equals(firstString) && firstString != null) {
+                    if (people.get(i).getFirstName().equals(firstString) && firstString != null) {
                         //multiple ppl possible
-                        System.out.println(people.get(i).getLastname());
-                        Person p = personViewModel.getPersons().getValue().get(i);
+                        System.out.println(people.get(i).getLastName());
+                        Person p = personViewModel.getAllPersons().getValue().get(i);
                         pplFirst.add(p);
                     }
-                    if(people.get(i).getLastname().equals(lastString) && lastString != null){
+                    if(people.get(i).getLastName().equals(lastString) && lastString != null){
                         pplFirst.add(people.get(i));
                     }
-                    if(people.get(i).getCanton().equals(cantonString) && cantonString != null
-                            && !(people.get(i).getAhv().equals(ahvString) && ahvString != null)
-                            && !(people.get(i).getFirstname().equals(firstString) && firstString != null)
-                            && !(people.get(i).getLastname().equals(lastString) && lastString != null))
+                    if(/*people.get(i).getCanton().equals(cantonString) && cantonString != null
+                            && */!(people.get(i).getAhv().equals(ahvString) && ahvString != null)
+                            && !(people.get(i).getFirstName().equals(firstString) && firstString != null)
+                            && !(people.get(i).getLastName().equals(lastString) && lastString != null))
                     {
                         pplFirst.add(people.get(i));
                     }
                     if(people.get(i).getCounty().equals(countyString) && countyString != null
-                            && !(people.get(i).getCanton().equals(cantonString) && cantonString != null)
+                            /*&& !(people.get(i).getCanton().equals(cantonString) && cantonString != null)*/
                             && !(people.get(i).getAhv().equals(ahvString) && ahvString != null)
-                            && !(people.get(i).getFirstname().equals(firstString) && firstString != null)
-                            && !(people.get(i).getLastname().equals(lastString) && lastString != null))
+                            && !(people.get(i).getFirstName().equals(firstString) && firstString != null)
+                            && !(people.get(i).getLastName().equals(lastString) && lastString != null))
                     {
                         pplFirst.add(people.get(i));
                     }

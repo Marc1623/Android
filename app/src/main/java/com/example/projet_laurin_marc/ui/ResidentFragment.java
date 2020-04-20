@@ -42,7 +42,7 @@ public class ResidentFragment extends Fragment {
         // get acces to database Users
         vmPers = new ViewModelProvider(this).get(PersonViewModel.class);
         // userViewModel.getUsers().
-        vmPers.getPersons().observe(getViewLifecycleOwner(), new Observer<List<Person>>() {
+        vmPers.getAllPersons().observe(getViewLifecycleOwner(), new Observer<List<Person>>() {
             @Override
             public void onChanged(List<Person> people) {
                 personsList = new ArrayList<>();

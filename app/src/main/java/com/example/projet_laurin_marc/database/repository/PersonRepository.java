@@ -1,94 +1,67 @@
 package com.example.projet_laurin_marc.database.repository;
 
 import android.app.Application;
-import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.projet_laurin_marc.database.PersonDatabase;
-import com.example.projet_laurin_marc.database.dao.PersonDao;
+import com.example.projet_laurin_marc.BaseApp;
+import com.example.projet_laurin_marc.database.async.person.CreatePerson;
+import com.example.projet_laurin_marc.database.async.person.DeletePerson;
+import com.example.projet_laurin_marc.database.async.person.UpdatePerson;
+
+import com.example.projet_laurin_marc.database.entity.County;
 import com.example.projet_laurin_marc.database.entity.Person;
+import com.example.projet_laurin_marc.database.entity.User;
+import com.example.projet_laurin_marc.database.util.OnAsyncEventListener;
 
 import java.util.List;
 
+
 public class PersonRepository {
 
-    private PersonDao personDao;
-    private LiveData <List<Person>> personslive;
 
-    public PersonRepository(Application app){
-        PersonDatabase database = PersonDatabase.getInstance(app);
-        personDao = database.personDao();
-        personslive = personDao.getAll();
+    private static PersonRepository instance;
+
+    private PersonRepository() {
     }
 
-    public void insert(Person person){
-        new InsertPersonAsyncTask(personDao).execute(person);
-    }
-
-    public void update(Person person){
-        new UpdatePersonAsyncTask(personDao).execute(person);
-    }
-
-    public void delete(Person person){
-        new DeletePersonAsyncTask(personDao).execute(person);
-    }
-
-    public LiveData<List<Person>> getAllPersons() {
-        return personslive;
-    }
-
-    private static class InsertPersonAsyncTask extends AsyncTask <Person, Void, Void> {
-        private PersonDao personDao;
-
-        public InsertPersonAsyncTask(PersonDao personDao) {
-            this.personDao = personDao;
-        }
-
-        @Override
-        protected Void doInBackground(Person... persons) {
-            personDao.insert(persons[0]);
-            return null;
-        }
-    }
-
-        private static class UpdatePersonAsyncTask extends AsyncTask <Person, Void, Void>{
-            private PersonDao personDao;
-
-            public UpdatePersonAsyncTask(PersonDao personDao){
-                this.personDao = personDao;
-            }
-
-            @Override
-            protected Void doInBackground(Person... persons){
-                try{
-                    for(Person person : persons){
-                        personDao.update(person);
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
+    public static PersonRepository getInstance() {
+        if (instance == null) {
+            synchronized (County.class) {
+                if (instance == null) {
+                    instance = new PersonRepository();
                 }
-                return null;
             }
         }
+        return instance;
+    }
 
-    private static class DeletePersonAsyncTask extends AsyncTask <Person, Void, Void>{
-        private PersonDao personDao;
+    public LiveData<Person> getPerson(final String personId, Application application) {
+        return ((BaseApp) application).getDatabase().personDao().getById(personId);
+    }
 
-        public DeletePersonAsyncTask(PersonDao personDao){
-            this.personDao = personDao;
-        }
+    public void insert(final Person person, OnAsyncEventListener callback,
+                       Application application) {
+        new CreatePerson(application, callback).execute(person);
+    }
 
-        @Override
-        protected Void doInBackground(Person... persons){
-            try{
-                for(Person person : persons){
-                    personDao.delete(person);
-                }
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-            return null;
-        }
+    public void update(final Person person, OnAsyncEventListener callback,
+                       Application application) {
+        new UpdatePerson(application, callback).execute(person);
+    }
+
+    public void delete(final Person person, OnAsyncEventListener callback,
+                       Application application) {
+        new DeletePerson(application, callback).execute(person);
+    }
+
+    // ----------------------------------------------------------
+    // All Persons
+    public LiveData<List<Person>> getAllPersons(Application application) {
+        return ((BaseApp) application).getDatabase().personDao().getAll();
+    }
+
+    public LiveData<List<Person>> getAllPersonsByCounty(String county, Application application) {
+        return ((BaseApp) application).getDatabase().personDao().getAllByCounty(county);
     }
 }

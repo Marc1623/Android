@@ -8,15 +8,15 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.projet_laurin_marc.R;
-import com.example.projet_laurin_marc.static_database.County;
+import com.example.projet_laurin_marc.static_database.County1;
 
 import java.util.List;
 
 public class CountyListAdapter extends BaseAdapter {
 
-    private List<County> listData;
+    private List<County1> listData;
     private LayoutInflater layoutInflater;
-    public CountyListAdapter(Context aContext, List<County> listData) {
+    public CountyListAdapter(Context aContext, List<County1> listData) {
         this.listData = listData;
         layoutInflater = LayoutInflater.from(aContext);
     }

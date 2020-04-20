@@ -1,94 +1,64 @@
 package com.example.projet_laurin_marc.database.repository;
 
 import android.app.Application;
-import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.projet_laurin_marc.database.UserDatabase;
-import com.example.projet_laurin_marc.database.dao.UserDao;
+import com.example.projet_laurin_marc.BaseApp;
+
+import com.example.projet_laurin_marc.database.async.user.CreateUser;
+import com.example.projet_laurin_marc.database.async.user.DeleteUser;
+import com.example.projet_laurin_marc.database.async.user.UpdateUser;
+
 import com.example.projet_laurin_marc.database.entity.User;
+import com.example.projet_laurin_marc.database.util.OnAsyncEventListener;
 
 import java.util.List;
 
+
 public class UserRepository {
 
-    private UserDao userDao;
-    private LiveData <List<User>> userslive;
+    private static UserRepository instance;
 
-    public UserRepository(Application app){
-        UserDatabase database = UserDatabase.getInstance(app);
-        userDao = database.userDao();
-        userslive = userDao.getAll();
+    private UserRepository() {
     }
 
-    public void insert(User user){
-        new InsertUserAsyncTask(userDao).execute(user);
-    }
-
-    public void update(User user){
-        new UpdateUserAsyncTask(userDao).execute(user);
-    }
-
-    public void delete(User user){
-        new DeleteUserAsyncTask(userDao).execute(user);
-    }
-
-    public LiveData<List<User>> getAllUsers() {
-        return userslive;
-    }
-
-    private static class InsertUserAsyncTask extends AsyncTask <User, Void, Void> {
-        private UserDao userD;
-
-        public InsertUserAsyncTask(UserDao udao) {
-            this.userD = udao;
-        }
-
-        @Override
-        protected Void doInBackground(User... users) {
-            userD.insert(users[0]);
-            return null;
-        }
-    }
-
-        private static class UpdateUserAsyncTask extends AsyncTask <User, Void, Void>{
-            private UserDao userDao;
-
-            public UpdateUserAsyncTask(UserDao userDao){
-                this.userDao = userDao;
-            }
-
-            @Override
-            protected Void doInBackground(User... users){
-                try{
-                    for(User user : users){
-                        userDao.update(user);
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
+    public static UserRepository getInstance() {
+        if (instance == null) {
+            synchronized (CountyRepository.class) {
+                if (instance == null) {
+                    instance = new UserRepository();
                 }
-                return null;
             }
         }
+        return instance;
+    }
 
-    private static class DeleteUserAsyncTask extends AsyncTask <User, Void, Void>{
-        private UserDao userDao;
+    public LiveData<User> getUser(final String userId, Application application) {
+        return ((BaseApp) application).getDatabase().userDao().getById(userId);
+    }
 
-        public DeleteUserAsyncTask(UserDao userDao){
-            this.userDao = userDao;
-        }
+    public void insert(final User user, OnAsyncEventListener callback,
+                       Application application) {
+        new CreateUser(application, callback).execute(user);
+    }
 
-        @Override
-        protected Void doInBackground(User... users){
-            try{
-                for(User user : users){
-                    userDao.delete(user);
-                }
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-            return null;
-        }
+    public void update(final User user, OnAsyncEventListener callback,
+                       Application application) {
+        new UpdateUser(application, callback).execute(user);
+    }
+
+    public void delete(final User user, OnAsyncEventListener callback,
+                       Application application) {
+        new DeleteUser(application, callback).execute(user);
+    }
+
+    // ----------------------------------------------------------
+    // All Users
+    public LiveData<List<User>> getAllUsers(Application application) {
+        return ((BaseApp) application).getDatabase().userDao().getAll();
+    }
+    public LiveData<List<User>> getAllUsersByCounty(final String county, Application application) {
+        return ((BaseApp) application).getDatabase().userDao().getAllByCounty(county);
     }
 }

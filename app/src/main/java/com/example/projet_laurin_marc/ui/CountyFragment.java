@@ -2,9 +2,7 @@ package com.example.projet_laurin_marc.ui;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -16,7 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.adapter.CountyListAdapter;
-import com.example.projet_laurin_marc.static_database.County;
+import com.example.projet_laurin_marc.static_database.County1;
 import com.example.projet_laurin_marc.static_database.DataBaseHelper;
 
 import java.io.IOException;
@@ -26,7 +24,7 @@ import java.util.List;
 public class CountyFragment extends Fragment {
 
     private View view;
-    private List<County> countyObjectList;
+    private List<County1> countyObjectList;
     private DataBaseHelper dbHelper;
 
     @Override
@@ -46,7 +44,7 @@ public class CountyFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                County county = (County) listView.getItemAtPosition(position);
+                County1 county = (County1) listView.getItemAtPosition(position);
                 String countySelected = county.getCounty();
                 // save selected canton in variable
                 PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("SELECTED_COUNTY", countySelected).apply();

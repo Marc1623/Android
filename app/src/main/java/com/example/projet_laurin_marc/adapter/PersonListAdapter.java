@@ -51,8 +51,8 @@ public class PersonListAdapter extends BaseAdapter {
         //System.out.println(listData.get(position).getAhv());*/
 
         holder.uAHV.setText(listData.get(position).getAhv());
-        holder.uFirstname.setText(listData.get(position).getFirstname());
-        holder.uLastname.setText(listData.get(position).getLastname());
+        holder.uFirstname.setText(listData.get(position).getFirstName());
+        holder.uLastname.setText(listData.get(position).getLastName());
         return v;
     }
     static class ViewHolder {

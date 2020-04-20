@@ -2,132 +2,79 @@ package com.example.projet_laurin_marc.database.entity;
 
 
 import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Embedded;
+
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-import java.util.Date;
 
-@Entity(tableName = "person")
-public class Person {
+@Entity(tableName = "person", primaryKeys = {"ahv"},
+        foreignKeys = {
+                @ForeignKey(
+                        entity = County.class,
+                        parentColumns = "name",
+                        childColumns = "county",
+                        onDelete = ForeignKey.NO_ACTION
+                )},
+        indices = {
+                @Index(
+                        value = {"county"}
+                )})
+public class Person implements Comparable {
     // --------------- Attributes ----------------
     // set columns of the database
-    @PrimaryKey
     @NonNull
     private String ahv;
-    //foreign key to the address from the person.. had no time to solve problem..; solution like this lots of duplicates..
-    // @Embedded
-    //private Address address;
-
-    @ColumnInfo(name = "firstname")
-    private String firstname;
-
-    @ColumnInfo(name = "lastname")
-    private String lastname;
-
-    @ColumnInfo(name = "phone")
+    private String firstName;
+    private String lastName;
     private String phone;
-
-    @ColumnInfo(name = "birthday")
     private String birthday;
-
-    @ColumnInfo(name = "zip")
-    private String zip;
-
-    @ColumnInfo(name = "city")
-    private String city;
-
-    @ColumnInfo(name = "street")
     private String street;
-
-    @ColumnInfo(name = "canton")
-    private String canton;
-
-    @ColumnInfo(name = "county")
     private String county;
 
+    @Ignore
+    public Person() {
+    }//Default
+
     // --------------- Constructor ----------------
-    public Person(@NonNull String ahv, String firstname, String lastname, String phone, String birthday, String zip, String city, String street, String canton, String county) {
+    public Person(@NonNull String ahv, String firstName, String lastName, String phone, String birthday, String street, String county) {
         this.ahv = ahv;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.phone = phone;
         this.birthday = birthday;
-        this.zip = zip;
-        this.city = city;
         this.street = street;
-        this.canton = canton;
         this.county = county;
     }
-
-    public Person(){
-
-    }
-
     // --------------- Getter & Setter ----------------
-    // ahv, firstname, lastname, phone, birthday, address
 
+
+    @NonNull
     public String getAhv() {
         return ahv;
     }
 
-    public void setAhv(String ahv) {
+    public void setAhv(@NonNull String ahv) {
         this.ahv = ahv;
     }
 
-    public void setZip(String zip) {
-        this.zip = zip;
+    public String getFirstName() {
+        return firstName;
     }
 
-   /* public Address getAddress() {
-        return address;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }*/
-
-    public String getFirstname() {
-        return firstname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPhone() {
@@ -138,16 +85,20 @@ public class Person {
         this.phone = phone;
     }
 
-    public String getZip() {
-        return zip;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public String getCanton() {
-        return canton;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
-    public void setCanton(String canton) {
-        this.canton = canton;
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getCounty() {
@@ -156,5 +107,24 @@ public class Person {
 
     public void setCounty(String county) {
         this.county = county;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if (!(obj instanceof Person)) return false;
+        Person o = (Person) obj;
+        return o.getAhv().equals(this.getAhv());
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
+    }
+
+    @Override
+    public int compareTo(@NonNull Object o) {
+        return toString().compareTo(o.toString());
     }
 }

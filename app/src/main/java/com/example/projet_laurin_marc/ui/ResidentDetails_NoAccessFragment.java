@@ -48,7 +48,7 @@ public class ResidentDetails_NoAccessFragment extends Fragment {
     public void setData() {
         // get acces to database PErson
         personViewModel = new ViewModelProvider(this).get(PersonViewModel.class);
-        personViewModel.getPersons().observe(getViewLifecycleOwner(), new Observer<List<Person>>() {
+        personViewModel.getAllPersons().observe(getViewLifecycleOwner(), new Observer<List<Person>>() {
 
             @Override
             public void onChanged(List<Person> people) {
@@ -73,11 +73,10 @@ public class ResidentDetails_NoAccessFragment extends Fragment {
 
                         //set information into the textfields
                         etAHV.setText(person.getAhv());
-                        etFirstname.setText(person.getFirstname());
-                        etLastname.setText(person.getLastname());
+                        etFirstname.setText(person.getFirstName());
+                        etLastname.setText(person.getLastName());
                         etStreet.setText(person.getStreet());
-                        etZIP.setText(person.getZip());
-                        etCity.setText(person.getCity());
+                        etCity.setText(person.getCounty());
                         etPhone.setText(person.getPhone());
                         etBirthday.setText(person.getBirthday());
                     }

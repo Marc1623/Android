@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.database.entity.User;
+import com.example.projet_laurin_marc.database.util.OnAsyncEventListener;
 import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
 import com.example.projet_laurin_marc.ui.mgmt.LoginActivity;
 
@@ -41,6 +43,8 @@ public class ProfileFragment extends Fragment {
     private Button button_update;
     private Button button_delete;
 
+    private static final String TAG = "ProfilFragment";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -59,17 +63,17 @@ public class ProfileFragment extends Fragment {
         // get acces to database Users
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
        // userViewModel.getUsers().
-        userViewModel.getUsers().observe(getViewLifecycleOwner(), new Observer<List<User>>() {
+        userViewModel.getAllUsers().observe(getViewLifecycleOwner(), new Observer<List<User>>() {
 
             @Override //never called..
             public void onChanged(List<User> users) {
 
 
-                int nr = userViewModel.getUsers().getValue().size();
+                int nr = userViewModel.getAllUsers().getValue().size();
                 //Looping to check inputs
                 for (int i = 0; i < nr; i++) {
-                    if (userViewModel.getUsers().getValue().get(i).getId() == userId){
-                        user = userViewModel.getUsers().getValue().get(i);
+                    if (userViewModel.getAllUsers().getValue().get(i).getEmail().equals(userId)){
+                        user = userViewModel.getAllUsers().getValue().get(i);
 
                         //get ref to textfield
                         etMail = view.findViewById(R.id.text_email);
@@ -80,7 +84,7 @@ public class ProfileFragment extends Fragment {
                         //set information into the textfields
                         etMail.setText(user.getEmail());
                         etPwd.setText(user.getPwd());
-                        etCanton.setText(user.getCanton());
+                        //etCanton.setText(user.getCanton());
                         etCounty.setText(user.getCounty());
                     }
                 }
@@ -103,12 +107,23 @@ public class ProfileFragment extends Fragment {
 
                 user.setEmail(etMail.getText().toString());
                 user.setPwd(etPwd.getText().toString());
-                user.setCanton(etCanton.getText().toString());
+                //user.setCanton(etCanton.getText().toString());
                 user.setCounty(etCounty.getText().toString());
 
-                userViewModel.update(user);
-                Toast.makeText(getContext(), R.string.msg_user_updated,
-                        Toast.LENGTH_LONG).show();
+                userViewModel.updateUser(user, new OnAsyncEventListener() {
+                    @Override
+                    public void onSuccess() {
+                        Log.d(TAG, "updateUser: sucess");
+                        Toast.makeText(getContext(), R.string.msg_user_updated,
+                                Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+
+                    }
+                });
+
             }
         });
     }
@@ -126,10 +141,19 @@ public class ProfileFragment extends Fragment {
                         switch (which){
                             case DialogInterface.BUTTON_POSITIVE:
                                 //Yes button clicked
-                                userViewModel.delete(user);// delete user from db
+                                userViewModel.deleteUser(user, new OnAsyncEventListener() {
+                                    @Override
+                                    public void onSuccess() {
+                                        Log.d(TAG, "createUserWithEmail: success");
+                                        Toast.makeText(getContext(), R.string.msg_account_deleted,
+                                                Toast.LENGTH_LONG).show();
+                                    }
 
-                                Toast.makeText(getContext(), R.string.msg_account_deleted,
-                                        Toast.LENGTH_LONG).show();
+                                    @Override
+                                    public void onFailure(Exception e) {
+
+                                    }
+                                });// delete user from db
 
                                 //switch to login activity
                                 Intent intent = new Intent(getActivity(), LoginActivity.class);

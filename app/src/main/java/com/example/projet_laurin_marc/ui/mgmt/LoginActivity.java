@@ -126,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
     public void login() {
         // get connection to database, viewmodel
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
-        userViewModel.getUsers().observe(this, new Observer<List<User>>() {
+        userViewModel.getAllUsers().observe(this, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
                 //get the infromation set in the from
@@ -158,7 +158,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         //switch activity
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.putExtra("userId", users.get(i).getId()); //-> set userID and send to MainActivity..
+                        intent.putExtra("userId", users.get(i).getEmail()); //-> set userID and send to MainActivity..
                         startActivity(intent);
                         return;
                     }

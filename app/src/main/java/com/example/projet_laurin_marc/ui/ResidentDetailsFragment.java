@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.database.entity.Person;
+import com.example.projet_laurin_marc.database.util.OnAsyncEventListener;
 import com.example.projet_laurin_marc.database.viewModel.PersonViewModel;
 
 import java.util.List;
@@ -43,6 +45,7 @@ public class ResidentDetailsFragment extends Fragment {
     private Button button_update;
     private Button button_delete;
 
+    private static final String TAG = "ResidentDetailsFragment";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,7 +61,7 @@ public class ResidentDetailsFragment extends Fragment {
     public void setData() {
         // get acces to database PErson
         personViewModel = new ViewModelProvider(this).get(PersonViewModel.class);
-        personViewModel.getPersons().observe(getViewLifecycleOwner(), new Observer<List<Person>>() {
+        personViewModel.getAllPersons().observe(getViewLifecycleOwner(), new Observer<List<Person>>() {
 
             @Override
             public void onChanged(List<Person> people) {
@@ -82,11 +85,10 @@ public class ResidentDetailsFragment extends Fragment {
 
                         //set information into the textfields
                         etAHV.setText(person.getAhv());
-                        etFirstname.setText(person.getFirstname());
-                        etLastname.setText(person.getLastname());
+                        etFirstname.setText(person.getFirstName());
+                        etLastname.setText(person.getLastName());
                         etStreet.setText(person.getStreet());
-                        etZIP.setText(person.getZip());
-                        etCity.setText(person.getCity());
+                        etCity.setText(person.getCounty());
                         etPhone.setText(person.getPhone());
                         etBirthday.setText(person.getBirthday());
                     }
@@ -103,17 +105,28 @@ public class ResidentDetailsFragment extends Fragment {
 
                 //set information into the textfields
                 person.setAhv(etAHV.getText().toString());
-                person.setFirstname(etFirstname.getText().toString());
-                person.setLastname(etLastname.getText().toString());
+                person.setFirstName(etFirstname.getText().toString());
+                person.setLastName(etLastname.getText().toString());
                 person.setStreet(etStreet.getText().toString());
-                person.setZip(etZIP.getText().toString());
-                person.setCity(etCity.getText().toString());
+                person.setCounty(etCity.getText().toString());
                 person.setPhone(etPhone.getText().toString());
                 person.setBirthday(etBirthday.getText().toString());
 
-                personViewModel.update(person);
-                Toast.makeText(getContext(), R.string.msg_changes_saved,
-                        Toast.LENGTH_LONG).show();
+                personViewModel.updatePerson(person, new OnAsyncEventListener(){
+
+                    @Override
+                    public void onSuccess() {
+                        Log.d(TAG, "updatedPerson: success");
+                        Toast.makeText(getContext(), R.string.msg_changes_saved,
+                                Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+
+                    }
+                });
+
             }
         });
     }
@@ -130,18 +143,27 @@ public class ResidentDetailsFragment extends Fragment {
                         switch (which){
                             case DialogInterface.BUTTON_POSITIVE:
                                 //Yes button clicked
-                                personViewModel.delete(person);
-                                Toast.makeText(getContext(), getContext().getString(R.string.delete),
-                                        Toast.LENGTH_LONG).show();
-                                //go to the Canton Fragment
-                                Fragment fragment = new CantonFragment();
-                                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                                fragmentTransaction.replace(R.id.fragment_container, fragment);
-                                fragmentTransaction.addToBackStack(null);
-                                fragmentTransaction.commit();
-                                break;
+                                personViewModel.deletePerson(person, new OnAsyncEventListener() {
+                                    @Override
+                                    public void onSuccess() {
+                                        Log.d(TAG, "deletedPerson: success");
+                                        Toast.makeText(getContext(), getContext().getString(R.string.delete),
+                                                Toast.LENGTH_LONG).show();
+                                        //go to the Canton Fragment
+                                        Fragment fragment = new CantonFragment();
+                                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                        fragmentTransaction.replace(R.id.fragment_container, fragment);
+                                        fragmentTransaction.addToBackStack(null);
+                                        fragmentTransaction.commit();
+                                    }
 
+                                    @Override
+                                    public void onFailure(Exception e) {
+
+                                    }
+                                });
+                                break;
                             case DialogInterface.BUTTON_NEGATIVE:
                                 //No button clicked
                                 break;

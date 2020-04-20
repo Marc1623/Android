@@ -2,6 +2,7 @@ package com.example.projet_laurin_marc.ui.mgmt;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,12 +12,13 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.projet_laurin_marc.R;
+import com.example.projet_laurin_marc.database.async.user.CreateUser;
 import com.example.projet_laurin_marc.database.entity.User;
+import com.example.projet_laurin_marc.database.util.OnAsyncEventListener;
 import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
-import com.example.projet_laurin_marc.static_database.County;
+import com.example.projet_laurin_marc.static_database.County1;
 import com.example.projet_laurin_marc.static_database.DataBaseHelper;
 
 import java.io.IOException;
@@ -29,7 +31,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private Spinner spCanton;
     private Spinner spCounty;
     private DataBaseHelper dbHelper;
-    private List<County> countyList;
+    private List<County1> countyList;
 
     private EditText etMail1;
     private EditText etMail2;
@@ -37,6 +39,10 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText etPwd2;
 
     private String selectedCanton;
+
+    boolean value = true;
+
+    private static final String TAG = "RegisterActivity";
 
     private UserViewModel vm;
 
@@ -122,7 +128,7 @@ public class RegistrationActivity extends AppCompatActivity {
         // spinner
         spCounty = (Spinner) findViewById(R.id.spinner_county);
         // Create an ArrayAdapter using the database and a default spinner layout
-        ArrayAdapter<County> adapter2 = new ArrayAdapter<County>(this, android.R.layout.simple_spinner_item, countyList);
+        ArrayAdapter<County1> adapter2 = new ArrayAdapter<County1>(this, android.R.layout.simple_spinner_item, countyList);
         //specify the layout to use when the list of choices appears
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // apply the adapter to the spinner
@@ -130,7 +136,6 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     public boolean saveUser() {
-        boolean value = true;
         // get user inputs
         String mailString = etMail1.getText().toString();
         String mail2String = etMail2.getText().toString();
@@ -171,18 +176,22 @@ public class RegistrationActivity extends AppCompatActivity {
         String cantonString = spCanton.getSelectedItem().toString();
         String countyString = spCounty.getSelectedItem().toString();
 
-        // if all fields are correct save user in db
-        if (value) {
-            User user = new User(mailString, pwdString, cantonString, countyString);
-            vm = new ViewModelProvider(this).get(UserViewModel.class);
-            // double check if user is not null
-            if (user != null) {
-                vm.insert(user); // insert in db
+        User user = new User(mailString, pwdString, countyString);
+
+        vm.createUser(user, new OnAsyncEventListener() {
+            @Override
+            public void onSuccess() {
+                Log.d(TAG, "createUserWithEmail: success");
                 value = true;
-            } else {
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.d(TAG, "createUserWithEmail: failure", e);
                 value = false;
             }
-        }
+        });
+
         return value;
     }
 }
