@@ -50,8 +50,8 @@ public class UserLiveListData extends LiveData<List<User>> {
     private List<User> toUserList(DataSnapshot snapshot) {
         List<User> users = new ArrayList<>();
         for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-            User entity = childSnapshot.child("users").getValue(User.class);
-            //entity.setRowId(Integer.valueOf(childSnapshot.getKey()));
+            User entity = childSnapshot.getValue(User.class);
+            entity.setId(childSnapshot.getKey());
             users.add(entity);
         }
         return users;

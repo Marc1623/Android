@@ -68,7 +68,7 @@ public class ProfileFragment extends Fragment {
                 int nr = userViewModel.getUsers().getValue().size();
                 //Looping to check inputs
                 for (int i = 0; i < nr; i++) {
-                    if (userViewModel.getUsers().getValue().get(i).getId() == userId){
+                    if (userViewModel.getUsers().getValue().get(i).getId().equals(userId)){
                         user = userViewModel.getUsers().getValue().get(i);
 
                         //get ref to textfield

@@ -21,10 +21,10 @@ public class UserRepository {
     }
 
     public void insert(User user) {
+        String id = FirebaseDatabase.getInstance().getReference("users").push().getKey();
         FirebaseDatabase.getInstance()
                 .getReference("users")
-                .child(String.valueOf(user.getId()))
-                .child("user")
+                .child(id)
                 .setValue(user);
     }
 

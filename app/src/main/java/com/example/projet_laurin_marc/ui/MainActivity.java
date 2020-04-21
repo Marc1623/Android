@@ -133,20 +133,20 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void getLoggedUserFromDB() {
-        // get acces to database Users
+        /*// get acces to database Users
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         // userViewModel.getUsers().
         userViewModel.getUsers().observe(this, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
                 for (int i = 0; i < users.size(); i++) {
-                    if (users.get(i).getId() == userID) {
+                    if (users.get(i).getId().equals(userID)) {
                         String userCounty = users.get(i).getCounty();
                         PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putString("User_County", userCounty).apply();
                     }
                 }
             }
-        });
+        });*/
     }
 
 }

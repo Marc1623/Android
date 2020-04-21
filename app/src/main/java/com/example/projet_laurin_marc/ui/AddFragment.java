@@ -40,7 +40,7 @@ public class AddFragment extends Fragment {
     private EditText etBirthday;
     private View view;
 
-    private int userId;
+    private String userId;
     private User user;
     private String canton;
     private String county = "Test";
@@ -58,7 +58,7 @@ public class AddFragment extends Fragment {
 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_add, container, false);
-        userId = this.getArguments().getInt("userId1");
+        //userId = this.getArguments().getInt("userId1");
         //get county and canton from the user (county employee)
         getUser();
         initializeForm();
@@ -225,7 +225,7 @@ public class AddFragment extends Fragment {
                 int nr = userViewModel.getUsers().getValue().size();
                 //Looping to check inputs
                 for (int i = 0; i < nr; i++) {
-                    if (userViewModel.getUsers().getValue().get(i).getId() == userId) {
+                    if (userViewModel.getUsers().getValue().get(i).getId().equals(userId)) {
                         user = userViewModel.getUsers().getValue().get(i);
                         canton = user.getCanton();
                         county = user.getCounty();

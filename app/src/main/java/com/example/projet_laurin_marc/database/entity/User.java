@@ -9,7 +9,7 @@ public class User {
     // --------------- Attributes ----------------
     // set columns of the database
 
-    private int id;
+    private String id;
 
     private String email;
 
@@ -36,10 +36,10 @@ public class User {
     // --------------- Getter & Setter ----------------
    // id, email, pwd
     @Exclude
-    public int getId() {
+    public String getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getEmail() {
@@ -69,9 +69,6 @@ public class User {
 
     public void setCanton(String canton) {
         this.canton = canton;
-    }
-
-    public void setRowId(int rowid) {
     }
 
     @Exclude
