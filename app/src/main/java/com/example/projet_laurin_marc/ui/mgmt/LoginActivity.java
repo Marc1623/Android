@@ -1,5 +1,6 @@
 package com.example.projet_laurin_marc.ui.mgmt;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -10,17 +11,24 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projet_laurin_marc.ui.MainActivity;
 import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.database.entity.User;
 import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 import java.util.Locale;
@@ -37,6 +45,16 @@ public class LoginActivity extends AppCompatActivity {
 
     private CheckBox remember;
 
+    private TextView mStatusTextView;
+    private TextView mDetailTextView;
+    // [START declare_auth]
+    private FirebaseAuth mAuth;
+    // [END declare_auth]
+
+    private FirebaseUser currentUser;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +63,17 @@ public class LoginActivity extends AppCompatActivity {
         changeLanguage();
         // after language selection set the content
         setContentView(R.layout.activity_login);
+
+
+        // [START initialize_auth]
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+        // [END initialize_auth]
+
+
+
+    // [END on_start_check_user]
+
 
         // get links
         login = findViewById(R.id.button_login);
@@ -105,6 +134,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+
     private void remember(){
         //check checkbox
         SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
@@ -148,8 +178,28 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 int value = 0;
+
+                mAuth.signInWithEmailAndPassword(mailString, passString).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success, update UI with the signed-in user's information
+                                    Log.d("signInWithEmail", "signInWithEmail:success");
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    //intent.putExtra("userId", users.get(i).getId()); //-> set userID and send to MainActivity..
+                                    startActivity(intent);
+                                    return;
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Log.w("signInWithEmail", "signInWithEmail:failure", task.getException());
+
+                                }
+
+                            }
+                        });
                 //Looping to check inputs
-                for (int i = 0; i < users.size(); i++) {
+                /*for (int i = 0; i < users.size(); i++) {
                     if (users.get(i).getEmail().equals(mailString)
                             && users.get(i).getPwd().equals(passString)) {
 
@@ -181,10 +231,11 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
 
-                }
+                }*/
             }
         });
     }
+
 
     // to change the local language of the application
     public void changeLanguage() {
@@ -204,5 +255,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
     }
+
 
 }

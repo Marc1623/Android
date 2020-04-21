@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.projet_laurin_marc.R;
 
 
+
 public class AboutActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

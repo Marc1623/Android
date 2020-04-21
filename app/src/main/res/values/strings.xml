@@ -155,6 +155,8 @@
     <string name="lucerne" translatable="false">Lucerne</string>
     <string name="canton_zurich">Zürich</string>
 
+    <!-- Cloud -->
+    <string name="status_emailpassword" translatable="false">status email password</string>
 </resources>
 
 
