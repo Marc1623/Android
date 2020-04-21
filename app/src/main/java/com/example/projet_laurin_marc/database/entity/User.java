@@ -1,27 +1,22 @@
 package com.example.projet_laurin_marc.database.entity;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.Index;
-import androidx.room.PrimaryKey;
+import com.google.firebase.firestore.Exclude;
 
-@Entity(tableName = "user", indices = {@Index(value = {"email"}, unique = true)})
+import java.util.HashMap;
+import java.util.Map;
+
 public class User {
     // --------------- Attributes ----------------
     // set columns of the database
-    @PrimaryKey (autoGenerate = true)
+
     private int id;
 
-    @ColumnInfo(name = "email")
     private String email;
 
-    @ColumnInfo(name = "pwd")
     private String pwd;
 
-    @ColumnInfo(name = "canton")
     private String canton;
 
-    @ColumnInfo(name = "county")
     private String county;
 
     // --------------- Constructors ----------------
@@ -32,15 +27,15 @@ public class User {
         this.county = county;
     }
     public User(){
-        this.email = "newUser@test.com";
+        /*this.email = "newUser@test.com";
         this.pwd = "123456";
         this.canton = "Bern";
-        this.county = "Krattigen";
-
+        this.county = "Krattigen";*/
     } // default
 
     // --------------- Getter & Setter ----------------
    // id, email, pwd
+    @Exclude
     public int getId() {
         return id;
     }
@@ -74,5 +69,18 @@ public class User {
 
     public void setCanton(String canton) {
         this.canton = canton;
+    }
+
+    public void setRowId(int rowid) {
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("email", email);
+        result.put("pwd", pwd);
+        result.put("canton", canton);
+        result.put("county", county);
+        return result;
     }
 }

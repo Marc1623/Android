@@ -24,5 +24,4 @@ public interface PersonDao {
 
     @Query("Select * From  person")
     LiveData<List<Person>> getAll();
-
 }

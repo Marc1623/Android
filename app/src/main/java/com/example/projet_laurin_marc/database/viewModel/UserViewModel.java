@@ -14,13 +14,18 @@ import java.util.List;
 
 public class UserViewModel extends AndroidViewModel {
     private UserRepository userRepository;
-    private LiveData<List<User>> users;
+
+    private final MediatorLiveData<List<User>> observableUsers;
 
     public UserViewModel(@NonNull Application application) {
         super(application);
+        observableUsers = new MediatorLiveData<>();
+        observableUsers.setValue(null);
 
         userRepository = new UserRepository(application);
-        users = userRepository.getAllUsers();
+
+        LiveData<List<User>> allUsers = userRepository.getAllUsers();
+        observableUsers.addSource(allUsers, observableUsers::setValue);
     }
 
     public void insert(User user){
@@ -36,6 +41,6 @@ public class UserViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<User>> getUsers() {
-        return users;
+        return observableUsers;
     }
 }

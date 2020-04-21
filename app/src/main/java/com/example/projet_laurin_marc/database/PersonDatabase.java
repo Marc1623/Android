@@ -10,9 +10,7 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.projet_laurin_marc.database.dao.PersonDao;
-import com.example.projet_laurin_marc.database.dao.UserDao;
 import com.example.projet_laurin_marc.database.entity.Person;
-import com.example.projet_laurin_marc.database.entity.User;
 
 @Database(entities = {Person.class},version = 5)
 public abstract class PersonDatabase extends RoomDatabase {
