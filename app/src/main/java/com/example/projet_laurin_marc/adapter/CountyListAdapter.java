@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.database.entity.County;
-import com.example.projet_laurin_marc.static_database.County1;
 
 import java.util.List;
 

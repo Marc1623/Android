@@ -144,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();*/
                     return;
                 }
-
+                repository = new UserRepository(getApplication());
                // progressBar.setVisibility(View.VISIBLE);
                 repository.signIn(mailString, passString, task -> {
                     if (task.isSuccessful()) {
