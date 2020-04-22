@@ -28,7 +28,6 @@ public class UserRepository {
     }
 
     public void update(User user) {
-        System.out.println(user.getId());
         FirebaseDatabase.getInstance()
                 .getReference("users")
                 .child(user.getId())
@@ -38,8 +37,7 @@ public class UserRepository {
     public void delete(User user) {
         FirebaseDatabase.getInstance()
                 .getReference("users")
-                .child(String.valueOf(user.getId()))
-                .child("user")
+                .child(user.getId())
                 .removeValue();
     }
 
