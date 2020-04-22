@@ -11,6 +11,7 @@ public class County {
 
     private String id;
     private String name;
+    private String owner;
 
 
     // --------------- Constructors ----------------
@@ -34,6 +35,14 @@ public class County {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     @Exclude

@@ -155,7 +155,18 @@ public class RegistrationActivity extends AppCompatActivity {
                 countyViewModel.insert(countyList.get(j), cantonInsert);
             }
         }*/
+        countyViewModel = new ViewModelProvider(this).get(CountyViewModel.class);
+        countyViewModel.getCounties().observe(this, new Observer<List<County>>() {
+            @Override
+            public void onChanged(List<County> counties) {
+                if(counties == null){
+                    return;
+                }
+                for(int i = 0; i<counties.size(); i++){
 
+                }
+            }
+        });
         // get countylist
         countyList = dbHelper.getCountiesByCanton(selectedCanton); // selected canton from spinner Canton to make selection of counties
 

@@ -31,6 +31,21 @@ public class CountyRepository {
                 .setValue(county);
     }
 
+    public void insert(final County county) {
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("cantons")
+                .child(county.getOwner())
+                .child("counties");
+        String key = reference.push().getKey();
+        FirebaseDatabase.getInstance()
+                .getReference("cantons")
+                .child(county.getOwner())
+                .child("accounts")
+                .child(key)
+                .setValue(county);
+    }
+
+
     public void update(County county) {
         FirebaseDatabase.getInstance()
                 .getReference("cantons")
