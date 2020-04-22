@@ -22,11 +22,15 @@ import com.example.projet_laurin_marc.database.entity.County;
 import com.example.projet_laurin_marc.database.entity.User;
 import com.example.projet_laurin_marc.database.viewModel.CantonViewModel;
 import com.example.projet_laurin_marc.database.viewModel.CountyViewModel;
+import com.example.projet_laurin_marc.database.repository.UserRepository;
 import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
 import com.example.projet_laurin_marc.static_database.County1;
 import com.example.projet_laurin_marc.static_database.DataBaseHelper;
+import com.example.projet_laurin_marc.ui.MainActivity;
+import com.example.projet_laurin_marc.util.OnAsyncEventListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -56,12 +60,16 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private UserViewModel vm;
     CountyViewModel countyViewModel;
-    private FirebaseAuth mAuth;
+
+    UserRepository repository;
+    private static final String TAG = "RegisterActivity";
+    private Toast toast;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        mAuth = FirebaseAuth.getInstance();
         spCantons();
         initializeFrom();
     }//end onCreate
@@ -78,7 +86,7 @@ public class RegistrationActivity extends AppCompatActivity {
         button_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                System.out.println("click");
                 if (saveUser()) {
                     // give msg (Pop-Up), that login was successful
                     Toast.makeText(RegistrationActivity.this, R.string.registration_complete, Toast.LENGTH_LONG).show();
@@ -124,8 +132,8 @@ public class RegistrationActivity extends AppCompatActivity {
         countyList = new ArrayList<>();
         countyList.clear();
 
-        cantonsList = new ArrayList<>();
-        countyList.clear();
+        /*cantonsList = new ArrayList<>();
+        countyList.clear();*/
 
         // create connection to static db
         dbHelper = new DataBaseHelper(this);
@@ -154,7 +162,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 //System.out.println(countyList.get(j).getName());
                 countyViewModel.insert(countyList.get(j), cantonInsert);
             }
-        }*/
+        }
         countyViewModel = new ViewModelProvider(this).get(CountyViewModel.class);
         countyViewModel.getCounties().observe(this, new Observer<List<County>>() {
             @Override
@@ -166,7 +174,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 }
             }
-        });
+        });*/
         // get countylist
         countyList = dbHelper.getCountiesByCanton(selectedCanton); // selected canton from spinner Canton to make selection of counties
 
@@ -178,11 +186,13 @@ public class RegistrationActivity extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // apply the adapter to the spinner
         spCounty.setAdapter(adapter2);
+        System.out.println("end county");
         }
 
 
 
     public boolean saveUser() {
+
         boolean value = true;
         // get user inputs
         String mailString = etMail1.getText().toString();
@@ -222,7 +232,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         // get values from spinners no check needed as there is always a selection
         String cantonString = spCanton.getSelectedItem().toString();
-        cantonInsert = new Canton(cantonString);
+        /*cantonInsert = new Canton(cantonString);
         CantonViewModel cantonVm = new ViewModelProvider(this).get(CantonViewModel.class);
         cantonVm.insert(cantonInsert);
 
@@ -237,31 +247,37 @@ public class RegistrationActivity extends AppCompatActivity {
                     }
                 }
             }
-        });
+        });*/
 
         String countyString = spCounty.getSelectedItem().toString();
-
+        System.out.println("--------------------------------------------------------");
         // if all fields are correct save user in db
-        if (value) {
+        if (true) {
             User user = new User(mailString, pwdString, cantonString, countyString);
-            vm = new ViewModelProvider(this).get(UserViewModel.class);
+            System.out.println(user.getEmail());
+            System.out.println(user.getPwd());
+            System.out.println(user.getCanton());
+            System.out.println(user.getCounty());
+            //vm = new ViewModelProvider(this).get(UserViewModel.class);
             // double check if user is not null
             if (user != null) {
-                vm.insert(user); // insert in db
-                mAuth.createUserWithEmailAndPassword(mailString, pwdString)
-                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Log.d("FireBaseAuthCreateUser", "createUserWithEmail:success");
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Log.w("FireBaseAuthCreateUser", "createUserWithEmail:failure", task.getException());
-                                }
-                            }
-                        });
+                //vm.insert(user); // insert in db
+
+                repository.register(user, new OnAsyncEventListener() {
+                    @Override
+                    public void onSuccess() {
+                        System.out.println("on Success! Registration");
+                        Log.d(TAG, "createUserWithEmail: success");
+                        //setResponse(true);
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+                        Log.d(TAG, "createUserWithEmail: failure", e);
+                        //setResponse(false);
+                    }
+                });
+
                 value = true;
             } else {
                 value = false;
@@ -269,4 +285,15 @@ public class RegistrationActivity extends AppCompatActivity {
         }
         return value;
     }
+
+ /*   private void setResponse(Boolean response) {
+        if (response) {
+            toast.show();
+            Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
+            startActivity(intent);
+        } else {
+            etMail1.setError(getString(R.string.error_used_email));
+            etMail1.requestFocus();
+        }
+    }*/
 }

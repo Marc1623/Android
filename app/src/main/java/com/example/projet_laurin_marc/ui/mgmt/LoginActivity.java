@@ -19,6 +19,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.projet_laurin_marc.database.repository.UserRepository;
 import com.example.projet_laurin_marc.ui.MainActivity;
 import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.database.entity.User;
@@ -39,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private CheckBox remember;
 
+    private UserRepository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,6 +138,58 @@ public class LoginActivity extends AppCompatActivity {
                 passString = etPwd.getText().toString();
 
 
+                // if no users in database -> info to register!
+                if (users == null) {
+                   /*Toast.makeText(getApplicationContext(), (R.string.registration_first),
+                            Toast.LENGTH_LONG).show();*/
+                    return;
+                }
+
+               // progressBar.setVisibility(View.VISIBLE);
+                repository.signIn(mailString, passString, task -> {
+                    if (task.isSuccessful()) {
+                        int value = 0;
+                        //Looping to check inputs
+                        for (int i = 0; i < users.size(); i++) {
+                            if (users.get(i).getEmail().equals(mailString)
+                                    && users.get(i).getPwd().equals(passString)) {
+
+                                System.out.println(i + " : " + users.get(i).getId());
+                                Toast.makeText(getApplicationContext(), (R.string.login_successful),
+                                        Toast.LENGTH_LONG).show();
+
+                                //switch activity
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                intent.putExtra("userId", users.get(i).getId()); //-> set userID and send to MainActivity..
+                                startActivity(intent);
+                                return;
+                            }
+                            // wrong password
+                            if (users.get(i).getEmail().equals(mailString)
+                                    && !(users.get(i).getPwd().equals(passString))){
+                                etPwd.setError(getString(R.string.error_invalid_password));
+                                etPwd.requestFocus();
+                                etPwd.setText("");
+                                return;
+                            }
+                            //wrong email
+                            if(i >= users.size()-1 && !users.get(i).getEmail().equals(mailString) ){
+                                value ++;
+                                if(value > 0){
+                                    etMail.setError(getString(R.string.error_invalid_email));
+                                    etMail.requestFocus();
+                                    etPwd.setText("");
+                                    return;
+                                }
+                            }
+
+                        }
+                    } else {
+                         Toast.makeText(getApplicationContext(), (R.string.msg_email_password_invalid),
+                            Toast.LENGTH_LONG).show();
+                    }
+                   // progressBar.setVisibility(View.GONE);
+                });
 
                 // check if all information are given
                 if(passString.trim().isEmpty() && mailString.trim().isEmpty()){
@@ -145,48 +199,6 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                // if no users in database -> info to register!
-                if (users == null) {
-                   /*Toast.makeText(getApplicationContext(), (R.string.registration_first),
-                            Toast.LENGTH_LONG).show();*/
-                    return;
-                }
-                int value = 0;
-                //Looping to check inputs
-                for (int i = 0; i < users.size(); i++) {
-                    if (users.get(i).getEmail().equals(mailString)
-                            && users.get(i).getPwd().equals(passString)) {
-
-                        System.out.println(i + " : " + users.get(i).getId());
-                        Toast.makeText(getApplicationContext(), (R.string.login_successful),
-                                Toast.LENGTH_LONG).show();
-
-                        //switch activity
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.putExtra("userId", users.get(i).getId()); //-> set userID and send to MainActivity..
-                        startActivity(intent);
-                        return;
-                    }
-                    // wrong password
-                    if (users.get(i).getEmail().equals(mailString)
-                            && !(users.get(i).getPwd().equals(passString))){
-                        etPwd.setError(getString(R.string.error_invalid_password));
-                        etPwd.requestFocus();
-                        etPwd.setText("");
-                        return;
-                    }
-                    //wrong email
-                    if(i >= users.size()-1 && !users.get(i).getEmail().equals(mailString) ){
-                        value ++;
-                        if(value > 0){
-                            etMail.setError(getString(R.string.error_invalid_email));
-                            etMail.requestFocus();
-                            etPwd.setText("");
-                            return;
-                        }
-                    }
-
-                }
             }
         });
     }

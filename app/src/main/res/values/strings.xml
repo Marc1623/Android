@@ -92,6 +92,7 @@
     <string name="msg_pwd_check">Passwort nicht gleich</string>
     <string name="msg_email_check">E-mail nicht gleich</string>
     <string name="msg_email_invalid">Bitte E-mail eingeben</string>
+    <string name="msg_email_password_invalid" translatable="false">Mail and password incorrect</string>
     <string name="msg_person_id">Person ist bereits im System registriert</string>
     <string name="msg_person_added_regitry">Person hizugefügt</string>
     <string name="msg_user_updated">Nutzer aktualisiert</string>

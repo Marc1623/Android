@@ -1,5 +1,7 @@
 package com.example.projet_laurin_marc.database.entity;
 
+import androidx.annotation.Nullable;
+
 import com.google.firebase.firestore.Exclude;
 
 import java.util.HashMap;
@@ -79,5 +81,14 @@ public class User {
         result.put("canton", canton);
         result.put("county", county);
         return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) return false;
+        if (obj == this) return false;
+        if(!(obj instanceof User))return false;
+        User o = (User)obj;
+        return o.getEmail().equals(this.getEmail());
     }
 }

@@ -9,6 +9,7 @@ import androidx.lifecycle.MediatorLiveData;
 
 import com.example.projet_laurin_marc.database.entity.User;
 import com.example.projet_laurin_marc.database.repository.UserRepository;
+import com.example.projet_laurin_marc.util.OnAsyncEventListener;
 
 import java.util.List;
 
@@ -27,10 +28,10 @@ public class UserViewModel extends AndroidViewModel {
         LiveData<List<User>> allUsers = userRepository.getAllUsers();
         observableUsers.addSource(allUsers, observableUsers::setValue);
     }
-
-    public void insert(User user){
-        userRepository.insert(user);
-    }
+/*
+    public void insert(User user ){
+        userRepository.insert(user , new OnAsyncEventListener);
+    }*/
 
     public void update(User user){
         userRepository.update(user);
