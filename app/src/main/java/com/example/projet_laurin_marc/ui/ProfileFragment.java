@@ -28,7 +28,7 @@ import java.util.List;
 public class ProfileFragment extends Fragment {
 
     private View view;
-    private int userId;
+    private String userId;
     private User user;
     private List<User> users;
     private UserViewModel userViewModel;
@@ -47,7 +47,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_profil, container, false);
         // get userID from the person that logged in to the application
-        userId = this.getArguments().getInt("userId");
+        userId = this.getArguments().getString("userId");
         setData();
         update();
         delete();
@@ -64,6 +64,9 @@ public class ProfileFragment extends Fragment {
             @Override //never called..
             public void onChanged(List<User> users) {
 
+                if(users == null){
+                    return;
+                }
 
                 int nr = userViewModel.getUsers().getValue().size();
                 //Looping to check inputs

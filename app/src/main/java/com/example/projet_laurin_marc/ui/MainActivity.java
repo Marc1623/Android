@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigation;
     private UserViewModel userViewModel;
-    private int userID;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //get logged user, county => ResitenDetails; with or without changing options!
-        userID = getIntent().getIntExtra("userId", 1111);
+        userID = getIntent().getExtras().getString("userId", "XXX");
         getLoggedUserFromDB();
 
         //set bottom nav
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     switch (item.getItemId()) {
                         case R.id.nav_add:
                             Bundle bundle1 = new Bundle();
-                            bundle1.putInt("userId1", userID);
+                            bundle1.putString("userId1", userID);
                             //set Fragmentclass
                             selectedFragment = new AddFragment();
                             selectedFragment.setArguments(bundle1);
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.nav_profil:
 
                             Bundle bundle = new Bundle();
-                            bundle.putInt("userId", userID);
+                            bundle.putString("userId", userID);
                             //set Fragmentclass
                             selectedFragment = new ProfileFragment();
                             selectedFragment.setArguments(bundle);
@@ -133,12 +133,17 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void getLoggedUserFromDB() {
-        /*// get acces to database Users
+        // get acces to database Users
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         // userViewModel.getUsers().
         userViewModel.getUsers().observe(this, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
+
+                if (users == null) {
+                    return;
+                }
+
                 for (int i = 0; i < users.size(); i++) {
                     if (users.get(i).getId().equals(userID)) {
                         String userCounty = users.get(i).getCounty();
@@ -146,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-        });*/
+        });
     }
 
 }

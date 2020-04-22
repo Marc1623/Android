@@ -1,5 +1,7 @@
 package com.example.projet_laurin_marc.ui.mgmt;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -145,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 // if no users in database -> info to register!
                 if (users == null) {
-                   /* Toast.makeText(getApplicationContext(), (R.string.registration_first),
+                   /*Toast.makeText(getApplicationContext(), (R.string.registration_first),
                             Toast.LENGTH_LONG).show();*/
                     return;
                 }
@@ -155,6 +157,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (users.get(i).getEmail().equals(mailString)
                             && users.get(i).getPwd().equals(passString)) {
 
+                        System.out.println(i + " : " + users.get(i).getId());
                         Toast.makeText(getApplicationContext(), (R.string.login_successful),
                                 Toast.LENGTH_LONG).show();
 
