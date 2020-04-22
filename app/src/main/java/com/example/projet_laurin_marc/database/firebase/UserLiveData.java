@@ -14,13 +14,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserLiveListData extends LiveData<List<User>> {
+public class UserLiveData extends LiveData<List<User>> {
     private static final String TAG = "UserLiveData";
 
     private final DatabaseReference reference;
     private final MyValueEventListener listener = new MyValueEventListener();
 
-    public UserLiveListData(DatabaseReference ref) {
+    public UserLiveData(DatabaseReference ref) {
         reference = ref;
     }
 

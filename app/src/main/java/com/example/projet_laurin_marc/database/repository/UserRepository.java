@@ -1,12 +1,11 @@
 package com.example.projet_laurin_marc.database.repository;
 
 import android.app.Application;
-import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
 import com.example.projet_laurin_marc.database.entity.User;
-import com.example.projet_laurin_marc.database.firebase.UserLiveListData;
+import com.example.projet_laurin_marc.database.firebase.UserLiveData;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -47,6 +46,6 @@ public class UserRepository {
     public LiveData<List<User>> getAllUsers() {
         DatabaseReference reference = FirebaseDatabase.getInstance()
                 .getReference("users");
-        return new UserLiveListData(reference);
+        return new UserLiveData(reference);
     }
 }

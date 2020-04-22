@@ -133,6 +133,8 @@ public class LoginActivity extends AppCompatActivity {
                 mailString = etMail.getText().toString();
                 passString = etPwd.getText().toString();
 
+
+
                 // check if all information are given
                 if(passString.trim().isEmpty() && mailString.trim().isEmpty()){
                     etMail.setError(getString(R.string.error_fehler));
@@ -143,8 +145,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 // if no users in database -> info to register!
                 if (users == null) {
-                    Toast.makeText(getApplicationContext(), (R.string.registration_first),
-                            Toast.LENGTH_LONG).show();
+                   /* Toast.makeText(getApplicationContext(), (R.string.registration_first),
+                            Toast.LENGTH_LONG).show();*/
                     return;
                 }
                 int value = 0;
