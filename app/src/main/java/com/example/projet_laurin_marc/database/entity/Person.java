@@ -1,55 +1,28 @@
 package com.example.projet_laurin_marc.database.entity;
 
+import com.google.firebase.firestore.Exclude;
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Embedded;
-import androidx.room.Entity;
-import androidx.room.Index;
-import androidx.room.PrimaryKey;
+import java.util.HashMap;
+import java.util.Map;
 
-import java.util.Date;
-
-@Entity(tableName = "person")
 public class Person {
     // --------------- Attributes ----------------
     // set columns of the database
-    @PrimaryKey
-    @NonNull
     private String ahv;
-    //foreign key to the address from the person.. had no time to solve problem..; solution like this lots of duplicates..
-    // @Embedded
-    //private Address address;
-
-    @ColumnInfo(name = "firstname")
     private String firstname;
-
-    @ColumnInfo(name = "lastname")
     private String lastname;
-
-    @ColumnInfo(name = "phone")
     private String phone;
-
-    @ColumnInfo(name = "birthday")
     private String birthday;
-
-    @ColumnInfo(name = "zip")
     private String zip;
-
-    @ColumnInfo(name = "city")
     private String city;
-
-    @ColumnInfo(name = "street")
     private String street;
-
-    @ColumnInfo(name = "canton")
     private String canton;
-
-    @ColumnInfo(name = "county")
     private String county;
 
+    private String id;
+
     // --------------- Constructor ----------------
-    public Person(@NonNull String ahv, String firstname, String lastname, String phone, String birthday, String zip, String city, String street, String canton, String county) {
+    public Person(String ahv, String firstname, String lastname, String phone, String birthday, String zip, String city, String street, String canton, String county) {
         this.ahv = ahv;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -81,14 +54,6 @@ public class Person {
         this.zip = zip;
     }
 
-   /* public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }*/
-
     public String getFirstname() {
         return firstname;
     }
@@ -105,11 +70,9 @@ public class Person {
         this.lastname = lastname;
     }
 
-
     public String getBirthday() {
         return birthday;
     }
-
     public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
@@ -157,4 +120,28 @@ public class Person {
     public void setCounty(String county) {
         this.county = county;
     }
+    @Exclude
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("ahv", ahv);
+        result.put("firstname", firstname);
+        result.put("lastname", lastname);
+        result.put("phone", phone);
+        result.put("birthday", birthday);
+        result.put("zip", zip);
+        result.put("city", city);
+        result.put("county", county);
+        result.put("canton", canton);
+        return result;
+    }
+
 }

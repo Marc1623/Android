@@ -58,7 +58,7 @@ public class AddFragment extends Fragment {
 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_add, container, false);
-        //userId = this.getArguments().getInt("userId1");
+        userId = this.getArguments().getString("userId1");
         //get county and canton from the user (county employee)
         getUser();
         initializeForm();
@@ -222,6 +222,9 @@ public class AddFragment extends Fragment {
 
             @Override
             public void onChanged(List<User> users) {
+                if(users == null){
+                    return;
+                }
                 int nr = userViewModel.getUsers().getValue().size();
                 //Looping to check inputs
                 for (int i = 0; i < nr; i++) {

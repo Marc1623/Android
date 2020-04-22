@@ -1,94 +1,50 @@
 package com.example.projet_laurin_marc.database.repository;
 
 import android.app.Application;
-import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.projet_laurin_marc.database.PersonDatabase;
-import com.example.projet_laurin_marc.database.dao.PersonDao;
 import com.example.projet_laurin_marc.database.entity.Person;
+import com.example.projet_laurin_marc.database.firebase.PersonLiveData;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
 public class PersonRepository {
 
-    private PersonDao personDao;
-    private LiveData <List<Person>> personslive;
+
+    private LiveData <List<Person>> allPersons;
 
     public PersonRepository(Application app){
-        PersonDatabase database = PersonDatabase.getInstance(app);
-        personDao = database.personDao();
-        personslive = personDao.getAll();
+        allPersons = getAllPersons();
     }
 
     public void insert(Person person){
-        new InsertPersonAsyncTask(personDao).execute(person);
+        String id = FirebaseDatabase.getInstance().getReference("persons").push().getKey();
+        FirebaseDatabase.getInstance()
+                .getReference("persons")
+                .child(id)
+                .setValue(person);
     }
 
     public void update(Person person){
-        new UpdatePersonAsyncTask(personDao).execute(person);
+        FirebaseDatabase.getInstance()
+                .getReference("persons")
+                .child(person.getId())
+                .updateChildren(person.toMap());
     }
 
     public void delete(Person person){
-        new DeletePersonAsyncTask(personDao).execute(person);
+        FirebaseDatabase.getInstance()
+                .getReference("persons")
+                .child(person.getId())
+                .removeValue();
     }
 
     public LiveData<List<Person>> getAllPersons() {
-        return personslive;
-    }
-
-    private static class InsertPersonAsyncTask extends AsyncTask <Person, Void, Void> {
-        private PersonDao personDao;
-
-        public InsertPersonAsyncTask(PersonDao personDao) {
-            this.personDao = personDao;
-        }
-
-        @Override
-        protected Void doInBackground(Person... persons) {
-            personDao.insert(persons[0]);
-            return null;
-        }
-    }
-
-        private static class UpdatePersonAsyncTask extends AsyncTask <Person, Void, Void>{
-            private PersonDao personDao;
-
-            public UpdatePersonAsyncTask(PersonDao personDao){
-                this.personDao = personDao;
-            }
-
-            @Override
-            protected Void doInBackground(Person... persons){
-                try{
-                    for(Person person : persons){
-                        personDao.update(person);
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-                return null;
-            }
-        }
-
-    private static class DeletePersonAsyncTask extends AsyncTask <Person, Void, Void>{
-        private PersonDao personDao;
-
-        public DeletePersonAsyncTask(PersonDao personDao){
-            this.personDao = personDao;
-        }
-
-        @Override
-        protected Void doInBackground(Person... persons){
-            try{
-                for(Person person : persons){
-                    personDao.delete(person);
-                }
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-            return null;
-        }
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("persons");
+        return new PersonLiveData(reference);
     }
 }
