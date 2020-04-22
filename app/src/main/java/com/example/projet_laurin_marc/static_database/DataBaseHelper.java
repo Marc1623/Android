@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.projet_laurin_marc.database.entity.Canton;
+import com.example.projet_laurin_marc.database.entity.County;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -131,7 +134,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cursor.moveToFirst();
 
         while (!cursor.isAfterLast()) {
-            county = new County(cursor.getString(0), cursor.getString(1));
+            county = new County(cursor.getString(1));
             countyList.add(county);
             cursor.moveToNext();
         }
@@ -139,6 +142,30 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cursor.close();
         closeDataBase();
         return countyList;
+    }
+
+    public List<Canton> getCantons() {
+        Canton canton = null;
+        List<Canton> cantonsList = new ArrayList<>();
+        openDatabase();
+        Cursor cursor = myDataBase.rawQuery("SELECT DISTINCT Kanton FROM Counties_De" , null);
+        cursor.moveToFirst();
+
+        while (!cursor.isAfterLast()) {
+            canton = new Canton(cursor.getString(0));
+            if(canton.getName().equals("St. Gallen")){
+                canton.setName("St Gallen");
+            }
+            if(canton.getName().equals("LU")){
+                canton.setName("Luzern");
+            }
+            cantonsList.add(canton);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        closeDataBase();
+        return cantonsList;
     }
 
 }

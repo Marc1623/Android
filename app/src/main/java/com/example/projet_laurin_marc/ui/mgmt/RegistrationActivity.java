@@ -13,12 +13,17 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.projet_laurin_marc.R;
+import com.example.projet_laurin_marc.database.entity.Canton;
+import com.example.projet_laurin_marc.database.entity.County;
 import com.example.projet_laurin_marc.database.entity.User;
+import com.example.projet_laurin_marc.database.viewModel.CantonViewModel;
+import com.example.projet_laurin_marc.database.viewModel.CountyViewModel;
 import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
-import com.example.projet_laurin_marc.static_database.County;
+import com.example.projet_laurin_marc.static_database.County1;
 import com.example.projet_laurin_marc.static_database.DataBaseHelper;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -37,15 +42,20 @@ public class RegistrationActivity extends AppCompatActivity {
     private Spinner spCounty;
     private DataBaseHelper dbHelper;
     private List<County> countyList;
+    private List<Canton> cantonsList;
 
     private EditText etMail1;
     private EditText etMail2;
     private EditText etPwd1;
     private EditText etPwd2;
+    private Canton cantonInsert;
+    private County county;
+
 
     private String selectedCanton;
 
     private UserViewModel vm;
+    CountyViewModel countyViewModel;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +124,9 @@ public class RegistrationActivity extends AppCompatActivity {
         countyList = new ArrayList<>();
         countyList.clear();
 
+        cantonsList = new ArrayList<>();
+        countyList.clear();
+
         // create connection to static db
         dbHelper = new DataBaseHelper(this);
 
@@ -123,9 +136,29 @@ public class RegistrationActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        cantonsList = dbHelper.getCantons();
+
+        /*
+        CantonViewModel cantonVm = new ViewModelProvider(this).get(CantonViewModel.class);
+        countyViewModel = new ViewModelProvider(this).get(CountyViewModel.class);
+
+
+       ///insert all canons
+        for(int i = 0; i<cantonsList.size();i++) {
+            cantonInsert = cantonsList.get(i);
+            String id = cantonVm.insert(cantonInsert);
+            cantonInsert.setId(id);
+            //insert counties according to its canton
+            countyList = dbHelper.getCountiesByCanton(cantonInsert.getName());
+            for (int j = 0; j < countyList.size(); j++) {
+                //System.out.println(countyList.get(j).getName());
+                countyViewModel.insert(countyList.get(j), cantonInsert);
+            }
+        }*/
 
         // get countylist
         countyList = dbHelper.getCountiesByCanton(selectedCanton); // selected canton from spinner Canton to make selection of counties
+
         // spinner
         spCounty = (Spinner) findViewById(R.id.spinner_county);
         // Create an ArrayAdapter using the database and a default spinner layout
@@ -134,7 +167,9 @@ public class RegistrationActivity extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // apply the adapter to the spinner
         spCounty.setAdapter(adapter2);
-    }
+        }
+
+
 
     public boolean saveUser() {
         boolean value = true;
@@ -176,6 +211,23 @@ public class RegistrationActivity extends AppCompatActivity {
 
         // get values from spinners no check needed as there is always a selection
         String cantonString = spCanton.getSelectedItem().toString();
+        cantonInsert = new Canton(cantonString);
+        CantonViewModel cantonVm = new ViewModelProvider(this).get(CantonViewModel.class);
+        cantonVm.insert(cantonInsert);
+
+        cantonVm.getCantons().observe(this, new Observer<List<Canton>>() {
+            @Override
+            public void onChanged(List<Canton> cantons) {
+                if(cantons == null)
+                    return;
+                for(int i = 0; i<cantons.size(); i++){
+                    if(cantons.get(i).getName().equals(cantonInsert.getName())){
+                        cantonInsert.setId(cantons.get(i).getId());
+                    }
+                }
+            }
+        });
+
         String countyString = spCounty.getSelectedItem().toString();
 
         // if all fields are correct save user in db

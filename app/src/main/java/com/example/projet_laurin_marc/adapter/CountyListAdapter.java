@@ -8,7 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.projet_laurin_marc.R;
-import com.example.projet_laurin_marc.static_database.County;
+import com.example.projet_laurin_marc.database.entity.County;
+import com.example.projet_laurin_marc.static_database.County1;
 
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class CountyListAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) v.getTag();
         }
-        holder.uName.setText(listData.get(position).getCounty());
+        holder.uName.setText(listData.get(position).getName());
         return v;
     }
     static class ViewHolder {

@@ -1,13 +1,13 @@
 package com.example.projet_laurin_marc.static_database;
 
-public class County {
+public class County1 {
 
     private int id;
     private String canton;
     private String county;
 
     //County Entity
-    public County(String canton, String county) {
+    public County1(String canton, String county) {
         this.id = 0;
         this.canton = canton;
         this.county = county;
