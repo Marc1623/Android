@@ -11,29 +11,22 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+
 
 import com.example.projet_laurin_marc.R;
 import com.example.projet_laurin_marc.database.entity.Canton;
 import com.example.projet_laurin_marc.database.entity.County;
 import com.example.projet_laurin_marc.database.entity.User;
-import com.example.projet_laurin_marc.database.viewModel.CantonViewModel;
+
 import com.example.projet_laurin_marc.database.viewModel.CountyViewModel;
 import com.example.projet_laurin_marc.database.repository.UserRepository;
 import com.example.projet_laurin_marc.database.viewModel.UserViewModel;
-import com.example.projet_laurin_marc.static_database.County1;
+
 import com.example.projet_laurin_marc.static_database.DataBaseHelper;
-import com.example.projet_laurin_marc.ui.MainActivity;
+
 import com.example.projet_laurin_marc.util.OnAsyncEventListener;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -86,7 +79,6 @@ public class RegistrationActivity extends AppCompatActivity {
         button_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("click");
                 if (saveUser()) {
                     // give msg (Pop-Up), that login was successful
                     Toast.makeText(RegistrationActivity.this, R.string.registration_complete, Toast.LENGTH_LONG).show();
@@ -186,7 +178,6 @@ public class RegistrationActivity extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // apply the adapter to the spinner
         spCounty.setAdapter(adapter2);
-        System.out.println("end county");
         }
 
 
@@ -250,33 +241,17 @@ public class RegistrationActivity extends AppCompatActivity {
         });*/
 
         String countyString = spCounty.getSelectedItem().toString();
-        System.out.println("--------------------------------------------------------");
+
         // if all fields are correct save user in db
         if (true) {
             User user = new User(mailString, pwdString, cantonString, countyString);
-            System.out.println(user.getEmail());
-            System.out.println(user.getPwd());
-            System.out.println(user.getCanton());
-            System.out.println(user.getCounty());
+
             //vm = new ViewModelProvider(this).get(UserViewModel.class);
             // double check if user is not null
             if (user != null) {
                 //vm.insert(user); // insert in db
-
-                repository.register(user, new OnAsyncEventListener() {
-                    @Override
-                    public void onSuccess() {
-                        System.out.println("on Success! Registration");
-                        Log.d(TAG, "createUserWithEmail: success");
-                        //setResponse(true);
-                    }
-
-                    @Override
-                    public void onFailure(Exception e) {
-                        Log.d(TAG, "createUserWithEmail: failure", e);
-                        //setResponse(false);
-                    }
-                });
+                repository = new UserRepository(getApplication());
+                repository.register(user);
 
                 value = true;
             } else {

@@ -33,7 +33,7 @@ public class UserRepository {
                 .addOnCompleteListener(listener);
     }
 
-    public void register(final User user, final OnAsyncEventListener callback) {
+    public void register(final User user) {
         System.out.println("register: UserRepo");
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(
                 user.getEmail(),
@@ -42,36 +42,19 @@ public class UserRepository {
             if (task.isSuccessful()) {
                 user.setId(FirebaseAuth.getInstance().getCurrentUser().getUid());
                 System.out.println("register: before insert");
-                insert(user, callback);
+                insert(user);
             } else {
-                callback.onFailure(task.getException());
+
             }
         });
     }
 
-    private void insert(final User user, final OnAsyncEventListener callback) {
+    private void insert(final User user) {
         System.out.println("insert: int insert");
         FirebaseDatabase.getInstance()
                 .getReference("users")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .setValue(user, (databaseError, databaseReference) -> {
-                    if (databaseError != null) {
-                        callback.onFailure(databaseError.toException());
-                        FirebaseAuth.getInstance().getCurrentUser().delete()
-                                .addOnCompleteListener(task -> {
-                                    if (task.isSuccessful()) {
-                                        callback.onFailure(null);
-                                        Log.d(TAG, "Rollback successful: User account deleted");
-                                    } else {
-                                        callback.onFailure(task.getException());
-                                        Log.d(TAG, "Rollback failed: signInWithEmail:failure",
-                                                task.getException());
-                                    }
-                                });
-                    } else {
-                        callback.onSuccess();
-                    }
-                });
+                .setValue(user);
     }
 
 
