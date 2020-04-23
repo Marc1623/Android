@@ -14,3 +14,10 @@ tough this Data on firebase is not being used, as the construct of the static db
 
 - Furthermore we've taken advantage of the Firebase Authentification, which was tricky to implement (to have the same ID's in the auth and the db)
 
+Information - Branches:
+master:
+- Contains our state of work from the presentaion of part 1 Room
+cloud:
+- Contains our work for the firebae, clould implementaion
+room:
+- We have startd to make correction after the presentation of part 1, but as we had some interruption in our workflow, we had to switch to concentrate on the firebase - cloud implementation and therefore did not finnish our corrections
